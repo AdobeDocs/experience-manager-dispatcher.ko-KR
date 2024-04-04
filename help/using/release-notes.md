@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1101'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -25,7 +25,7 @@ ht-degree: 91%
 | 제품 | Adobe Experience Manager(AEM) Dispatcher |
 | 버전 | 4.3.7 |
 | 유형 | 마이너 릴리스 |
-| 날짜 | 2024년 3월 27일 목요일 |
+| 날짜 | 2024년 3월 27일 |
 | 다운로드 URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services(IIS)](release-notes.md#iis)</li></ul> |
 | 호환성 | AEM 6.1 이상 |
 
@@ -41,12 +41,12 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 ## 릴리스 기록 {#release-history}
 
-### 릴리스 4.3.7 (2024년 3월 27일) {#march}
+### Release 4.3.7 (2024년 3월 27일) {#march}
 
 **개선 사항**:
 
-* DISP-1009 - 헤더 길이 다시 설정 중
-* DISP-1013 - linux에 대한 openssl 3.0 지원 추가
+* DISP-1009 - 헤더 길이 재설정
+* DISP-1013 - Linux에 대한 openssl 3.0 지원 추가
 * DISP-1014 - 잘못된 리디렉션으로 이어지는 response.location 처리
 * DISP-1017 - DTD 정의 변경
 
