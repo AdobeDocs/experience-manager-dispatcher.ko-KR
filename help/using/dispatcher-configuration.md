@@ -3,7 +3,7 @@ title: Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 336e69a4635c9822a97bbffd0b1410807012f9e7
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '8857'
 ht-degree: 100%
 
