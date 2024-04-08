@@ -2,7 +2,7 @@
 title: Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 410346694a134c0f32a24de905623655f15269b4
+source-git-commit: 336e69a4635c9822a97bbffd0b1410807012f9e7
 workflow-type: ht
 source-wordcount: '8857'
 ht-degree: 100%
@@ -1885,3 +1885,4 @@ HTTP 메서드가 GET도 HEAD도 아닙니다. Dispatcher는 출력에 캐시되
 원격 서버가 `Dispatcher: no_cache` 헤더를 반환하여 Dispatcher가 출력을 캐시하는 것을 금지했습니다.
 * **캐시 불가능: 응답 콘텐츠 길이가 0임**
 응답의 콘텐츠 길이가 0입니다. Dispatcher는 길이가 0인 파일을 생성하지 않습니다.
+
