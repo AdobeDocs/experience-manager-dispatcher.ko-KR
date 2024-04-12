@@ -3,9 +3,9 @@ title: Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -213,7 +213,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 >[!CAUTION]
 >
->`/homepage`매개변수(IIS만 해당)는 더 이상 작동하지 않습니다. 대신 [IIS URL 재작성 모듈](https://learn.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)을 사용해야 합니다.
+>`/homepage`매개변수(IIS만 해당)는 더 이상 작동하지 않습니다. 대신 [IIS URL 재작성 모듈](https://learn.microsoft.com/ko-kr/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)을 사용해야 합니다.
 >
 >Apache를 사용하는 경우 `mod_rewrite` 모듈을 사용해야 합니다. `mod_rewrite`에 대한 정보는 Apache 웹 사이트 설명서를 참조하십시오(예: [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). `mod_rewrite`를 사용할 때 &#39;passthrough|PT&#39;(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 `uri` 구조의 `request_rec` 필드를 `filename` 필드의 값으로 설정하는 것이 좋습니다.
 
@@ -674,7 +674,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 
 #### 예제 필터: 정규 표현식 사용 {#example-filter-using-regular-expressions}
 
-이 필터는 여기에서 작은 따옴표 사이에 정의된 정규 표현식을 사용하여 비공개 콘텐츠 디렉터리의 확장을 활성화합니다.
+이 필터는 여기에서 작은 따옴표 사이에 정의된 정규 표현식을 사용하여 비공개 콘텐츠 디렉터리의 확장 기능을 활성화합니다.
 
 ```xml
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
@@ -682,7 +682,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 
 #### 예제 필터: 요청 URL의 추가 요소 필터링 {#example-filter-filter-additional-elements-of-a-request-url}
 
-다음은 경로, 선택기 및 확장에 대한 필터를 사용하여 `/content` 경로 및 해당 하위 트리에서 콘텐츠를 가져오는 것을 차단하는 규칙 예제입니다.
+다음은 경로, 선택기 및 확장 기능에 대한 필터를 사용하여 `/content` 경로 및 해당 하위 트리에서 콘텐츠를 가져오는 것을 차단하는 규칙 예제입니다.
 
 ```xml
 /006 {
@@ -1727,7 +1727,7 @@ The following table describes the wildcard characters.
 
 ## 로깅 {#logging}
 
-웹 서버 구성에서 다음을 설정할 수 있습니다.
+웹 서버 구성에서 다음과 같은 항목을 설정할 수 있습니다.
 
 * Dispatcher 로그 파일의 위치.
 * 로그 수준.
@@ -1742,7 +1742,7 @@ The following table describes the wildcard characters.
 
 이 기능은 다음과 같이 자동으로 회전합니다.
 
-* Dispatcher 로그 파일, 확장에 타임스탬프가 있음(`logs/dispatcher.log%Y%m%d`).
+* Dispatcher 로그 파일, 확장 기능에 타임스탬프가 있음(`logs/dispatcher.log%Y%m%d`).
 * 매주(60 x 60 x 24 x 7 = 604,800초).
 
 로그 회전 및 파이프된 로그에 대한 Apache 웹 서버 문서를 참조하십시오. 예: [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
@@ -1811,7 +1811,7 @@ The following table describes the wildcard characters.
 
 ## 여러 Dispatcher 사용 {#using-multiple-dispatchers}
 
-복잡한 설정에서 여러 Dispatcher를 사용할 수 있습니다. 예를 들어 다음을 사용할 수 있습니다.
+복잡한 설정에서 여러 Dispatcher를 사용할 수 있습니다. 예를 들어 다음과 같은 항목을 사용할 수 있습니다.
 
 * 인트라넷에 웹 사이트를 게시할 하나의 Dispatcher
 * 다른 주소와 보안 설정이 다른 두 번째 Dispatcher가 동일한 콘텐츠를 인터넷에 게시합니다.
