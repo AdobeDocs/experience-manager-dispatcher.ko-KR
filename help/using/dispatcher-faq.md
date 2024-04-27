@@ -1,13 +1,11 @@
 ---
-title: Dispatcher 주요 문제
-seo-title: Top issues for AEM Dispatcher
-description: AEM Dispatcher의 주요 문제
-seo-description: Top issues for Adobe AEM Dispatcher
+title: Dispatcher의 주요 문제
+description: Adobe Experience Manager Dispatcher의 주요 문제
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1578'
-ht-degree: 100%
+source-wordcount: '1542'
+ht-degree: 87%
 
 ---
 
@@ -19,7 +17,7 @@ ht-degree: 100%
 
 ### Dispatcher란 무엇입니까?
 
-Dispatcher는 Adobe Experience Manager의 캐싱 및/또는 로드 밸런싱 도구로 빠르고 동적인 웹 저작 환경을 구현하는 데 도움이 됩니다. 캐싱을 위해 Dispatcher는 Apache와 같은 HTTP 서버의 일부로 작동합니다. 가능한 한 많은 정적 웹 사이트 콘텐츠를 저장(또는 “캐싱”)하고 웹 사이트의 레이아웃 엔진에 가능한 한 드물게 액세스합니다. 로드 밸런싱 역할로, Dispatcher는 사용자 요청(로드)을 여러 AEM 인스턴스(렌더링)에 분산합니다.
+Dispatcher는 Adobe Experience Manager의 캐싱 및/또는 로드 밸런싱 도구로 빠르고 동적인 웹 저작 환경을 구현하는 데 도움이 됩니다. 캐싱을 위해 Dispatcher는 Apache와 같은 HTTP 서버의 일부로 작동합니다. 가능한 한 많은 정적 웹 사이트 콘텐츠를 저장(또는 &quot;캐싱&quot;)하고 웹 사이트 엔진의 레이아웃에 가능한 한 드물게 액세스하는 것을 목적으로 합니다. 로드 밸런싱 역할로, Dispatcher는 사용자 요청(로드)을 여러 AEM 인스턴스(렌더링)에 분산합니다.
 
 캐싱을 위해 Dispatcher 모듈은 정적 콘텐츠를 제공하는 웹 서버의 기능을 사용합니다. Dispatcher는 캐싱된 문서를 웹 서버의 문서 루트에 배치합니다.
 
@@ -83,9 +81,9 @@ Dispatcher는 정적 콘텐츠를 제공하는 웹 서버의 기능을 사용합
 
 ### Dispatcher와 AEM 게시 인스턴스가 동일한 물리적 시스템에 상주할 수 있습니까?
 
-예, 시스템이 충분히 강력하다면 가능합니다. 단, Dispatcher와 AEM 게시 인스턴스를 다른 시스템에 설정하는 것이 좋습니다.
+예, 시스템이 충분히 강력하다면 가능합니다. 하지만 Dispatcher와 AEM Publish 인스턴스를 다른 컴퓨터에 설정해야 합니다.
 
-일반적으로 게시 인스턴스는 방화벽 내부에 있고 Dispatcher는 DMZ에 있습니다. 동일한 물리적 시스템에 게시 인스턴스와 Dispatcher를 모두 사용하기로 결정한 경우 방화벽 설정이 외부 네트워크에서 게시 인스턴스에 대한 직접 액세스를 금지하는지 확인하십시오.
+일반적으로 게시 인스턴스는 방화벽 내에 있고 Dispatcher는 DMZ에 있습니다. 동일한 물리적 시스템에 게시 인스턴스와 Dispatcher를 모두 사용하기로 결정한 경우 방화벽 설정이 외부 네트워크에서 게시 인스턴스에 대한 직접 액세스를 금지하는지 확인하십시오.
 
 ### 특정 확장명을 가진 파일만 캐싱할 수 있습니까?
 
@@ -106,8 +104,8 @@ Content-Length: 0
 
 Dispatcher는 CQ-Handle 헤더 값과 이름이 일치하는 캐싱된 파일 및 폴더를 삭제합니다. 예를 들어 `/content/geomtrixx-outdoors/en`의 CQ-Handle은 다음 항목과 일치합니다.
 
-geometrixx-outdoors 디렉터리에서 이름이 en인 모든 파일 (모든 파일 확장명 포함)
-en 디렉터리 아래 `_jcr_content`라는 이름의 모든 디렉터리 (존재하는 경우 페이지 하위 노드의 캐싱된 렌더링 포함)
+geometrixx-outdoors 디렉터리에서 이름이 en인 (모든 파일 확장명의) 모든 파일입니다.
+이름이 인 모든 디렉토리 `_jcr_content` en 디렉터리 아래(존재하는 경우, 페이지의 하위 노드에 대한 캐시된 렌더링 포함).
 디렉터리 `en`는 `CQ-Action`가 `Delete` 또는 `Deactivate`인 경우에만 삭제됩니다.
 
 이 토픽에 대한 자세한 내용은 [수동으로 Dispatcher 캐시 무효화](page-invalidate.md)를 참조하십시오.
@@ -118,7 +116,7 @@ en 디렉터리 아래 `_jcr_content`라는 이름의 모든 디렉터리 (존�
 
 ### Dispatcher와 CQ 인스턴스 간의 통신을 보호하려면 어떻게 해야 합니까?
 
-[Dispatcher 보안 점검 목록](security-checklist.md) 및 [AEM 보안 점검 목록](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=ko-KR) 페이지를 참조하십시오.
+[Dispatcher 보안 점검 목록](security-checklist.md) 및 [AEM 보안 점검 목록](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist) 페이지를 참조하십시오.
 
 ### Dispatcher 문제 `jcr:content`가 `jcr%3acontent`로 변경됨
 
@@ -132,7 +130,7 @@ en 디렉터리 아래 `_jcr_content`라는 이름의 모든 디렉터리 (존�
 
 ### 게시 인스턴스에서 Dispatcher 플러시 에이전트를 어떻게 구성합니까?
 
-[복제](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=ko-KR#configuring-your-replication-agents) 페이지를 참조하십시오.
+[복제](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents) 페이지를 참조하십시오.
 
 ### Dispatcher 플러싱 문제는 어떻게 해결합니까?
 
@@ -142,7 +140,7 @@ en 디렉터리 아래 `_jcr_content`라는 이름의 모든 디렉터리 (존�
 
 ### Dispatcher 캐시에서 DAM 에셋을 플러시하는 방법은 무엇입니까?
 
-“체인 복제” 기능을 사용할 수 있습니다. 이 기능이 활성화되면 Dispatcher 플러시 에이전트는 작성자로부터 복제가 수신될 때 플러시 요청을 보냅니다.
+“체인 복제” 기능을 사용할 수 있습니다. 이 기능이 활성화되면 Dispatcher의 플러시 에이전트는 작성자로부터 복제가 수신될 때 플러시 요청을 보냅니다.
 
 활성화하려면
 

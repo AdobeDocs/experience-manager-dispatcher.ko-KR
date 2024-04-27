@@ -2,10 +2,10 @@
 title: Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 002458d52df4680ded5cb84a8119bc000e3ca88a
-workflow-type: ht
-source-wordcount: '8857'
-ht-degree: 100%
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
+source-wordcount: '8854'
+ht-degree: 96%
 
 ---
 
@@ -19,7 +19,7 @@ ht-degree: 100%
 
 ## IPv4 및 IPv6 지원 {#support-for-ipv-and-ipv}
 
-AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설치할 수 있습니다. [IPV4 및 IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=ko-KR#ipv-and-ipv)를 참조하십시오.
+AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설치할 수 있습니다. [IPV4 및 IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv)를 참조하십시오.
 
 ## Dispatcher 구성 파일 {#dispatcher-configuration-files}
 
@@ -133,7 +133,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 /docroot "${PWD}/cache"
 ```
 
-또 다른 예로, AEM 게시 인스턴스의 호스트 이름을 저장하는 `PUBLISH_IP` 환경 변수를 만드는 경우 [/renders](#defining-page-renderers-renders) 속성의 다음 구성을 사용할 수 있습니다.
+다른 예로, 이름이 인 환경 변수를 만드는 경우 `PUBLISH_IP` AEM 게시 인스턴스의 호스트 이름, 다음 구성 저장 [/renders](#defining-page-renderers-renders) 속성을 사용할 수 있습니다.
 
 ```xml
 /renders {
@@ -259,7 +259,7 @@ Comment Type: draft
 
 `/clientheaders` 속성은 Dispatcher가 클라이언트 HTTP 요청에서 렌더러(AEM 인스턴스)로 전달하는 HTTP 헤더 목록을 정의합니다.
 
-기본적으로 Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 추가 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
+기본적으로 Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 다른 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
 
 * AEM 인스턴스가 HTTP 요청에서 예상하는 사용자 정의 헤더와 같은 헤더를 추가합니다.
 * 인증 헤더와 같이 웹 서버에만 관련된 헤더를 제거합니다.
@@ -402,9 +402,9 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 >[!CAUTION]
 >
->이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [인증 사용 시 캐싱](#caching-when-authentication-is-used) 섹션에서 자세히 설명한 바와 같이 `/allowAuthorized 0 `을 설정하면 인증 정보가 포함된 요청은 캐시되지 **않습니다.** 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=ko-KR) 페이지를 참조하십시오.
+>이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [인증 사용 시 캐싱](#caching-when-authentication-is-used) 섹션에서 자세히 설명한 바와 같이 `/allowAuthorized 0 `을 설정하면 인증 정보가 포함된 요청은 캐시되지 **않습니다.** 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache) 페이지를 참조하십시오.
 
-사용자가 팜의 모든 페이지에 액세스하려면 로그인해야 하도록 렌더링 팜에 액세스를 위한 보안 세션을 만듭니다. 로그인 후 사용자는 팜의 페이지에 액세스할 수 있습니다. CUG와 함께 이 기능을 사용하는 방법에 대한 정보는 [폐쇄형 사용자 그룹 만들기](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=ko-KR#creating-the-user-group-to-be-used)를 참조하십시오. 시작하기 전에 Dispatcher [보안 체크리스트](/help/using/security-checklist.md) 도 참조하십시오.
+사용자가 팜의 모든 페이지에 액세스하려면 로그인해야 하도록 렌더링 팜에 액세스를 위한 보안 세션을 만듭니다. 로그인 후 사용자는 팜의 페이지에 액세스할 수 있습니다. CUG와 함께 이 기능을 사용하는 방법에 대한 정보는 [폐쇄형 사용자 그룹 만들기](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used)를 참조하십시오. 시작하기 전에 Dispatcher [보안 체크리스트](/help/using/security-checklist.md) 도 참조하십시오.
 
 `/sessionmanagement` 속성은 `/farms`의 하위 속성입니다.
 
@@ -412,7 +412,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 >
 >웹 사이트의 섹션에서 서로 다른 액세스 요구 사항을 사용하는 경우 여러 팜을 정의해야 합니다.
 
-**/sessionmanagement**&#x200B;에는 여러 하위 매개변수가 있습니다.
+**/sessionmanagement** 에는 여러 하위 매개 변수가 있습니다.
 
 **/directory** (필수)
 
@@ -420,7 +420,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 >[!CAUTION]
 >
-> 디렉터리 하위 매개변수를 구성하는 경우 심각한 문제를 일으킬 수 있으므로 루트 폴더(`/directory "/"`)를 가리켜서는 **안 됩니다**. 항상 세션 정보를 저장하는 폴더의 경로를 지정합니다. 예:
+> 디렉토리 하위 매개변수를 구성할 때 **금지** 루트 폴더(`/directory "/"`) 심각한 문제를 일으킬 수 있습니다. 항상 세션 정보를 저장하는 폴더의 경로를 지정합니다. 예:
 
 ```xml
 /sessionmanagement
@@ -513,7 +513,7 @@ AEM 인스턴스에 액세스하는 연결 시간 제한(밀리초)을 지정합
 
 응답이 허용되는 시간(밀리초)을 지정합니다. 기본값은 `"600000"`이므로 Dispatcher가 10분 동안 대기합니다. `"0"`으로 설정하면 시간 제한이 제거됩니다.
 
-응답 헤더를 구문 분석하는 동안 시간 제한에 도달하면 HTTP 상태 504(잘못된 게이트웨이)가 반환됩니다. 응답 본문을 읽는 동안 시간 제한에 도달하면 Dispatcher는 완료되지 않은 응답을 클라이언트에 반환합니다. 또한 기록되었을 수 있는 모든 캐시 파일을 삭제합니다.
+응답 헤더를 구문 분석하는 동안 시간 제한에 도달하면 HTTP 상태 504(잘못된 게이트웨이)가 반환됩니다. 응답 본문을 읽는 동안 시간 제한에 도달하면 Dispatcher는 완료되지 않은 응답을 클라이언트에 반환합니다. 또한 기록되었을 수 있는 캐시된 파일도 모두 삭제합니다.
 
 **/ipv4**
 
@@ -525,7 +525,7 @@ Amazon Elastic Load Balancing(ELB)은 잠재적으로 동일한 순서의 IP 주
 
 **/secure**
 
-`/secure` 속성의 값이 `"1"` 인 경우 Dispatcher는 HTTPS를 사용하여 AEM 인스턴스와 통신합니다. 자세한 내용은 [SSL을 사용하도록 Dispatcher 구성](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)도 참조하십시오.
+`/secure` 속성의 값이 `"1"` 인 경우 Dispatcher는 HTTPS를 사용하여 AEM 인스턴스와 통신합니다. 자세한 내용은 [SSL을 사용하도록 Dispatcher 구성](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -555,7 +555,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 >[!CAUTION]
 >
->Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 또한 AEM 설치와 관련된 추가 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=ko-KR#security)를 참조하십시오.
+>Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 다음을 참조하십시오. [AEM Security 검사 목록](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) 를 참조하십시오. AEM 설치에 대한 추가 보안 세부 정보.
 
 `/filter` 섹션은 HTTP 요청의 요청 라인 부분에 있는 패턴에 따라 콘텐츠에 대한 액세스를 거부하거나 허용하는 일련의 규칙으로 구성됩니다. `/filter` 섹션에 허용 목록 전략을 사용합니다.
 
@@ -797,7 +797,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
    * `/libs/opensocial/proxy*`
 
-설치에 따라 `/libs`, `/apps` 또는 기타 위치에 사용 가능한 추가 리소스가 있을 수 있으며, 이러한 리소스는 사용 가능해야 합니다. `access.log` 파일을 외부에서 액세스하는 리소스를 결정하는 한 가지 메서드로 사용할 수 있습니다.
+설치에 따라 아래에 더 많은 리소스가 있을 수 있습니다. `/libs`, `/apps` 또는 다른 곳에서 사용할 수 있어야 합니다. `access.log` 파일을 외부에서 액세스하는 리소스를 결정하는 한 가지 메서드로 사용할 수 있습니다.
 
 >[!CAUTION]
 >
@@ -805,7 +805,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!CAUTION]
 >
->[게시 환경에서 보고서를 사용](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=ko-KR#using-reports-in-a-publish-environment) 하는 경우 외부 방문자의 `/etc/reports`에 대한 액세스를 거부하도록 Dispatcher를 구성해야 합니다.
+>[게시 환경에서 보고서를 사용](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment) 하는 경우 외부 방문자의 `/etc/reports`에 대한 액세스를 거부하도록 Dispatcher를 구성해야 합니다.
 
 ### 쿼리 문자열 제한 {#restricting-query-strings}
 
@@ -937,7 +937,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 >[!NOTE]
 >
->렌더링이 AEM의 인스턴스인 경우 [소프트웨어 배포의 VanityURL-Components 패키지](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)를 설치하여 vanity URL 서비스를 활성화해야 합니다. (자세한 내용은 [소프트웨어 배포](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=ko-KR#software-distribution)를 참조하십시오.)
+>렌더링이 AEM의 인스턴스인 경우 [소프트웨어 배포의 VanityURL-Components 패키지](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)를 설치하여 vanity URL 서비스를 활성화해야 합니다. (자세한 내용은 [소프트웨어 배포](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution)를 참조하십시오.)
 
 다음 절차를 사용하여 vanity URL에 대한 액세스를 활성화합니다.
 
@@ -954,7 +954,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 ## Dispatcher 캐시 구성 - /cache {#configuring-the-dispatcher-cache-cache}
 
-`/cache` 섹션은 Dispatcher가 문서를 캐시하는 방법을 제어합니다. 여러 하위 속성을 구성하여 캐싱 전략을 구현합니다.
+`/cache` 섹션은 Dispatcher가 문서를 캐시하는 방법을 제어합니다. 캐싱 전략을 구현하려면 여러 하위 속성을 구성하십시오.
 
 * `/docroot`
 * `/statfile`
@@ -1150,7 +1150,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 `/statfileslevel` 속성을 사용하여 경로에 따라 캐시된 파일을 무효화합니다.
 
 * Dispatcher는 docroot 폴더에서 지정한 수준까지 각 폴더에 `.stat`파일을 생성합니다. docroot 폴더는 레벨 0입니다.
-* `.stat` 파일을 터치하면 파일이 무효화됩니다. `.stat` 파일의 마지막 수정 일자는 캐시된 문서의 마지막 수정 일자와 비교됩니다. `.stat` 파일이 최신 파일인 경우 문서를 다시 가져옵니다.
+* `.stat` 파일을 터치하면 파일이 무효화됩니다. `.stat` 파일의 마지막 수정 일자는 캐시된 문서의 마지막 수정 일자와 비교됩니다. 다음과 같은 경우 문서가 재식각됩니다. `.stat` 파일이 최신 파일입니다.
 
 * 특정 수준의 파일이 무효화되면 docroot에서 무효화된 파일의 수준 또는 구성된 `statsfilevel` **까지** (둘 중 더 작은 것)의 **모든** `.stat` 파일이 터치됩니다.
 
@@ -1167,7 +1167,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 자세한 내용은 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [수동으로 Dispatcher 캐시 무효화](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=ko-KR#configuring)를 참조하십시오.
+>추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 다음을 참조하십시오 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [Dispatcher 캐시 수동 무효화](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) 을 참조하십시오.
 
 >[!NOTE]
 >
@@ -1195,7 +1195,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 * 패턴이 en.인 모든 파일이* `/content/wknd/us` 폴더에서 제거됩니다.
 * `/content/wknd/us/en./_jcr_content` 폴더가 제거됩니다.
-* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 이 예제에서 `/content/wknd.html` 은 삭제되지 않고, `/content/wknd.html`이 요청되면 삭제됩니다.
+* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 이 예에서는 `/content/wknd.html` 은(는) 삭제되지 않습니다. 대신, 다음 경우에 삭제됩니다. `/content/wknd.html` 이(가) 요청되었습니다.
 
 자동으로 생성된 PDF 및 ZIP 파일을 다운로드용으로 제공하는 경우 해당 파일도 자동으로 무효화해야 할 수 있습니다. 구성 예제는 다음과 같습니다.
 
@@ -1229,7 +1229,7 @@ Adobe Analytics와의 AEM 통합은 웹 사이트의 `analytics.sitecatalyst.js`
 
 이 메서드는 몇 가지 다른 사용 사례를 처리하는 데 사용할 수 있습니다. 예를 들어 다른 애플리케이션별 캐시 무효화하거나 페이지의 외재화 URL 및 docroot의 위치가 콘텐츠 경로와 일치하지 않는 사례를 처리하는 데 사용할 수 있습니다.
 
-아래 예제 스크립트는 각 무효화 요청을 파일에 기록합니다.
+아래 예제 스크립트는 무효화된 각 요청을 파일에 기록합니다.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1380,7 +1380,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 `/gracePeriod` 속성은 마지막 활성화 후 캐시에서 오래된 자동 무효화 리소스가 계속 제공될 수 있는 시간(초)을 정의합니다. 이 속성은 활성화 일괄 처리가 전체 캐시를 반복적으로 무효화하는 설정에서 사용할 수 있습니다. 권장 값은 2초입니다.
 
-자세한 내용은 위의 `/invalidate` 및 `/statfileslevel`섹션도 참조하십시오.
+자세한 내용은 `/invalidate` 및 `/statfileslevel`더 일찍.
 
 ### 시간 기반 캐시 무효화 구성 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1412,7 +1412,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 
 >[!NOTE]
 >
->`/enableTTL`을 1로 설정하면 디스패처 측에서만 TTL 캐싱이 활성화된다는 점을 유념하십시오. 따라서 추가 파일(위 참조)에 포함된 TTL 정보는 디스패처에서 해당 파일 유형을 요청하는 다른 UserAgent에 제공되지 않습니다. CDN 또는 브라우저와 같은 다운스트림 시스템에 캐싱 헤더를 제공하려면 `/cache/headers` 섹션의 내용에 따라 이를 구성해야 합니다.
+>이 설정에 유의하십시오 `/enableTTL` to 1을 사용하면 Dispatcher 측에서만 TTL 캐싱을 사용할 수 있습니다. 따라서 추가 파일(위 참조)에 포함된 TTL 정보는 Dispatcher에서 이러한 파일 유형을 요청하는 다른 사용자 에이전트에게는 제공되지 않습니다. CDN 또는 브라우저와 같은 다운스트림 시스템에 캐싱 헤더를 제공하려면 `/cache/headers` 섹션의 내용에 따라 이를 구성해야 합니다.
 
 >[!NOTE]
 >
@@ -1520,13 +1520,13 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 }
 ```
 
-### httpOnly {#httponly}
+### `httpOnly` {#httponly}
 
 고정 연결이 활성화되면 Dispatcher 모듈이 `renderid` 쿠키를 설정합니다. 이 쿠키에는 보안을 강화하기 위해 추가해야 하는 `httponly` 플래그가 없습니다. `dispatcher.any` 구성 파일의 `/stickyConnections` 노드에서 `httpOnly` 속성을 설정하여 `httponly` 플래그를 추가합니다. 속성 값(`0` 또는 `1`)은 `renderid` 쿠키에 `HttpOnly` 속성이 추가되었는지 여부를 정의합니다. 기본값은 `0`로, 속성이 추가되지 않음을 의미합니다.
 
-`httponly` 플래그에 대한 추가 정보는 [이 페이지](https://www.owasp.org/index.php/HttpOnly)를 참조하십시오.
+`httponly` 플래그에 대한 추가 정보는 [이 페이지](https://owasp.org/www-community/HttpOnly)를 참조하십시오.
 
-### secure {#secure}
+### `secure` {#secure}
 
 고정 연결이 활성화되면 Dispatcher 모듈이 `renderid` 쿠키를 설정합니다. 이 쿠키에는 보안을 강화하기 위해 추가해야 하는 `secure` 플래그가 없습니다. `dispatcher.any` 구성 파일의 `/stickyConnections` 노드에서 `secure` 속성을 설정하여 `secure` 플래그를 추가합니다. 속성 값(`0` 또는 `1`)은 `renderid` 쿠키에 `secure` 속성이 추가되었는지 여부를 정의합니다. 기본값은 `0`로, 수신 요청이 안전한 **경우** 속성이 추가됨을 의미합니다. 값이 `1`로 설정되면 수신 요청의 보안 여부에 관계없이 보안 플래그가 추가됩니다.
 
@@ -1550,7 +1550,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 
 `/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
 
-Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 일반적으로 기본값이 적절합니다.
+Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값은 적절합니다.
 
 ```xml
 /retryDelay "1"
@@ -1619,7 +1619,7 @@ read more data
 
 ## glob 속성에 대한 패턴 디자인 {#designing-patterns-for-glob-properties}
 
-Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언트 요청에 대한 선택 기준으로 사용합니다. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
+Dispatcher 구성 파일의 여러 섹션에서는 다음을 사용할 수 있습니다. `glob` 클라이언트 요청에 대한 선택 기준으로서의 속성. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
 
 `glob` 값은 패턴을 정의하는 와일드카드 문자와 영숫자를 포함할 수 있습니다.
 
@@ -1751,7 +1751,7 @@ The following table describes the wildcard characters.
 >
 >설치 후 기본 로그 수준이 높기 때문에(즉, 수준 3 = 디버그) Dispatcher가 모든 오류 및 경고를 기록합니다. 이 수준은 초기 단계에서 유용합니다.
 >
->단, 해당 수준에는 추가 리소스가 필요합니다. Dispatcher가 원활하게 작동할 때 *요구 사항에 따라* 로그 수준을 낮출 수 있습니다.
+>그러나 이러한 수준에는 더 많은 리소스가 필요합니다. Dispatcher가 원활하게 작동할 때 *요구 사항에 따라* 로그 수준을 낮출 수 있습니다.
 
 ### 추적 로깅 {#trace-logging}
 

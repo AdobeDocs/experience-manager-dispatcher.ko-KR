@@ -1,9 +1,6 @@
 ---
 title: Dispatcher 문제 해결
-seo-title: Troubleshooting AEM Dispatcher Problems
 description: Dispatcher 문제를 해결하는 방법에 대해 알아봅니다.
-seo-description: Learn to troubleshoot AEM Dispatcher issues.
-uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,12 +8,11 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '560'
-ht-degree: 100%
+source-wordcount: '538'
+ht-degree: 96%
 
 ---
 
@@ -30,7 +26,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->자세한 내용은 [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html), [Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) 및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md)를 참조하십시오.
+>다음 확인: [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html), [Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md) 추가 정보.
 
 ## 기본 구성 확인 {#check-the-basic-configuration}
 
@@ -44,10 +40,10 @@ ht-degree: 100%
    * 여러 Dispatcher가 있습니까?
 
       * 조사 중인 웹 사이트/페이지를 어떤 Dispatcher에서 처리하는지 확인했습니까?
+
    * 필터를 구현했습니까?
 
       * 해당 필터가 조사 중인 문제에 영향을 미치고 있습니까?
-
 
 ## IIS 진단 도구 {#iis-diagnostic-tools}
 

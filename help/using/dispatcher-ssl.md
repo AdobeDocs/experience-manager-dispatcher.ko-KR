@@ -1,22 +1,18 @@
 ---
 title: Dispatcher에 SSL 사용
-seo-title: Using SSL with Dispatcher
 description: SSL 연결을 사용하여 AEM과 통신하도록 Dispatcher를 구성하는 방법에 대해 알아봅니다.
-seo-description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
-uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1355'
-ht-degree: 100%
+source-wordcount: '1302'
+ht-degree: 90%
 
 ---
 
@@ -37,9 +33,9 @@ SSL 연결을 사용하여 AEM 또는 CQ 렌더링 인스턴스와 통신하도�
 
 Dispatcher를 구성하기 전에 SSL을 사용하도록 AEM 또는 CQ를 구성하십시오.
 
-* AEM 6.2: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)
-* AEM 6.1: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)
-* 이전 AEM 버전: [이 페이지](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)를 참조하십시오.
+* AEM 6.2: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* 이전 AEM 버전: [이 페이지](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)를 참조하십시오.
 
 ### SSL 관련 요청 헤더 {#ssl-related-request-headers}
 
@@ -133,7 +129,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 
 상호 SSL을 구성하도록 다음 단계를 수행합니다.
 
-1. 플랫폼을 위한 최신 버전의 Dispatcher를 [설치](dispatcher-install.md) 합니다. SSL을 지원하는 Dispatcher 바이너리를 사용합니다. SSL은 파일 이름에 있습니다(예: dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
+1. 플랫폼을 위한 최신 버전의 Dispatcher를 [설치](dispatcher-install.md) 합니다. SSL을 지원하는 Dispatcher 바이너리를 사용합니다. SSL은 파일 이름에 있습니다. 예: `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. Dispatcher 및 렌더링 인스턴스를 위한 [CA 서명 인증서를 생성하거나 획득합니다](dispatcher-ssl.md#main-pars-title-3).
 1. [렌더링 인증서를 포함하는 키 저장소를 생성하고](dispatcher-ssl.md#main-pars-title-6) 렌더링의 HTTP 서비스를 구성합니다.
 1. 상호 SSL을 위한 [Dispatcher 웹 서버 모듈을 구성합니다](dispatcher-ssl.md#main-pars-title-4).
@@ -161,10 +157,10 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 
 OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 인증서 요청을 생성합니다.
 
-인증서를 만들 때 OpenSSL은 일반 이름 속성을 사용하여 인증서 소유자를 식별합니다. 렌더링 인스턴스의 인증서에 대해 게시 인스턴스의 호스트 이름과 일치하는 경우에만 인증서를 수락하도록 Dispatcher를 구성하면 인스턴스 컴퓨터의 호스트 이름을 일반 이름으로 사용합니다. ([DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 속성을 참조하십시오.)
+인증서를 만들 때 OpenSSL은 일반 이름 속성을 사용하여 인증서 소유자를 식별합니다. 인증서를 수락하도록 Dispatcher를 구성하는 경우 렌더링 인스턴스의 인증서에 대해 인스턴스 컴퓨터의 호스트 이름을 일반 이름으로 사용합니다. 이 작업은 게시 인스턴스의 호스트 이름과 일치하는 경우에만 수행합니다. 다음을 참조하십시오. [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 속성.
 
 1. 터미널을 열고 현재 디렉터리를 OpenSSL 라이브러리의 CH.sh 파일이 포함된 디렉터리로 변경합니다.
-1. 다음 명령을 입력하고 메시지가 표시되면 값을 제공합니다. 필요한 경우 게시 인스턴스의 호스트 이름을 일반 이름으로 사용하십시오. 호스트 이름은 렌더링의 IP 주소에 대한 DNS 확인 가능 이름입니다.
+1. 다음 명령을 입력하고 메시지가 표시되면 값을 제공합니다. 필요한 경우 게시 인스턴스의 호스트 이름을 일반 이름으로 사용합니다. 호스트 이름은 렌더링의 IP 주소에 대한 DNS 확인 가능 이름입니다.
 
    ```shell
    ./CA.sh -newreq
@@ -178,7 +174,7 @@ OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 �
    ./CA.sh -sign
    ```
 
-   CA 관리 파일이 포함된 디렉터리에 및`newcert.pem` 및 `newkey.pem`이라는 두 개의 파일이 생성됩니다. 이러한 두 파일은 각각 렌더링 컴퓨터의 공개 인증서와 개인 키입니다.
+   CA 관리 파일이 포함된 디렉터리에 및`newcert.pem` 및 `newkey.pem`이라는 두 개의 파일이 생성됩니다. 이 두 파일은 각각 렌더링 컴퓨터의 공개 인증서와 개인 키입니다.
 
 1. `newcert.pem`을 `rendercert.pem`으로 이름을 바꾸고 `newkey.pem`을 `renderkey.pem`으로 이름을 바꿉니다.
 1. 2단계와 3단계를 반복하여 Dispatcher 모듈을 위한 인증서와 공개 키를 만듭니다. Dispatcher 인스턴스에 고유한 일반 이름을 사용하는지 확인하십시오.
@@ -251,11 +247,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### 렌더링 인스턴스 구성 {#configuring-the-render-instance}
 
-렌더링 인스턴스의 HTTP 서비스를 구성하여 SSL을 사용하려면 *게시 인스턴스에서 SSL 활성화* 섹션의 지침에 따라 렌더링 인증서를 사용합니다.
+SSL을 사용하도록 렌더링 인스턴스의 HTTP 서비스를 구성하려면 의 지침에 따라 렌더링 인증서를 사용합니다 *`Enable SSL on the Publish Instance`* 섹션:
 
-* AEM 6.2: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)
-* AEM 6.1: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)
-* 이전 AEM 버전: [이 페이지](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=ko-KR)를 참조하십시오.
+* AEM 6.2: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* 이전 AEM 버전: [이 페이지](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)를 참조하십시오.
 
 ### Dispatcher 모듈용 SSL 구성 {#configuring-ssl-for-the-dispatcher-module}
 

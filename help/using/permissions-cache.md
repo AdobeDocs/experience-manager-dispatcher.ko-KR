@@ -1,19 +1,15 @@
 ---
 title: 보안 콘텐츠 캐싱
-seo-title: Caching Secured Content in AEM Dispatcher
 description: Dispatcher에서 권한 구분 캐싱이 작동하는 방식에 대해 알아봅니다.
-seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
-uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '918'
-ht-degree: 100%
+source-wordcount: '910'
+ht-degree: 89%
 
 ---
 
@@ -73,8 +69,8 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 >[!NOTE]
 >
->디스패처 앞에 CDN(또는 다른 캐시)이 있는 경우에는 이 CDN이 비공개 콘텐츠를 캐시하지 않도록 캐싱 헤더를 설정해야 합니다. 예: `Header always set Cache-Control private`.
->AEM as a Cloud Service의 경우 비공개 캐싱 헤더를 설정하는 방법에 대한 자세한 내용은 [캐싱](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) 페이지를 참조하십시오.
+>Dispatcher 앞에 CDN(또는 다른 캐시)이 있는 경우 CDN이 개인 콘텐츠를 캐시하지 않도록 캐싱 헤더를 적절하게 설정해야 합니다. 예: `Header always set Cache-Control private`.
+>AEM as a Cloud Service의 경우 [캐싱](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) 비공개 캐싱 헤더를 설정하는 방법에 대한 자세한 내용은 페이지 를 참조하십시오.
 
 ## AuthChcker 서블릿 만들기 {#create-the-auth-checker-servlet}
 
@@ -82,7 +78,7 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 서블릿은 모든 사용자가 액세스할 수 있어야 합니다. 따라서 서블릿은 시스템에 대한 읽기 전용 액세스를 제공하는 `org.apache.sling.api.servlets.SlingSafeMethodsServlet` 클래스를 확장해야 합니다.
 
-서블릿은 렌더링에서 HEAD 요청만 수신하므로 `doHead` 메서드만 구현하면 됩니다.
+서블릿은 렌더링에서 HEAD 요청만 수신하므로 `doHead` 메서드를 사용합니다.
 
 렌더링에는 요청된 리소스의 URI가 HTTP 요청의 매개변수로 포함됩니다. 예를 들어 권한 부여 서블릿은 `/bin/permissioncheck`를 통해 액세스됩니다. /content/geometrixx-outdoors/en.html 페이지에서 보안 검사를 수행하려면 렌더링은 HTTP 요청에 다음 URL을 포함합니다.
 
@@ -151,7 +147,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->요구 조건이 인증된 문서의 캐싱을 허용하는 경우 /cache 섹션의 /allowAuthorized 속성을 `/allowAuthorized 1`로 설정합니다. 자세한 내용은 [인증 사용 시 캐싱](/help/using/dispatcher-configuration.md)을 참조하십시오.
+>요구 조건이 인증된 문서의 캐싱을 허용하는 경우 /cache 섹션의 /allowAuthorized 속성을 `/allowAuthorized 1`로 설정합니다. 항목 보기 [인증 사용 시 캐싱](/help/using/dispatcher-configuration.md) 을 참조하십시오.
 
 dispatcher.any 파일의 auth_checker 섹션은 권한 구분 캐싱의 동작을 제어합니다. auth_checker 섹션에는 다음 하위 섹션이 포함됩니다.
 
