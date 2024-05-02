@@ -3,9 +3,9 @@ title: Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8854'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
@@ -133,7 +133,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 /docroot "${PWD}/cache"
 ```
 
-다른 예로, 이름이 인 환경 변수를 만드는 경우 `PUBLISH_IP` AEM 게시 인스턴스의 호스트 이름, 다음 구성 저장 [/renders](#defining-page-renderers-renders) 속성을 사용할 수 있습니다.
+또 다른 예로, AEM 게시 인스턴스의 호스트 이름을 저장하는 `PUBLISH_IP` 환경 변수를 만드는 경우 [/renders](#defining-page-renderers-renders) 속성의 다음 구성을 사용할 수 있습니다.
 
 ```xml
 /renders {
@@ -352,7 +352,7 @@ Dispatcher가 HTTP 또는 HTTPS 요청을 수신하면 요청의 `host,` `uri`, 
 Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트 값을 찾습니다.
 
 * 요청의 `host`, `scheme`, `uri` 세 가지 모두와 일치하는 처음 발견된 가상 호스트가 사용됩니다.
-* `virtualhosts` 값에 요청의 `scheme` 및 `uri` 와 일치하는 `scheme` 및 `uri` 부분이 없는 경우 요청의 `host`와 일치하는 처음 발견된 가상 호스트가 사용됩니다.
+* `virtualhosts` 값에 요청의 `scheme` 및 `uri`와 일치하는 `scheme` 및 `uri` 부분이 없는 경우 요청의 `host`와 일치하는 처음 발견된 가상 호스트가 사용됩니다.
 * `virtualhosts` 값에 요청의 호스트와 일치하는 호스트 부분이 없으면 최상위 팜의 최상위 가상 호스트가 사용됩니다.
 
 따라서 `dispatcher.any` 파일의 최상위 팜에 있는 `virtualhosts` 속성의 맨 위에 기본 가상 호스트를 배치해야 합니다.
@@ -412,7 +412,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 >
 >웹 사이트의 섹션에서 서로 다른 액세스 요구 사항을 사용하는 경우 여러 팜을 정의해야 합니다.
 
-**/sessionmanagement** 에는 여러 하위 매개 변수가 있습니다.
+**/sessionmanagement**&#x200B;에는 여러 하위 매개변수가 있습니다.
 
 **/directory** (필수)
 
@@ -420,7 +420,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 >[!CAUTION]
 >
-> 디렉토리 하위 매개변수를 구성할 때 **금지** 루트 폴더(`/directory "/"`) 심각한 문제를 일으킬 수 있습니다. 항상 세션 정보를 저장하는 폴더의 경로를 지정합니다. 예:
+> 디렉터리 하위 매개변수를 구성하는 경우 심각한 문제를 일으킬 수 있으므로 루트 폴더(`/directory "/"`)를 가리켜서는 **안 됩니다**. 항상 세션 정보를 저장하는 폴더의 경로를 지정합니다. 예:
 
 ```xml
 /sessionmanagement
@@ -513,11 +513,11 @@ AEM 인스턴스에 액세스하는 연결 시간 제한(밀리초)을 지정합
 
 응답이 허용되는 시간(밀리초)을 지정합니다. 기본값은 `"600000"`이므로 Dispatcher가 10분 동안 대기합니다. `"0"`으로 설정하면 시간 제한이 제거됩니다.
 
-응답 헤더를 구문 분석하는 동안 시간 제한에 도달하면 HTTP 상태 504(잘못된 게이트웨이)가 반환됩니다. 응답 본문을 읽는 동안 시간 제한에 도달하면 Dispatcher는 완료되지 않은 응답을 클라이언트에 반환합니다. 또한 기록되었을 수 있는 캐시된 파일도 모두 삭제합니다.
+응답 헤더를 구문 분석하는 동안 시간 제한에 도달하면 HTTP 상태 504(잘못된 게이트웨이)가 반환됩니다. 응답 본문을 읽는 동안 시간 제한에 도달하면 Dispatcher는 완료되지 않은 응답을 클라이언트에 반환합니다. 또한 기록되었을 수 있는 모든 캐시 파일을 삭제합니다.
 
 **/ipv4**
 
-Dispatcher가 렌더링의 IP 주소를 얻기 위해 `getaddrinfo` 함수(IPv6의 경우)를 사용하는지 또는 `gethostbyname` 함수(IPv4의 경우)를 사용하는지 여부를 지정합니다. 값이 0이면 `getaddrinfo`가 사용됩니다. 값이 `1` 이면 `gethostbyname` 이 사용됩니다. 기본값은 `0`입니다.
+Dispatcher가 렌더링의 IP 주소를 얻기 위해 `getaddrinfo` 함수(IPv6의 경우)를 사용하는지 또는 `gethostbyname` 함수(IPv4의 경우)를 사용하는지 여부를 지정합니다. 값이 0이면 `getaddrinfo`가 사용됩니다. 값이 `1`이면 `gethostbyname`이 사용됩니다. 기본값은 `0`입니다.
 
 `getaddrinfo` 함수는 IP 주소 목록을 반환합니다. Dispatcher는 TCP/IP 연결을 설정할 때까지 주소 목록을 반복합니다. 따라서 렌더링 호스트 이름이 여러 IP 주소와 연결되어 있고 호스트가 `getaddrinfo` 함수에 응답하여 항상 동일한 순서로 IP 주소 목록을 반환하는 경우 `ipv4` 속성이 중요합니다. 이 경우 Dispatcher가 연결하는 IP 주소가 임의 지정되도록 `gethostbyname` 함수를 사용해야 합니다.
 
@@ -525,7 +525,7 @@ Amazon Elastic Load Balancing(ELB)은 잠재적으로 동일한 순서의 IP 주
 
 **/secure**
 
-`/secure` 속성의 값이 `"1"` 인 경우 Dispatcher는 HTTPS를 사용하여 AEM 인스턴스와 통신합니다. 자세한 내용은 [SSL을 사용하도록 Dispatcher 구성](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+`/secure` 속성의 값이 `"1"` 인 경우 Dispatcher는 HTTPS를 사용하여 AEM 인스턴스와 통신합니다. 자세한 내용은 [SSL을 사용하도록 Dispatcher 구성](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl)도 참조하십시오.
 
 **/always-resolve**
 
@@ -555,7 +555,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 >[!CAUTION]
 >
->Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 다음을 참조하십시오. [AEM Security 검사 목록](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) 를 참조하십시오. AEM 설치에 대한 추가 보안 세부 정보.
+>Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 또한 AEM 설치와 관련된 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security)를 참조하십시오.
 
 `/filter` 섹션은 HTTP 요청의 요청 라인 부분에 있는 패턴에 따라 콘텐츠에 대한 액세스를 거부하거나 허용하는 일련의 규칙으로 구성됩니다. `/filter` 섹션에 허용 목록 전략을 사용합니다.
 
@@ -570,7 +570,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 `/filter` 섹션의 각 항목에는 요청 라인의 특정 요소 또는 전체 요청 라인과 일치하는 유형 및 패턴이 포함되어 있습니다. 각 필터에는 다음 항목이 포함될 수 있습니다.
 
-* **유형**: `/type` 은 패턴과 일치하는 요청에 대한 액세스를 허용할지 또는 거부할지 여부를 나타냅니다. 값은 `allow` 또는 `deny`일 수 있습니다.
+* **유형**: `/type`은 패턴과 일치하는 요청에 대한 액세스를 허용할지 또는 거부할지 여부를 나타냅니다. 값은 `allow` 또는 `deny`일 수 있습니다.
 
 * **요청 라인의 요소:** `/method`, `/url`, `/query` 또는 `/protocol`을 포함하고 HTTP 요청의 요청 라인 부분의 이러한 특정 부분에 따라 요청을 필터링하는 패턴을 포함합니다. 전체 요청 라인이 아닌 요청 라인의 요소를 필터링하는 것이 선호되는 필터 메서드입니다.
 
@@ -797,7 +797,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
    * `/libs/opensocial/proxy*`
 
-설치에 따라 아래에 더 많은 리소스가 있을 수 있습니다. `/libs`, `/apps` 또는 다른 곳에서 사용할 수 있어야 합니다. `access.log` 파일을 외부에서 액세스하는 리소스를 결정하는 한 가지 메서드로 사용할 수 있습니다.
+설치에 따라 `/libs`, `/apps` 또는 기타 위치에 사용 가능한 추가 리소스가 있을 수 있으며, 이러한 리소스는 사용 가능해야 합니다. `access.log` 파일을 외부에서 액세스하는 리소스를 결정하는 한 가지 메서드로 사용할 수 있습니다.
 
 >[!CAUTION]
 >
@@ -954,7 +954,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 ## Dispatcher 캐시 구성 - /cache {#configuring-the-dispatcher-cache-cache}
 
-`/cache` 섹션은 Dispatcher가 문서를 캐시하는 방법을 제어합니다. 캐싱 전략을 구현하려면 여러 하위 속성을 구성하십시오.
+`/cache` 섹션은 Dispatcher가 문서를 캐시하는 방법을 제어합니다. 여러 하위 속성을 구성하여 캐싱 전략을 구현합니다.
 
 * `/docroot`
 * `/statfile`
@@ -1012,7 +1012,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 `/statfile` 속성은 statfile로 사용할 파일을 식별합니다. Dispatcher는 이 파일을 사용하여 최신 콘텐츠 업데이트 시간을 등록합니다. 웹 서버의 어떤 파일이든 statfile일 수 있습니다.
 
-statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat` 이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
+statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat`이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
 
 >[!NOTE]
 >
@@ -1044,12 +1044,12 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 
 ### 캐시할 문서 지정 {#specifying-the-documents-to-cache}
 
-`/rules` 속성은 문서 경로에 따라 캐시되는 문서를 제어합니다. `/rules` 속성에 관계없이 Dispatcher는 다음과 같은 상황에서 문서를 캐싱하지 않습니다.
+`/rules` 속성은 문서 경로에 따라 캐시되는 문서를 제어합니다. `/rules` 속성에 관계없이 Dispatcher는 다음과 같은 상황에서 문서를 캐시하지 않습니다.
 
 * 요청 URI에 물음표(`?`)가 포함됩니다.
    * 검색 결과와 같이 캐시할 필요가 없는 동적 페이지를 나타냅니다.
-* 파일 확장명이 없습니다.
-   * 웹 서버에는 문서 유형(MIME 유형)을 결정하기 위한 확장명이 필요합니다.
+* 파일 확장자가 없습니다.
+   * 웹 서버에는 문서 유형(MIME 유형)을 결정하기 위한 확장자가 필요합니다.
 * 인증 헤더가 설정됩니다(구성 가능).
 * AEM 인스턴스가 다음 헤더로 응답하는 경우:
 
@@ -1150,11 +1150,11 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 `/statfileslevel` 속성을 사용하여 경로에 따라 캐시된 파일을 무효화합니다.
 
 * Dispatcher는 docroot 폴더에서 지정한 수준까지 각 폴더에 `.stat`파일을 생성합니다. docroot 폴더는 레벨 0입니다.
-* `.stat` 파일을 터치하면 파일이 무효화됩니다. `.stat` 파일의 마지막 수정 일자는 캐시된 문서의 마지막 수정 일자와 비교됩니다. 다음과 같은 경우 문서가 재식각됩니다. `.stat` 파일이 최신 파일입니다.
+* `.stat` 파일을 터치하면 파일이 무효화됩니다. `.stat` 파일의 마지막 수정 일자는 캐시된 문서의 마지막 수정 일자와 비교됩니다. `.stat` 파일이 최신 파일인 경우 문서를 다시 가져옵니다.
 
 * 특정 수준의 파일이 무효화되면 docroot에서 무효화된 파일의 수준 또는 구성된 `statsfilevel` **까지** (둘 중 더 작은 것)의 **모든** `.stat` 파일이 터치됩니다.
 
-   * 예를 들어 `statfileslevel` 속성을 6으로 설정하고 파일이 레벨 5에서 무효화되면 docroot에서 5까지의 모든 `.stat` 파일이 터치됩니다. 이 예제를 계속 진행하여 파일이 레벨 7에서 무효화되면 docroot에서 6까지의 모든 `stat` 파일이 터치됩니다(`/statfileslevel = "6"` 이므로).
+   * 예를 들어 `statfileslevel` 속성을 6으로 설정하고 파일이 레벨 5에서 무효화되면 docroot에서 5까지의 모든 `.stat` 파일이 터치됩니다. 이 예제를 계속 진행하여 파일이 레벨 7에서 무효화되면 docroot에서 6까지의 모든 `stat` 파일이 터치됩니다(`/statfileslevel = "6"`이므로).
 
 무효화된 파일에 대한 **경로에 있는** 리소스만 영향을 받습니다. 웹 사이트가 `/content/myWebsite/xx/.` 구조를 사용하는 예제를 생각해 보십시오. `statfileslevel`을 3으로 설정하면 `.stat`파일이 다음과 같이 만들어집니다.
 
@@ -1167,7 +1167,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 다음을 참조하십시오 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [Dispatcher 캐시 수동 무효화](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) 을 참조하십시오.
+>추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 자세한 내용은 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [수동으로 Dispatcher 캐시 무효화](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring)를 참조하십시오.
 
 >[!NOTE]
 >
@@ -1195,7 +1195,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 * 패턴이 en.인 모든 파일이* `/content/wknd/us` 폴더에서 제거됩니다.
 * `/content/wknd/us/en./_jcr_content` 폴더가 제거됩니다.
-* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 이 예에서는 `/content/wknd.html` 은(는) 삭제되지 않습니다. 대신, 다음 경우에 삭제됩니다. `/content/wknd.html` 이(가) 요청되었습니다.
+* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 예시에서는 `/content/wknd.html`이 삭제되지 않았습니다. 대신 `/content/wknd.html` 요청 시 삭제됩니다.
 
 자동으로 생성된 PDF 및 ZIP 파일을 다운로드용으로 제공하는 경우 해당 파일도 자동으로 무효화해야 할 수 있습니다. 구성 예제는 다음과 같습니다.
 
@@ -1229,7 +1229,7 @@ Adobe Analytics와의 AEM 통합은 웹 사이트의 `analytics.sitecatalyst.js`
 
 이 메서드는 몇 가지 다른 사용 사례를 처리하는 데 사용할 수 있습니다. 예를 들어 다른 애플리케이션별 캐시 무효화하거나 페이지의 외재화 URL 및 docroot의 위치가 콘텐츠 경로와 일치하지 않는 사례를 처리하는 데 사용할 수 있습니다.
 
-아래 예제 스크립트는 무효화된 각 요청을 파일에 기록합니다.
+아래 예제 스크립트는 각 무효화 요청을 파일에 기록합니다.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1380,7 +1380,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 `/gracePeriod` 속성은 마지막 활성화 후 캐시에서 오래된 자동 무효화 리소스가 계속 제공될 수 있는 시간(초)을 정의합니다. 이 속성은 활성화 일괄 처리가 전체 캐시를 반복적으로 무효화하는 설정에서 사용할 수 있습니다. 권장 값은 2초입니다.
 
-자세한 내용은 `/invalidate` 및 `/statfileslevel`더 일찍.
+자세한 내용은 미리 `/invalidate` 및 `/statfileslevel`을 참조하십시오.
 
 ### 시간 기반 캐시 무효화 구성 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1391,7 +1391,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 1. `/enableTTL`을 1로 설정하면 파일 만료가 확인됩니다. 설정된 TTL에 따라 파일이 만료된 경우 다른 검사는 수행되지 않으며 캐시된 파일이 백엔드에서 다시 요청됩니다.
 2. 파일이 만료되지 않았거나 `/enableTTL`이(가) 구성되지 않은 경우 [/statfileslevel](#invalidating-files-by-folder-level) 및 [/invalidate](#automatically-invalidating-cached-files)에 의해 설정된 해당 규칙과 같은 표준 캐시 무효화 규칙이 적용됩니다. 이 흐름은 Dispatcher가 TTL이 만료되지 않은 파일을 무효화할 수 있음을 의미합니다.
 
-이 새 구현은 파일의 TTL이 더 길지만(예: CDN에서) TTL이 만료되지 않은 경우에도 여전히 무효화될 수 있는 사용 사례를 지원합니다. Dispatcher의 캐시 적중률보다 콘텐츠 신선도가 선호됩니다.
+이 새 구현은 파일의 TTL이 더 길지만(예: 콘텐츠 전송 네트워크에서) TTL이 만료되지 않은 경우에도 여전히 무효화될 수 있는 사용 사례를 지원합니다. Dispatcher의 캐시 적중률보다 콘텐츠 신선도가 선호됩니다.
 
 반대로 파일에 적용된 **만료 논리만** 필요한 경우 `/enableTTL`을 1로 설정하고 표준 캐시 무효화 메커니즘에서 해당 파일을 제외합니다. 예를 들어 다음 작업을 수행할 수 있습니다.
 
@@ -1412,7 +1412,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 
 >[!NOTE]
 >
->이 설정에 유의하십시오 `/enableTTL` to 1을 사용하면 Dispatcher 측에서만 TTL 캐싱을 사용할 수 있습니다. 따라서 추가 파일(위 참조)에 포함된 TTL 정보는 Dispatcher에서 이러한 파일 유형을 요청하는 다른 사용자 에이전트에게는 제공되지 않습니다. CDN 또는 브라우저와 같은 다운스트림 시스템에 캐싱 헤더를 제공하려면 `/cache/headers` 섹션의 내용에 따라 이를 구성해야 합니다.
+>`/enableTTL`을 1로 설정하면 Dispatcher 측에서만 TTL 캐싱이 활성화된다는 점을 유념하십시오. 따라서 추가 파일(위 참조)에 포함된 TTL 정보는 Dispatcher에서 해당 파일 유형을 요청하는 다른 사용자 에이전트에 제공되지 않습니다. 콘텐츠 전송 네트워크 또는 브라우저와 같은 다운스트림 시스템에 캐싱 헤더를 제공하려면 `/cache/headers` 섹션의 내용에 따라 이를 구성해야 합니다.
 
 >[!NOTE]
 >
@@ -1453,7 +1453,7 @@ Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘�
 
 `/name { /glob "pattern"}`
 
-범주 `name` 은 팜에 고유해야 합니다. `pattern` 은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
+범주 `name`은 팜에 고유해야 합니다. `pattern`은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
 
 URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
 
@@ -1550,7 +1550,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 
 `/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
 
-Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값은 적절합니다.
+Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값이 적절합니다.
 
 ```xml
 /retryDelay "1"
@@ -1615,11 +1615,11 @@ read more data
 
 `/ignoreEINTR "1"`
 
-`/ignoreEINTR`을 `"1"`로 설정하면 Dispatcher가 전체 응답을 읽을 때까지 계속해서 데이터 읽기를 시도합니다. 기본값은 `0` 이며 옵션을 비활성화합니다.
+`/ignoreEINTR`을 `"1"`로 설정하면 Dispatcher가 전체 응답을 읽을 때까지 계속해서 데이터 읽기를 시도합니다. 기본값은 `0`이며 옵션을 비활성화합니다.
 
 ## glob 속성에 대한 패턴 디자인 {#designing-patterns-for-glob-properties}
 
-Dispatcher 구성 파일의 여러 섹션에서는 다음을 사용할 수 있습니다. `glob` 클라이언트 요청에 대한 선택 기준으로서의 속성. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
+Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언트 요청에 대한 선택 기준으로 사용할 수 있습니다. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
 
 `glob` 값은 패턴을 정의하는 와일드카드 문자와 영숫자를 포함할 수 있습니다.
 
@@ -1729,7 +1729,7 @@ The following table describes the wildcard characters.
 
 웹 서버 구성에서 다음과 같은 항목을 설정할 수 있습니다.
 
-* Dispatcher 로그 파일의 위치.
+* Dispatcher 로그 파일의 위치입니다.
 * 로그 수준.
 
 자세한 내용은 웹 서버 설명서 및 Dispatcher 인스턴스의 추가 정보 파일을 참조하십시오.
@@ -1751,7 +1751,7 @@ The following table describes the wildcard characters.
 >
 >설치 후 기본 로그 수준이 높기 때문에(즉, 수준 3 = 디버그) Dispatcher가 모든 오류 및 경고를 기록합니다. 이 수준은 초기 단계에서 유용합니다.
 >
->그러나 이러한 수준에는 더 많은 리소스가 필요합니다. Dispatcher가 원활하게 작동할 때 *요구 사항에 따라* 로그 수준을 낮출 수 있습니다.
+>단, 해당 수준에는 추가 리소스가 필요합니다. Dispatcher가 원활하게 작동할 때 *요구 사항에 따라* 로그 수준을 낮출 수 있습니다.
 
 ### 추적 로깅 {#trace-logging}
 
@@ -1861,8 +1861,8 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
   대상 파일(문서 루트와 URL 파일의 연결)이 시스템에서 가능한 최장 파일 이름을 초과합니다.
 * **캐시 불가능: 임시 파일 경로가 너무 깁니다**\
   임시 파일 이름 템플릿이 시스템에서 가능한 최장 파일 이름을 초과합니다. Dispatcher는 캐시된 파일을 실제로 만들거나 덮어쓰기 전에 먼저 임시 파일을 만듭니다. 임시 파일 이름은 `_YYYYXXXXXX` 문자가 추가된 대상 파일 이름이며, 여기서 `Y`와 `X`는 고유 이름을 만들기 위해 대체됩니다.
-* **캐시 불가능: 요청 URL에 확장명이 없습니다**\
-  요청 URL에 확장명이 없거나 파일 확장명 뒤에 경로가 있습니다(예: `/test.html/a/path`).
+* **캐시 불가능: 요청 URL에 확장자가 없습니다**\
+  요청 URL에 확장자가 없거나 파일 확장자 뒤에 경로가 있습니다(예: `/test.html/a/path`).
 * **캐시 불가능: 요청이 GET 또는 HEAD가 아닙니다**
 HTTP 메서드가 GET도 HEAD도 아닙니다. Dispatcher는 출력에 캐시되어서는 안 되는 동적 데이터가 포함될 것이라고 가정합니다.
 * **캐시 불가능: 요청에 쿼리 문자열이 포함되었습니다**\

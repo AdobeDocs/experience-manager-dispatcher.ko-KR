@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2918'
-ht-degree: 84%
+ht-degree: 100%
 
 ---
 
@@ -25,7 +25,7 @@ Dispatcher를 사용하여 다음의 조건을 지원하면서 여러 웹 도메
 * 두 도메인의 웹 콘텐츠는 단일 AEM 저장소에 저장됩니다.
 * Dispatcher 캐시의 파일은 각 도메인에 대해 별도로 무효화될 수 있습니다.
 
-예를 들어 회사에서 브랜드 A와 브랜드 B의 두 브랜드에 대한 웹 사이트를 게시합니다. 웹 사이트 페이지의 컨텐츠는 AEM에서 작성되고 동일한 저장소 작업 영역에 저장됩니다.
+예를 들어 회사에서 브랜드 A와 브랜드 B의 두 가지 브랜드에 대한 웹 사이트를 게시할 경우, 웹 사이트 페이지의 콘텐츠는 AEM에서 작성되고 동일한 저장소 작업 영역에 저장됩니다.
 
 ```
 /
@@ -38,7 +38,7 @@ Dispatcher를 사용하여 다음의 조건을 지원하면서 여러 웹 도메
 
 `BrandA.com`의 페이지는 `/content/sitea` 아래에 저장됩니다. URL `https://BrandA.com/en.html`에 대한 클라이언트 요청은 `/content/sitea/en` 노드에 대해 렌더링된 페이지로 반환됩니다. 마찬가지로 `BrandB.com`의 페이지는 `/content/siteb` 아래에 저장됩니다.
 
-Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요청의 페이지 URL, 캐시된 해당 파일의 경로 및 저장소에 있는 해당 파일의 경로 간에 연결이 이루어져야 합니다.
+Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요청의 페이지 URL, 해당 캐시 파일의 경로, 저장소에 있는 해당 파일의 경로 간에 연결이 이루어져야 합니다.
 
 ## 클라이언트 요청
 
@@ -62,7 +62,7 @@ Dispatcher가 캐시된 파일을 무효화하도록 Dispatcher 플러시 복제
 * b - Dispatcher 플러시 에이전트는 Dispatcher를 호출하여 복제된 콘텐츠에 대한 캐시를 무효화합니다.
 * c - Dispatcher가 하나 이상의 .stat 파일을 터치하여 캐시된 파일을 무효화합니다.
 
-여러 도메인에서 Dispatcher를 사용하려면 AEM, Dispatcher 및 웹 서버를 구성해야 합니다. 이 페이지에 설명된 솔루션은 일반적이며 대부분의 환경에 적용됩니다. 일부 AEM 토폴로지의 복잡성으로 인해 특정 문제를 해결하기 위해 솔루션에 추가 사용자 지정 구성이 필요할 수 있습니다. 기존 IT 인프라 및 관리 정책을 충족하도록 예제를 조정해야 합니다.
+여러 도메인에서 Dispatcher를 사용하려면 AEM, Dispatcher 및 웹 서버를 구성해야 합니다. 이 페이지에 설명된 솔루션은 일반적이며 대부분의 환경에 적용됩니다. 일부 AEM 토폴로지의 복잡성으로 인해 특정 문제를 해결하기 위해 솔루션에 추가 사용자 정의 구성이 필요할 수 있습니다. 기존 IT 인프라 및 관리 정책을 충족하도록 예제를 조정해야 할 수 있습니다.
 
 ## URL 매핑 {#url-mapping}
 
@@ -71,7 +71,7 @@ Dispatcher가 캐시된 파일을 무효화하도록 Dispatcher 플러시 복제
 * (권장) AEM 게시 인스턴스는 리소스 확인을 위한 Sling 매핑을 사용하여 내부 URL 재작성 규칙을 구현합니다. 도메인 URL은 콘텐츠 저장소 경로로 변환됩니다. [AEM이 수신 URL 재작성](#aem-rewrites-incoming-urls)을 참조하십시오.
 * 웹 서버는 도메인 URL을 캐시 경로로 변환하는 내부 URL 재작성 규칙을 사용합니다. [웹 서버가 수신 URL 재작성](#the-web-server-rewrites-incoming-urls)을 참조하십시오.
 
-웹 페이지에는 짧은 URL을 사용하는 것이 좋습니다. 일반적으로 페이지 URL은 웹 콘텐츠가 포함된 저장소 폴더의 구조를 반영합니다. 단, URL은 최상위 저장소 노드(예: `/content`)를 표시하지 않습니다. 클라이언트가 AEM 저장소의 구조를 반드시 알고 있는 것은 아닙니다.
+웹 페이지에 짧은 URL을 사용하는 것이 바람직합니다. 일반적으로 페이지 URL은 웹 콘텐츠가 포함된 저장소 폴더의 구조를 반영합니다. 단, URL은 최상위 저장소 노드(예: `/content`)를 표시하지 않습니다. 클라이언트가 AEM 저장소의 구조를 반드시 알고 있는 것은 아닙니다.
 
 ## 일반적인 요구 사항 {#general-requirements}
 
@@ -140,7 +140,7 @@ Dispatcher 캐시는 저장소 노드 구조를 미러링합니다. 따라서 �
 * 도메인 이름과 일치하는 서버 이름은 branda.com(16행) 및 brandb.com(30행)입니다.
 * 각 가상 도메인의 문서 루트는 사이트의 페이지를 포함하는 Dispatcher 캐시의 디렉터리입니다. (17행 및 31행)
 
-이 구성에서 웹 서버는에 대한 요청을 수신할 때 다음 작업을 수행합니다 `https://branda.com/en/products.html`:
+이 구성에서 웹 서버는 `https://branda.com/en/products.html`에 대한 요청을 수신할 때 다음 작업을 수행합니다.
 
 * URL을 `branda.com.` `ServerName`이 있는 가상 호스트와 연결합니다.
 
@@ -194,7 +194,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-가상 호스트는 [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) 주 서버 섹션에 구성된 속성 값입니다. 가상 호스트는 자체 DispatcherConfig 속성을 포함하여 기본 서버 구성을 재정의할 수 있습니다.
+가상 호스트는 주 서버 섹션에 구성된 [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) 속성 값을 상속합니다. 가상 호스트는 자체 DispatcherConfig 속성을 포함하여 기본 서버 구성을 재정의할 수 있습니다.
 
 ### 여러 도메인을 처리하도록 Dispatcher 구성 {#configure-dispatcher-to-handle-multiple-domains}
 
@@ -240,10 +240,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 다음 속성 구성을 사용하면 Dispatcher가 캐시의 파일에서 AEM 콘텐츠 저장소의 파일을 확인할 수 있습니다.
 
-* `/docroot` 속성은 웹 서버의 기본 docroot로 설정됩니다. 일반적으로 `/content` 폴더가 생성되는 디렉터리입니다. Linux®에서 Apache의 예제 값 `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* `/docroot` 속성은 웹 서버의 기본 docroot로 설정됩니다. 일반적으로 `/content` 폴더가 생성되는 디렉터리입니다. Linux®에서 Apache의 예제 값 `/usr/lib/apache/httpd-2.4.3/htdocs`입니다.
 * `/filter` 속성은 `/content` 디렉터리 아래의 파일에 대한 액세스를 허용합니다.
 
-`/statfileslevel`속성은 .stat 파일이 각 가상 호스트의 루트 디렉터리에 생성될 수 있을 만큼 충분히 높아야 합니다. 이 속성을 사용하면 각 도메인의 캐시를 개별적으로 무효화할 수 있습니다. 예제 설정의 경우 `/statfileslevel` 값이 `2` 이면 `*docroot*/content/sitea` 디렉터리와 `*docroot*/content/siteb` 디렉터리에 .stat 파일을 생성합니다.
+`/statfileslevel`속성은 .stat 파일이 각 가상 호스트의 루트 디렉터리에 생성될 수 있을 만큼 충분히 높아야 합니다. 이 속성을 사용하면 각 도메인의 캐시를 개별적으로 무효화할 수 있습니다. 예제 설정의 경우 `/statfileslevel` 값이 `2`이면 `*docroot*/content/sitea` 디렉터리와 `*docroot*/content/siteb` 디렉터리에 .stat 파일을 생성합니다.
 
 또한 게시 인스턴스는 가상 호스트에 대한 렌더링으로 지정되어야 합니다. 필요에 따라 다른 팜 속성을 구성합니다. 다음 코드는 캐시 무효화에 사용되는 팜의 축약된 구성입니다.
 
@@ -290,7 +290,7 @@ Sling 리소스 매핑에 대한 자세한 내용은 Sling 설명서의 [리소�
 * 페이지가 사용하는 디자인 노드(`/etc/designs`아래)
 * `/libs` 폴더
 
-콘텐츠 페이지에 대한 매핑을 만든 후 더 필요한 매핑을 검색하려면 웹 브라우저를 사용하여 웹 서버에서 페이지를 엽니다. 게시 인스턴스의 error.log 파일에서 찾을 수 없는 리소스에 대한 메시지를 찾으십시오. 다음 예제 메시지는 `/etc/clientlibs`에 대한 매핑이 필요함을 나타냅니다.
+콘텐츠 페이지에 대한 매핑을 생성한 후 필요한 추가 매핑을 검색하려면 웹 브라우저를 사용하여 웹 서버에서 페이지를 엽니다. 게시 인스턴스의 error.log 파일에서 찾을 수 없는 리소스에 대한 메시지를 찾으십시오. 다음 예제 메시지는 `/etc/clientlibs`에 대한 매핑이 필요함을 나타냅니다.
 
 ```shell
 01.11.2012 15:59:24.601 *INFO* [10.36.34.243 [1351799964599] GET /etc/clientlibs/foundation/jquery.js HTTP/1.1] org.apache.sling.engine.impl.SlingRequestProcessorImpl service: Resource /content/sitea/etc/clientlibs/foundation/jquery.js not found
@@ -324,7 +324,7 @@ AEM 게시 인스턴스의 Dispatcher 플러시 복제 에이전트는 올바른
 
 ## 웹 서버가 수신 URL 재작성 {#the-web-server-rewrites-incoming-urls}
 
-도메인 기반 URL을 Dispatcher 캐시의 파일 경로로 변환하려면 웹 서버의 내부 URL 재작성 기능을 사용하십시오. 예를 들어 `https://brandA.com/en.html` 페이지에 대한 클라이언트 요청은 웹 서버의 문서 루트에 있는 `content/sitea/en.html`파일로 변환됩니다.
+웹 서버의 내부 URL 재작성 기능을 사용하여 도메인 기반 URL을 Dispatcher 캐시의 파일 경로로 변환합니다. 예를 들어 `https://brandA.com/en.html` 페이지에 대한 클라이언트 요청은 웹 서버의 문서 루트에 있는 `content/sitea/en.html`파일로 변환됩니다.
 
 ![](assets/chlimage_1-13.png)
 
@@ -498,14 +498,14 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ## 비 HTML 파일에 대한 링크 재작성 {#rewriting-links-to-non-html-files}
 
-확장명이 .html 또는 .htm이 아닌 파일에 대한 참조를 재작성하려면 Sling 재작성기 변환기 구성 요소를 생성하고 기본 재작성기 파이프라인에 추가합니다.
+확장자가 .html 또는 .htm이 아닌 파일에 대한 참조를 재작성하려면 Sling 재작성기 변환기 구성 요소를 생성하고 기본 재작성기 파이프라인에 추가합니다.
 
-리소스 경로가 웹 서버 컨텍스트에서 올바르게 확인되지 않는 경우 참조를 재작성합니다. 예를 들어 이미지 생성 구성 요소가 /content/sitea/en/products.navimage.png와 같은 링크를 만들 때 변환기가 필요합니다. 다음 `topnav` 구성 요소 [완벽한 기능을 갖춘 인터넷 웹 사이트를 만드는 방법](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) 는 이러한 링크를 만듭니다.
+리소스 경로가 웹 서버 컨텍스트에서 올바르게 확인되지 않는 경우 참조를 재작성합니다. 예를 들어 이미지 생성 구성 요소가 /content/sitea/en/products.navimage.png와 같은 링크를 만들 때 변환기가 필요합니다. [완벽한 기능을 갖춘 인터넷 웹 사이트를 만드는 방법](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/the-basics)의 `topnav` 구성 요소는 이러한 링크를 만듭니다.
 
 [Sling 재작성기](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)는 Sling 출력을 후처리하는 모듈입니다. 재작성기의 SAX 파이프라인 구현은 생성기, 하나 이상의 변환기 및 직렬 변환기로 구성됩니다.
 
 * **생성기:** Sling 출력 스트림(HTML 문서)을 구문 분석하고 특정 요소 유형이 발생하면 SAX 이벤트를 생성합니다.
-* **변환기:** SAX 이벤트를 수신하므로 이벤트 대상(HTML 요소)을 수정합니다. 재작성기 파이프라인에는 0개 이상의 변환기가 포함되어 있습니다. 변환기는 순서대로 실행되어 SAX 이벤트를 순서의 다음 변환기로 전달합니다.
+* **변환기:** SAX 이벤트를 수신하여 이벤트 대상(HTML 요소)을 수정합니다. 재작성기 파이프라인에는 0개 이상의 변환기가 포함되어 있습니다. 변환기는 순서대로 실행되어 SAX 이벤트를 순서의 다음 변환기로 전달합니다.
 * **직렬 변환기:** 각 변환기의 수정 사항을 포함하여 출력을 직렬화합니다.
 
 ![](assets/chlimage_1-15.png)
@@ -522,10 +522,10 @@ AEM은 text/html 유형의 문서를 처리하는 기본 파이프라인 재작�
 
 ### 변환기 생성 {#creating-a-transformer}
 
-변환기 구성 요소를 생성하여 파이프라인에서 사용하려면 다음 작업을 수행합니다.
+변환기 구성 요소를 생성하고 파이프라인에서 사용하려면 다음 작업을 수행합니다.
 
 1. `org.apache.sling.rewriter.TransformerFactory` 인터페이스를 구현합니다. 이 클래스는 변환기 클래스의 인스턴스를 생성합니다. `transformer.type` 특성(변환기 별칭)에 대한 값을 지정하고 클래스를 OSGi 서비스 구성 요소로 구성합니다.
-1. `org.apache.sling.rewriter.Transformer` 인터페이스를 구현합니다. 작업을 최소화하기 위해 `org.apache.cocoon.xml.sax.AbstractSAXPipe` 클래스를 확장할 수 있습니다. 재작성 동작을 사용자 지정하려면 startElement 메서드를 재정의합니다. 이 메서드는 변환기에 전달되는 모든 SAX 이벤트에 대해 호출됩니다.
+1. `org.apache.sling.rewriter.Transformer` 인터페이스를 구현합니다. 작업을 최소화하기 위해 `org.apache.cocoon.xml.sax.AbstractSAXPipe` 클래스를 확장할 수 있습니다. 재작성 동작을 사용자 정의하여 startElement 메서드를 재정의합니다. 이 메서드는 변환기에 전달되는 모든 SAX 이벤트에 대해 호출됩니다.
 1. 클래스를 번들에 추가하고 배포합니다.
 1. 파이프라인에 변환기를 추가하려면 AEM 애플리케이션에 구성 노드를 추가합니다.
 
@@ -538,14 +538,14 @@ AEM은 text/html 유형의 문서를 처리하는 기본 파이프라인 재작�
 
 >[!NOTE]
 >
->Maven 프로젝트를 만들려면 [다중 모듈](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) Content Package Maven Plugin의 원형. POM은 자동으로 콘텐츠 패키지를 만들고 설치합니다.
+>Maven 프로젝트를 생성하려면 Content Package Maven Plugin의 [multimodule](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) 원형을 사용합니다. POM은 자동으로 콘텐츠 패키지를 만들고 설치합니다.
 
 다음 예제에서는 이미지 파일에 대한 참조를 재작성하는 변환기를 구현합니다.
 
-* MyRewriterTransformerFactory 클래스는 MyRewriterTransformer 개체를 인스턴스화합니다. pipeline.type 속성은 변환기 별칭을 로 설정합니다 `mytransformer`. 파이프라인에 별칭을 포함하려면 파이프라인 구성 노드가 변환기 목록에 별칭을 포함해야 합니다.
+* MyRewriterTransformerFactory 클래스는 MyRewriterTransformer 오브젝트를 인스턴스화합니다. pipeline.type 속성은 변환기 별칭을 `mytransformer`로 설정합니다. 파이프라인에 별칭을 포함하기 위해 파이프라인 구성 노드는 변환기 목록에 이 별칭을 포함해야 합니다.
 * MyRewriterTransformer 클래스는 AbstractSAXTransformer 클래스의 startElement 메서드를 재정의합니다. startElement 메서드는 img 요소에 대한 src 속성 값을 재작성합니다.
 
-예제는 강력하지 않습니다. 프로덕션 환경에서는 사용하지 마십시오.
+예제는 강력하지 않습니다. 프로덕션 환경에서 사용하면 안 됩니다.
 
 ### 예제 TransformerFactory 구현 {#example-transformerfactory-implementation}
 

@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '591'
-ht-degree: 51%
+ht-degree: 100%
 
 ---
 
@@ -30,23 +30,23 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-Adobe은 프로덕션을 시작하기 전에 다음 체크리스트를 완료할 것을 권장합니다.
+Adobe는 프로덕션을 시작하기 전에 다음 체크리스트를 완료할 것을 권장합니다.
 
 >[!CAUTION]
 >
->시작하기 전에 AEM 버전의 보안 체크리스트를 완료합니다. 해당 항목 보기 [Adobe Experience Manager 설명서](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist).
+>시작하기 전에 AEM 버전의 보안 체크리스트를 완료합니다. 해당 [Adobe Experience Manager 설명서](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist)를 참조하십시오.
 
 ## 최신 버전의 Dispatcher 사용 {#use-the-latest-version-of-dispatcher}
 
-플랫폼에 사용할 수 있는 최신 버전을 설치합니다. 최신 버전을 사용하여 제품 및 보안 개선 사항을 활용할 수 있도록 Dispatcher 인스턴스를 업그레이드해야 합니다. [Dispatcher 설치](dispatcher-install.md)를 참조하십시오.
+사용 가능한 최신 버전을 플랫폼에 설치합니다. 제품 및 보안 개선 사항을 활용하려면 Dispatcher 인스턴스를 업그레이드하여 최신 버전을 사용해야 합니다. [Dispatcher 설치](dispatcher-install.md)를 참조하십시오.
 
 >[!NOTE]
 >
->Dispatcher 로그 파일을 확인하여 Dispatcher 설치의 현재 버전을 확인합니다.
+>Dispatcher 로그 파일을 보며 Dispatcher 설치의 현재 버전을 확인합니다.
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
->로그 파일을 찾으려면 다음에서 Dispatcher 구성을 점검하십시오. `httpd.conf`.
+>로그 파일을 찾으려면 `httpd.conf`에서 Dispatcher 구성을 점검하십시오.
 
 ## 캐시를 플러시할 수 있는 클라이언트 제한 {#restrict-clients-that-can-flush-your-cache}
 
@@ -54,7 +54,7 @@ Adobe는 [캐시를 플러시할 수 있는 클라이언트를 제한](dispatche
 
 ## 전송 계층 보안을 위해 HTTPS 활성화 {#enable-https-for-transport-layer-security}
 
-Adobe은 작성자 및 게시 인스턴스 모두에서 HTTPS 전송 레이어를 활성화할 것을 권장합니다.
+Adobe는 작성자 및 게시 인스턴스 모두에서 HTTPS 전송 레이어를 활성화할 것을 권장합니다.
 
 <!-- 
 
@@ -75,13 +75,13 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## 액세스 제한 {#restrict-access}
 
-Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한하십시오. Dispatcher 설명서에서 [예제 /filter 섹션](dispatcher-configuration.md#main-pars_184_1_title)을 참조하십시오.
+Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한합니다. Dispatcher 설명서에서 [예제 /filter 섹션](dispatcher-configuration.md#main-pars_184_1_title)을 참조하십시오.
 
 ## 관리 URL에 대한 액세스가 거부되었는지 확인 {#make-sure-access-to-administrative-urls-is-denied}
 
 필터를 사용하여 웹 콘솔과 같은 관리 URL에 대한 외부 액세스를 차단해야 합니다.
 
-다음을 참조하십시오 [Dispatcher 보안 테스트](dispatcher-configuration.md#testing-dispatcher-security) 차단해야 하는 URL 목록
+차단해야 하는 URL 목록은 [Dispatcher 보안 테스트](dispatcher-configuration.md#testing-dispatcher-security)를 참조하십시오.
 
 ## 차단 목록 대신 허용 목록 사용 {#use-allowlists-instead-of-blocklists}
 
@@ -89,7 +89,7 @@ Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한하십시오
 
 ## 전용 시스템 사용자로 Dispatcher 실행 {#run-dispatcher-with-a-dedicated-system-user}
 
-Dispatcher를 구성할 때 최소 권한을 가진 전용 사용자가 웹 서버를 실행하는지 확인해야 합니다. Dispatcher 캐시 폴더에 대한 쓰기 액세스 권한만 부여하는 것이 좋습니다.
+Dispatcher를 구성할 때 최소 권한을 가진 전용 사용자로 웹 서버를 실행하는지 확인해야 합니다. Dispatcher 캐시 폴더에 대한 쓰기 권한만 부여하는 것이 좋습니다.
 
 또한 IIS 사용자는 다음과 같이 웹 사이트를 구성해야 합니다.
 
@@ -100,11 +100,11 @@ Dispatcher를 구성할 때 최소 권한을 가진 전용 사용자가 웹 서�
 
 서비스 거부(DoS) 공격은 의도한 사용자가 컴퓨터 리소스를 사용할 수 없게 하려고 시도하는 것입니다.
 
-Dispatcher 수준에는 [DoS 공격을 방지하도록 구성하는 두 가지 방법](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780).
+Dispatcher 수준에서 [DoS 공격을 방지하도록 구성하는 두 가지 방법](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780)이 있습니다.
 
 * mod_rewrite 모듈(예: [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html))을 사용하여 URL 유효성 검사를 수행합니다(URL 패턴 규칙이 너무 복잡하지 않은 경우).
 
-* 를 사용하여 Dispatcher가 가짜 확장으로 URL을 캐싱하지 못하도록 합니다. [필터](dispatcher-configuration.md#configuring-access-to-conten-tfilter).\
+* [필터](dispatcher-configuration.md#configuring-access-to-conten-tfilter)를 사용하여 Dispatcher가 가짜 확장으로 URL을 캐시하지 못하도록 합니다.\
   예를 들어 다음과 같은 예상 MIME 유형으로 캐싱을 제한하도록 캐싱 규칙을 변경합니다.
 
    * `.html`
@@ -148,19 +148,19 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## CSRF 공격을 방지하도록 Dispatcher 구성 {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM은 크로스 사이트 요청 위조 공격을 방지하는 [프레임워크](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)를 제공합니다. 이 프레임워크를 제대로 사용하려면 Dispatcher에서 CSRF 토큰 지원을 허용 목록 해야 합니다.
+AEM은 크로스 사이트 요청 위조 공격을 방지하는 [프레임워크](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps)를 제공합니다. 이 프레임워크를 적절하게 사용하려면 Dispatcher에서 CSRF 토큰 지원을 허용 목록에 추가해야 합니다.
 <!-- OLD URL ABOVE USED TO BE https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps -->
-다음을 수행하여 이 작업을 수행할 수 있습니다.
+다음 단계를 따라 이 작업을 수행할 수 있습니다.
 
 1. `/libs/granite/csrf/token.json` 경로를 허용하는 필터 만들기
 1. Dispatcher 구성의 `clientheaders` 섹션에 `CSRF-Token` 헤더를 추가합니다.
 
 ## 클릭재킹 방지 {#prevent-clickjacking}
 
-Adobe 클릭재킹을 방지하려면 웹 서버에서 를 제공하도록 구성하는 것이 좋습니다. `X-FRAME-OPTIONS` HTTP 헤더가 다음으로 설정됨 `SAMEORIGIN`.
+Adobe는 클릭재킹을 방지하기 위해 `SAMEORIGIN`으로 설정된 `X-FRAME-OPTIONS` HTTP 헤더를 제공하도록 웹 서버를 구성하는 것을 권장합니다.
 
-클릭재킹에 대한 자세한 내용은 [OWASP 부위](https://owasp.org/www-community/attacks/Clickjacking).
+클릭재킹에 대한 자세한 내용은 [OWASP 사이트](https://owasp.org/www-community/attacks/Clickjacking)를 참조하십시오.
 
 ## 침투 테스트 수행 {#perform-a-penetration-test}
 
-Adobe은 프로덕션을 시작하기 전에 AEM 인프라의 침투 테스트를 수행할 것을 권장합니다.
+Adobe는 프로덕션을 시작하기 전에 AEM 인프라에 대한 침투 테스트를 수행할 것을 권장합니다.

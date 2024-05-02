@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '538'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 96%
 
 >[!NOTE]
 >
->다음 확인: [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html), [Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager])및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md) 추가 정보.
+>자세한 내용은 [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html), [Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) 및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md)를 참조하십시오.
 
 ## 기본 구성 확인 {#check-the-basic-configuration}
 
@@ -56,7 +56,7 @@ IIS는 실제 버전에 따라 다양한 추적 도구를 제공합니다.
 
 ## IIS 및 404를 찾을 수 없음 {#iis-and-not-found}
 
-IIS를 사용할 때 다양한 시나리오에서 `404 Not Found` 이 반환되는 것을 경험할 수 있습니다. 이 경우 다음 기술 자료 문서를 참조하십시오.
+IIS를 사용할 때 다양한 시나리오에서 `404 Not Found`가 반환되는 것을 경험할 수 있습니다. 이 경우 다음 기술 자료 문서를 참조하십시오.
 
 * [IIS 6/7: POST 메서드가 404를 반환합니다](https://helpx.adobe.com/kr/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: 기본 경로 `/bin`이 포함된 URL에 대한 요청은 `404 Not Found`](https://helpx.adobe.com/kr/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)을 반환합니다.
@@ -77,7 +77,7 @@ Dispatcher를 통해 AEM 작성자 인스턴스에 액세스할 때 워크플로
 1. 워크플로를 선택하고 마우스 오른쪽 버튼으로 클릭한 다음 **삭제**&#x200B;를 클릭합니다.
 
 1. **예**&#x200B;를 클릭하여 확인합니다.
-1. 다음을 보여 주는 오류 메시지 상자가 나타납니다.\
+1. 다음과 같은 내용을 보여 주는 오류 메시지 상자가 나타납니다.\
    &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **해결**
@@ -104,7 +104,7 @@ Dispatcher를 통해 AEM 작성자 인스턴스에 액세스할 때 워크플로
 
 ### Apache 1.3 {#apache}
 
-Apache 1.3에서 `mod_dir` 은 URL이 파일 시스템의 디렉터리에 매핑될 때 모든 요청을 처리합니다.
+Apache 1.3에서 `mod_dir`은 URL이 파일 시스템의 디렉터리에 매핑될 때 모든 요청을 처리합니다.
 
 다음 중 하나를 수행합니다.
 
@@ -115,7 +115,7 @@ Dispatcher가 활성화되면 콘텐츠 유형 `httpd/unix-directory`에 대한 
 
 ### Apache 2.x {#apache-x}
 
-Apache 2.x에서는 상황이 다릅니다. 모듈은 URL 수정과 같은 요청의 여러 단계를 처리할 수 있습니다. `mod_dir` 은 (URL이 디렉터리에 매핑될 때) 요청을 `/`가 추가된 URL로 리디렉션하여 이 단계를 처리합니다.
+Apache 2.x에서는 상황이 다릅니다. 모듈은 URL 수정과 같은 요청의 여러 단계를 처리할 수 있습니다. `mod_dir`은 (URL이 디렉터리에 매핑될 때) 요청을 `/`가 추가된 URL로 리디렉션하여 이 단계를 처리합니다.
 
 Dispatcher가 `mod_dir` 수정을 가로채지는 않지만 리디렉션된 URL에 대한 요청을 전적으로 처리합니다(즉, `/`가 추가됨). 이 프로세스에서 원격 서버(예: AEM)가 `/a_path`에 대한 요청을 `/a_path/`에 대한 요청과 다르게 처리하는 경우(`/a_path`가 기존 디렉터리에 매핑될 때) 문제를 일으킬 수 있습니다.
 

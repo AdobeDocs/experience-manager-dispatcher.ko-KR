@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1408'
-ht-degree: 65%
+ht-degree: 100%
 
 ---
 
@@ -22,9 +22,9 @@ AEM과 함께 Dispatcher를 사용하는 경우 효과적인 캐시 관리를 �
 
 ## AEM 사용자 계정 설정 {#setting-up-aem-user-accounts}
 
-기본 `admin` 사용자 계정은 기본적으로 설치된 복제 에이전트를 인증하는 데 사용됩니다. 복제 에이전트에 사용할 전용 사용자 계정을 만듭니다.
+기본 `admin` 사용자 계정은 기본적으로 설치된 복제 에이전트를 인증하는 데 사용됩니다. 복제 에이전트에 사용할 전용 사용자 계정을 생성합니다.
 
-자세한 내용은 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션(AEM 보안 체크리스트)을 참조하십시오.
+자세한 내용은 AEM 보안 체크리스트의 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션을 참조하십시오.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
@@ -58,16 +58,16 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 1. (선택 사항) 별칭 또는 vanity 경로 무효화 요청을 활성화하려면 **별칭 업데이트** 옵션을 선택합니다.
 1. 전송 탭에서 Dispatcher에 액세스하는 데 필요한 URI를 입력합니다.\
-   표준 Dispatcher 플러시 에이전트를 사용하는 경우 호스트 이름과 포트를 업데이트합니다(예: https://&lt;).*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
+   표준 Dispatcher 플러시 에이전트를 사용하는 경우 호스트 이름과 포트를 업데이트합니다. 예: https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
 
    **참고:** Dispatcher 플러시 에이전트의 경우, 경로 기반 가상 호스트 항목을 사용하여 팜을 구분하는 경우에만 URI 속성이 사용됩니다. 이 필드를 사용하여 무효화할 팜을 대상으로 지정합니다. 예를 들어 팜 #1에는 `www.mysite.com/path1/*`의 가상 호스트가 있고 팜 #2에는 `www.mysite.com/path2/*`의 가상 호스트가 있습니다. URL `/path1/invalidate.cache`를 사용하여 첫 번째 팜을 대상으로 지정하고 `/path2/invalidate.cache`를 사용하여 두 번째 팜을 대상으로 지정할 수 있습니다. 자세한 내용은 [여러 도메인에 Dispatcher 사용](dispatcher-domains.md)을 참조하십시오.
 
 1. 필요에 따라 다른 매개변수를 구성합니다.
-1. 확인 을 클릭하여 에이전트를 활성화합니다.
+1. 확인을 클릭하여 에이전트를 활성화할 수 있습니다.
 
 또는 [AEM Touch UI](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent)에서 Dispatcher 플러시 에이전트에 액세스하고 구성할 수도 있습니다.
 
-vanity URL에 대한 액세스를 활성화하는 방법에 대한 자세한 내용은 [vanity URL에 대한 액세스 활성화](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
+vanity URL에 대한 액세스를 활성화하는 방법에 대한 자세한 내용은 [Vanity URL에 대한 액세스 활성화](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)를 참조하십시오.
 
 >[!NOTE]
 >
@@ -75,13 +75,13 @@ vanity URL에 대한 액세스를 활성화하는 방법에 대한 자세한 내
 
 이 접근 방식에는 두 가지 잠재적인 문제가 있습니다.
 
-* 작성 인스턴스에서 Dispatcher에 연결할 수 있어야 합니다. 네트워크(예: 방화벽)가 둘 사이의 액세스가 제한되도록 구성된 경우에는 그렇지 않을 수 있습니다.
+* 작성 인스턴스에서 Dispatcher에 연결할 수 있어야 합니다. 네트워크(예: 방화벽)가 둘 사이의 액세스가 제한되도록 구성된 경우에는 작성 인스턴스에서 Dispatcher에 연결할 수 없을 수 있습니다.
 
 * 게시 및 캐시 무효화는 동시에 발생합니다. 시기에 따라 사용자는 캐시에서 페이지가 제거된 직후와 새 페이지가 게시되기 직전에 페이지를 요청할 수 있습니다. AEM은 바로 이때 이전 페이지를 반환하고 Dispatcher는 이를 다시 캐시합니다. 대규모 사이트의 경우 더 큰 문제가 됩니다.
 
 ## 게시 인스턴스에서 Dispatcher 캐시 무효화 {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
-특정 상황에서 작성 환경에서 게시 인스턴스로 캐시 관리를 전송하여 성능을 향상시킬 수 있습니다. 게시된 페이지가 수신될 때 Dispatcher에 캐시 무효화 요청을 보내는 것은 게시 환경(AEM 작성 환경이 아님)입니다.
+특정 상황에서 작성 환경에서 게시 인스턴스로 캐시 관리를 전송하여 성능을 향상시킬 수 있습니다. 그러면 게시된 페이지가 수신될 때 Dispatcher에 캐시 무효화 요청을 보내는 게시 환경(AEM 작성 환경이 아닌)이 됩니다.
 
 이러한 상황은 다음과 같습니다.
 
@@ -94,7 +94,7 @@ Comment Type: draft
  -->
 
 * Dispatcher와 게시 인스턴스 간에 가능한 시간 충돌이 발생하지 않도록 합니다([작성 환경에서 Dispatcher 캐시 무효화](#invalidating-dispatcher-cache-from-the-authoring-environment)참조).
-* 시스템에는 고성능 서버에 상주하는 여러 개의 게시 인스턴스와 하나의 작성 인스턴스만 포함됩니다.
+* 시스템에는 고성능 서버에 상주하는 여러 개의 게시 인스턴스와 한 개의 작성 인스턴스만 포함되어 있습니다.
 
 >[!NOTE]
 >
@@ -129,7 +129,7 @@ HTTP 요청으로 인해 Dispatcher가 캐시에서 특정 파일을 삭제합�
 
 ### 캐시된 파일 삭제 {#delete-cached-files}
 
-Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐싱합니다. 캐싱된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
+Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐시합니다. 캐시된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
 
 HTTP 요청의 형식은 다음과 같습니다.
 
@@ -142,13 +142,13 @@ Content-Length: 0
 
 Dispatcher는 `CQ-Handler` 헤더 값과 일치하는 이름을 가진 캐시된 파일 및 폴더를 플러시(삭제)합니다. 예를 들어 `/content/geomtrixx-outdoors/en`의 `CQ-Handle`은 다음 항목과 일치합니다.
 
-* `geometrixx-outdoors` 디렉터리에 있는 `en` 이라는 이름의 (모든 파일 확장명의) 모든 파일
+* `geometrixx-outdoors` 디렉터리에 있는 `en`이라는 이름의 (모든 파일 확장자의) 모든 파일
 
-* 라는 이름의 모든 디렉터리 `_jcr_content`en 디렉터리 아래(존재하는 경우, 페이지의 하위 노드에 대한 캐시된 렌더링 포함)
+* en 디렉터리 아래에 “`_jcr_content`”라는 이름의 모든 디렉터리(존재하는 경우, 페이지의 하위 노드에 대한 캐시된 렌더링 포함).
 
-Dispatcher 캐시의 다른 모든 파일(또는 다음에 따라 특정 수준까지) `/statfileslevel` 설정)을 터치하면 무효화됩니다. `.stat` 파일. 이 파일의 마지막 수정 날짜는 캐시된 문서의 마지막 수정 날짜와 비교되며 `.stat` 파일이 최신 파일입니다. 자세한 내용은 [폴더 수준별 파일 무효화](dispatcher-configuration.md#main-pars_title_26)를 참조하십시오.
+Dispatcher 캐시의 다른 모든 파일(또는 `/statfileslevel` 설정에 따라 특정 수준까지)은 `.stat` 파일 터치에 의해 무효화됩니다. 이 파일의 마지막 수정 날짜는 캐시된 문서의 마지막 수정 날짜와 비교되며 `.stat` 파일이 최신 파일인 경우 문서를 다시 가져옵니다. 자세한 내용은 [폴더 수준별 파일 무효화](dispatcher-configuration.md#main-pars_title_26)를 참조하십시오.
 
-추가 헤더를 전송하여 무효화(.stat 파일 터치)를 방지할 수 있습니다 `CQ-Action-Scope: ResourceOnly`. 동적으로 생성되고 캐시와 독립적으로 정기적인 플러시가 필요한 JSON 데이터와 같은 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 예를 들어 뉴스 및 주식 시세를 표시하기 위해 서드파티 시스템에서 얻은 데이터를 나타냅니다.
+추가 헤더 `CQ-Action-Scope: ResourceOnly`를 전송하여 무효화(즉, .stat 파일 터치)를 방지할 수 있습니다. 동적으로 생성되고 캐시와 독립적으로 정기적인 플러시가 필요한 JSON 데이터와 같은 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 예를 들어 뉴스, 주식 시세 표시기 등을 표시하기 위해 서드파티 시스템에서 얻은 데이터를 나타냅니다.
 
 ### 파일 삭제 및 다시 캐시 {#delete-and-recache-files}
 
