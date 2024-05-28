@@ -1,14 +1,14 @@
 ---
 title: AEM Dispatcher 릴리스 정보
-description: Adobe Experience Manager Dispatcher 관련 릴리스 정보.
+description: Adobe Experience Manager Dispatcher 관련 릴리스 정보
 topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1048'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '1089'
+ht-degree: 79%
 
 ---
 
@@ -41,10 +41,10 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 **개선 사항**:
 
-* DISP-1009 - 헤더 길이 재설정.
-* DISP-1013 - Linux®에 대한 openssl 3.0 지원 추가.
-* DISP-1014 - 잘못된 리디렉션으로 이어지는 response.location 처리.
-* DISP-1017 - DTD 정의 변경.
+* DISP-1009 - 헤더 길이 재설정
+* DISP-1013 - Linux®에 대한 Openssl 3.0 지원 추가
+* DISP-1014 - 잘못된 리디렉션으로 이어지는 response.location 처리
+* DISP-1017 - DTD 정의 변경
 
 ### 릴리스 4.3.6 (2023년 7월 25일) {#jyly}
 
@@ -59,7 +59,7 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 **개선 사항**:
 
 * DISP-954 - 만료일이 경과되지 않았음에도 지원이 이루어지지 않음
-* DISP-949 - POST 요청이 필터에 의해 차단되더라도 Dispatcher가 404 대신 200을 반환.
+* DISP-949 - 필터가 POST 요청을 차단하더라도 Dispatcher가 404 대신 200을 반환
 
 ### 릴리스 4.3.4 (2021년 11월 29일) {#nov}
 
@@ -70,18 +70,18 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 **개선 사항**:
 
-* DISP-874 - 플래그 `DispatcherRestrictUncacheableContent`를 통해 DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다. 기본값은 해제(Off)입니다. 옵션을 켜면 캐시 불가능한 콘텐츠에 대해 mod 만료별로 설정된 캐싱 헤더가 제거됩니다. 이는 버전 4.3.3(기본값 켜짐(On))의 비헤이비어와 다르지만 4.3.3 이전의 버전(기본값 꺼짐(Off))과는 동일합니다. 브라우저 캐시의 보다 높은 유연성을 위해 `DispatcherRestrictUncacheableContent`의 기본값인 해제(Off) 상태를 유지하는 것이 좋습니다. 버전 4.3.3에서 4.3.4로 업그레이드 시 버전 4.3.3과 동일한 비헤이비어를 유지하고자 한다면 `DispatcherRestrictUncacheableContent`를 명시적으로 설정(On)해야 합니다.
+* DISP-874 - 플래그 `DispatcherRestrictUncacheableContent`를 통해 DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다. 기본값은 해제(Off)입니다. 옵션을 켜면 캐시 불가능한 콘텐츠에 대해 mod 만료별로 설정된 캐싱 헤더가 제거됩니다. 이 설정은 버전 4.3.3(기본값은 켜기(On)임)의 비헤이비어와 다르지만, 4.3.3 이전 버전(기본값은 끄기(Off))과 동일합니다. 브라우저 캐시의 보다 높은 유연성을 위해 `DispatcherRestrictUncacheableContent`의 기본값인 해제(Off) 상태를 유지하는 것이 좋습니다. 버전 4.3.3에서 4.3.4로 업그레이드할 때 버전 4.3.3과 동일한 비헤이비어를 유지하려면 를 명시적으로 설정해야 합니다 `DispatcherRestrictUncacheableContent` 켜짐.
 * DISP-841 - Dispatcher가 504 응답 코드에 대한 /serverStaleOnError를 무시합니다.
 * DISP-874 - DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다.
 * DISP-883 - Dispatcher에서 URL 요청 분해를 보여 주는 추적입니다.
-* DISP-944 - vanity URL 사전 로드
+* DISP-944 - vanity URL 미리 로드
 
 ### 릴리스 4.3.3 (2019년 10월 18일) {#october}
 
 **버그 수정**:
 
-* DISP-739 - LogLevel Dispatcher: **수준**&#x200B;이 작동하지 않음.
-* DISP-749 - Alpine Linux® Dispatcher가 추적 로그 수준과 충돌함.
+* DISP-739 - 로그 수준 Dispatcher: **수준** 작동하지 않음
+* DISP-749 - Alpine Linux® Dispatcher가 추적 로그 수준과 충돌함
 
 **개선 사항**:
 
@@ -91,7 +91,7 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 * DISP-821 - 소켓에 로그 컨텍스트를 저장하지 않음
 * DISP-822 - Dispatcher는 `pselect` 대신 `ppoll`을 사용해야 합니다.
 * DISP-824 - 보안 DispatcherUseForwardedHost
-* DISP-825 - 디스크에 더 이상 공간이 없을 때 특수 메시지를 기록함
+* DISP-825 - 디스크에 더 이상 공간이 없을 때 특수 메시지를 기록합니다.
 * DISP-826 - 쿼리 문자열로 URI 다시 가져오기 지원
 
 **새로운 기능**:
@@ -154,12 +154,12 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 * DISP-688 - Dispatcher가 404 응답에서 “X-Cache-Info” 헤더를 반환하지 않음
 * DISP-690 - 마지막으로 수정한 헤더를 캐시할 수 없음
 * DISP-691 - w3wp.exe의 액세스 위반
-* DISP-693 - Dispatcher 다운로드 페이지에서 Solaris™ 서버에 대한 아키텍처 세부 정보 업데이트
+* DISP-693 - Dispatcher 다운로드 페이지에서 Solaris™ 서버에 대한 아키텍처 세부 정보를 업데이트해야 함
 * DISP-695 - Dispatcher 모듈 4.2.3의 DispatcherLog 수준 문제
 * DISP-698 - Dispatcher TTL은 s-maxage 및 private 지시문을 지원해야 합니다
 * DISP-700 - Alpine Linux®에서 모듈이 올바르게 작동하지 않음
 * DISP-704 - %2b를 포함하는 브라우저 요청이 인코딩되지 않은 게시자에게 전송됨
-* DISP-705 - 이중 자유 또는 손상으로 인한 Dispatcher 충돌(`fasttop`)
+* DISP-705 - 이중 자유 또는 손상으로 인한 Dispatcher 충돌(fasttop)
 * DISP-706 - 무효화하는 동안 Dispatcher가 역참조 심볼릭 링크를 따라가면 무한 루프가 발생할 수 있음
 * DISP-709 - 일부 vanity URL 확장 차단
 * DISP-710 - Cent OS 6에서 사용할 수 없는 Linux®용 빌드
@@ -178,20 +178,20 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 | 플랫폼 | 아키텍처 | OpenSSL 지원 | 다운로드하려면 클릭 |
 |---|---|---|---|
-| Linux® | i686 (32비트) | 없음 | [`dispatcher-apache2.4-linux-i686-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.7.tar.gz) |
-| Linux® | i686 (32비트) | 1.0 | [`dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz) |
-| Linux® | i686 (32비트) | 1.1 | [`dispatcher-apache2.4-linux-i686-ssl1.1-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.1-4.3.7.tar.gz) |
-| Linux® | i686 (32비트) | 3.0 | [`dispatcher-apache2.4-linux-i686-ssl3.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl3.0-4.3.7.tar.gz) |
-| Linux® | x86_64 (64비트) | 없음 | [`dispatcher-apache2.4-linux-x86_64-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.7.tar.gz) |
-| Linux® | x86_64 (64비트) | 1.0 | [`dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz) |
-| Linux® | x86_64 (64비트) | 1.1 | [`dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz) |
-| Linux® | x86_64 (64비트) | 3.0 | [`dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz) |
-| Linux® | aarch64 (64비트) | 없음 | [`dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz) |
-| Linux® | aarch64 (64비트) | 1.0 | [`dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz) |
-| Linux® | aarch64 (64비트) | 1.1 | [`dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz) |
-| Linux® | aarch64 (64비트) | 3.0 | [`dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz) |
-| macOS | arm64 (64비트) | 없음 | [`dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz) |
-| macOS | x86_64 (64비트) | 없음 | [`dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz) |
+| Linux® | i686 (32비트) | 없음 | [dispatcher-apache2.4-linux-i686-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.7.tar.gz) |
+| Linux® | i686 (32비트) | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz) |
+| Linux® | i686 (32비트) | 1.1 | [dispatcher-apache2.4-linux-i686-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.1-4.3.7.tar.gz) |
+| Linux® | i686 (32비트) | 3.0 | [dispatcher-apache2.4-linux-i686-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl3.0-4.3.7.tar.gz) |
+| Linux® | x86_64 (64비트) | 없음 | [dispatcher-apache2.4-linux-x86_64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.7.tar.gz) |
+| Linux® | x86_64 (64비트) | 1.0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz) |
+| Linux® | x86_64 (64비트) | 1.1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz) |
+| Linux® | x86_64 (64비트) | 3.0 | [dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz) |
+| Linux® | aarch64 (64비트) | 없음 | [dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz) |
+| Linux® | aarch64 (64비트) | 1.0 | [dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz) |
+| Linux® | aarch64 (64비트) | 1.1 | [dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz) |
+| Linux® | aarch64 (64비트) | 3.0 | [dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz) |
+| macOS | arm64 (64비트) | 없음 | [dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz) |
+| macOS | x86_64 (64비트) | 없음 | [dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz) |
 
 ### IIS {#iis}
 

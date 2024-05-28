@@ -1,11 +1,11 @@
 ---
-title: Dispatcher 구성
-description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 파일 구성, 환경 변수, 인스턴스 이름 지정, 팜 정의, 가상 호스트 식별 등에 대해 알아봅니다.
+title: AEM Dispatcher 구성
+description: AEM Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '8854'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '8897'
+ht-degree: 82%
 
 ---
 
@@ -13,7 +13,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM과 독립적입니다. 이전 버전의 AEM에 대한 설명서에 임베드된 Dispatcher 설명서에 대한 링크를 따라간 경우 이 페이지로 리디렉션되었을 수 있습니다.
+>Dispatcher 버전은 AEM(Adobe Experience Manager)와 독립적입니다. Dispatcher 설명서에 대한 링크를 따라간 경우 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 임베드되었습니다.
 
 다음 섹션에서는 Dispatcher의 다양한 측면을 구성하는 방법을 설명합니다.
 
@@ -25,7 +25,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 설치 중에 이 파일의 이름과 위치를 변경할 수 있지만 기본적으로 Dispatcher 구성은 `dispatcher.any` 텍스트 파일에 저장됩니다.
 
-구성 파일에는 Dispatcher의 동작을 제어하는 일련의 단일 값 또는 다중 값 속성이 포함되어 있습니다.
+구성 파일에는 AEM Dispatcher의 동작을 제어하는 일련의 단일 값 또는 다중 값 속성이 포함되어 있습니다.
 
 * 속성 이름 앞에는 슬래시 `/`가 붙습니다.
 * 다중 값 속성은 중괄호 `{ }`를 사용하여 하위 항목을 묶습니다.
@@ -103,7 +103,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 * 구성 파일이 크면 여러 개의 작은 파일(관리하기 쉬운)로 분할하고 각 파일을 포함할 수 있습니다.
 * 자동으로 생성된 파일을 포함합니다.
 
-예를 들어 /farms 구성에 myFarm.any 파일을 포함하려면 다음 코드를 사용하십시오.
+예를 들어 myFarm.any 파일을 `/farms` 구성은 다음 코드를 사용합니다.
 
 ```xml
 /farms
@@ -133,7 +133,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 /docroot "${PWD}/cache"
 ```
 
-또 다른 예로, AEM 게시 인스턴스의 호스트 이름을 저장하는 `PUBLISH_IP` 환경 변수를 만드는 경우 [/renders](#defining-page-renderers-renders) 속성의 다음 구성을 사용할 수 있습니다.
+다른 예로, 환경 변수를 만드는 경우 `PUBLISH_IP` AEM 게시 인스턴스의 호스트 이름, 다음 구성 저장 [`/renders`](#defining-page-renderers-renders) 속성을 사용할 수 있습니다.
 
 ```xml
 /renders {
@@ -152,7 +152,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 `/farms` 속성은 각 세트가 다른 웹 사이트 또는 URL과 연결된 하나 이상의 Dispatcher 동작 세트를 정의합니다. `/farms` 속성에는 단일 팜 또는 여러 팜이 포함될 수 있습니다.
 
-* Dispatcher가 모든 웹 페이지 또는 웹 사이트를 동일한 방식으로 처리하도록 하려면 단일 팜을 사용합니다.
+* AEM Dispatcher가 모든 웹 페이지 또는 웹 사이트를 동일한 방식으로 처리하도록 하려면 단일 팜을 사용합니다.
 * 웹 사이트 또는 웹 사이트의 다른 영역에 다른 Dispatcher 동작이 필요한 경우 여러 팜을 만듭니다.
 
 `/farms` 속성은 구성 구조의 최상위 속성입니다. 팜을 정의하려면 `/farms` 속성에 하위 속성을 추가하고 Dispatcher 인스턴스 내에서 팜을 고유하게 식별하는 속성 이름을 사용합니다.
@@ -197,7 +197,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | 이 팜의 가상 호스트입니다. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | 세션 관리 및 인증을 지원합니다. |
 | [/renders](#defining-page-renderers-renders) | 렌더링된 페이지를 제공하는 서버(일반적으로 AEM 게시 인스턴스)입니다. |
-| [/filter](#configuring-access-to-content-filter) | Dispatcher가 액세스할 수 있는 URL을 정의합니다. |
+| [/filter](#configuring-access-to-content-filter) | AEM Dispatcher가 액세스할 수 있는 URL을 정의합니다. |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | vanity URL에 대한 액세스를 구성합니다. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | 신디케이션 요청의 전달을 지원합니다. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | 캐싱 동작을 구성합니다. |
@@ -209,7 +209,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 | [/failover](#using-the-failover-mechanism) | 원본 요청이 실패하면 다른 렌더링으로 요청을 다시 보냅니다. |
 | [/auth_checker](permissions-cache.md) | 권한 구분 캐싱에 대해서는 [보안 콘텐츠 캐싱](permissions-cache.md)을 참조하십시오. |
 
-## 기본 페이지 지정(IIS만 해당) - /homepage {#specify-a-default-page-iis-only-homepage}
+## 기본 페이지 지정(IIS만 해당) - `/homepage` {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
@@ -259,7 +259,7 @@ Comment Type: draft
 
 `/clientheaders` 속성은 Dispatcher가 클라이언트 HTTP 요청에서 렌더러(AEM 인스턴스)로 전달하는 HTTP 헤더 목록을 정의합니다.
 
-기본적으로 Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 다른 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
+기본적으로 AEM Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 추가 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
 
 * AEM 인스턴스가 HTTP 요청에서 예상하는 사용자 정의 헤더와 같은 헤더를 추가합니다.
 * 인증 헤더와 같이 웹 서버에만 관련된 헤더를 제거합니다.
@@ -312,7 +312,7 @@ Comment Type: draft
 
 ## 가상 호스트 식별 {#identifying-virtual-hosts-virtualhosts}
 
-`/virtualhosts` 속성은 Dispatcher가 이 팜에 대해 허용하는 모든 호스트 이름/URI 조합의 목록을 정의합니다. 별표 (`*`) 문자를 와일드카드로 사용할 수 있습니다. / `virtualhosts` 속성 값은 다음 형식을 사용합니다.
+다음 `/virtualhosts` 속성은 Dispatcher가 이 팜에 대해 허용하는 모든 호스트 이름 및 URI 조합의 목록을 정의합니다. 별표 (`*`) 문자를 와일드카드로 사용할 수 있습니다. / 값`virtualhosts` 속성은 다음 형식을 사용합니다.
 
 ```xml
 [scheme]host[uri][*]
@@ -355,7 +355,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 * `virtualhosts` 값에 요청의 `scheme` 및 `uri`와 일치하는 `scheme` 및 `uri` 부분이 없는 경우 요청의 `host`와 일치하는 처음 발견된 가상 호스트가 사용됩니다.
 * `virtualhosts` 값에 요청의 호스트와 일치하는 호스트 부분이 없으면 최상위 팜의 최상위 가상 호스트가 사용됩니다.
 
-따라서 `dispatcher.any` 파일의 최상위 팜에 있는 `virtualhosts` 속성의 맨 위에 기본 가상 호스트를 배치해야 합니다.
+따라서 기본 가상 호스트를 의 맨 위에 배치해야 합니다 `virtualhosts` 속성. 귀하의 최상위 팜에서 PLace `dispatcher.any` 파일.
 
 ### 예제 가상 호스트 확인 {#example-virtual-host-resolution}
 
@@ -398,7 +398,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 | `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
-## 보안 세션 활성화 - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
+## 보안 세션 활성화 - `/sessionmanagement` {#enabling-secure-sessions-sessionmanagement}
 
 >[!CAUTION]
 >
@@ -455,7 +455,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 ## 페이지 렌더러 정의 {#defining-page-renderers-renders}
 
-/renders 속성은 Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
+다음 `/renders` 속성은 AEM Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
 
 ```xml
 /renders
@@ -472,7 +472,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
   }
 ```
 
-다음 예제 /renders 섹션은 Dispatcher와 동일한 컴퓨터에서 실행되는 AEM 인스턴스를 식별합니다.
+다음 예 `/renders` 섹션은 Dispatcher와 동일한 컴퓨터에서 실행되는 AEM 인스턴스를 식별합니다.
 
 ```xml
 /renders
@@ -485,7 +485,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
   }
 ```
 
-다음 예제 /renders 섹션은 두 AEM 인스턴스 간에 렌더링 요청을 균등하게 분산합니다.
+다음 예 `/renders` 섹션은 두 AEM 인스턴스 간에 렌더링 요청을 균등하게 분산합니다.
 
 ```xml
 /renders
@@ -511,7 +511,7 @@ AEM 인스턴스에 액세스하는 연결 시간 제한(밀리초)을 지정합
 
 **/receiveTimeout**
 
-응답이 허용되는 시간(밀리초)을 지정합니다. 기본값은 `"600000"`이므로 Dispatcher가 10분 동안 대기합니다. `"0"`으로 설정하면 시간 제한이 제거됩니다.
+응답이 허용되는 시간(밀리초)을 지정합니다. 기본값은 `"600000"`이므로 Dispatcher가 10분 동안 대기합니다. 의 설정 `"0"` 시간 제한을 제거합니다.
 
 응답 헤더를 구문 분석하는 동안 시간 제한에 도달하면 HTTP 상태 504(잘못된 게이트웨이)가 반환됩니다. 응답 본문을 읽는 동안 시간 제한에 도달하면 Dispatcher는 완료되지 않은 응답을 클라이언트에 반환합니다. 또한 기록되었을 수 있는 모든 캐시 파일을 삭제합니다.
 
@@ -519,7 +519,7 @@ AEM 인스턴스에 액세스하는 연결 시간 제한(밀리초)을 지정합
 
 Dispatcher가 렌더링의 IP 주소를 얻기 위해 `getaddrinfo` 함수(IPv6의 경우)를 사용하는지 또는 `gethostbyname` 함수(IPv4의 경우)를 사용하는지 여부를 지정합니다. 값이 0이면 `getaddrinfo`가 사용됩니다. 값이 `1`이면 `gethostbyname`이 사용됩니다. 기본값은 `0`입니다.
 
-`getaddrinfo` 함수는 IP 주소 목록을 반환합니다. Dispatcher는 TCP/IP 연결을 설정할 때까지 주소 목록을 반복합니다. 따라서 렌더링 호스트 이름이 여러 IP 주소와 연결되어 있고 호스트가 `getaddrinfo` 함수에 응답하여 항상 동일한 순서로 IP 주소 목록을 반환하는 경우 `ipv4` 속성이 중요합니다. 이 경우 Dispatcher가 연결하는 IP 주소가 임의 지정되도록 `gethostbyname` 함수를 사용해야 합니다.
+`getaddrinfo` 함수는 IP 주소 목록을 반환합니다. Dispatcher는 TCP/IP 연결을 설정할 때까지 주소 목록을 반복합니다. 따라서 `ipv4` 렌더링 호스트 이름이 여러 IP 주소와 연결된 경우 속성이 중요합니다. 그리고, 호스트가 `getaddrinfo` 함수는 항상 같은 순서로 되어 있는 IP 주소 목록을 반환합니다. 이 경우 Dispatcher가 연결하는 IP 주소가 임의 지정되도록 `gethostbyname` 함수를 사용해야 합니다.
 
 Amazon Elastic Load Balancing(ELB)은 잠재적으로 동일한 순서의 IP 주소 목록으로 getaddrinfo에 응답하는 서비스입니다.
 
@@ -555,7 +555,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 >[!CAUTION]
 >
->Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 또한 AEM 설치와 관련된 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security)를 참조하십시오.
+>다음을 참조하십시오. [Dispatcher 보안 검사 목록](security-checklist.md) AEM Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항. 또한 AEM 설치와 관련된 추가 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security)를 참조하십시오.
 
 `/filter` 섹션은 HTTP 요청의 요청 라인 부분에 있는 패턴에 따라 콘텐츠에 대한 액세스를 거부하거나 허용하는 일련의 규칙으로 구성됩니다. `/filter` 섹션에 허용 목록 전략을 사용합니다.
 
@@ -572,7 +572,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 * **유형**: `/type`은 패턴과 일치하는 요청에 대한 액세스를 허용할지 또는 거부할지 여부를 나타냅니다. 값은 `allow` 또는 `deny`일 수 있습니다.
 
-* **요청 라인의 요소:** `/method`, `/url`, `/query` 또는 `/protocol`을 포함하고 HTTP 요청의 요청 라인 부분의 이러한 특정 부분에 따라 요청을 필터링하는 패턴을 포함합니다. 전체 요청 라인이 아닌 요청 라인의 요소를 필터링하는 것이 선호되는 필터 메서드입니다.
+* **요청 라인의 요소:** 포함 `/method`, `/url`, `/query`, 또는 `/protocol`. 요청 필터링을 위한 패턴을 포함합니다. HTTP 요청에서 요청 라인 부분의 특정 부분에 따라 필터링합니다. 전체 요청 라인이 아닌 요청 라인의 요소를 필터링하는 것이 선호되는 필터 메서드입니다.
 
 * **요청 라인의 고급 요소:** Dispatcher 4.2.0부터 4개의 새로운 필터 요소를 사용할 수 있습니다. 새로운 요소는 각각 `/path`, `/selectors`, `/extension` 및 `/suffix`입니다. URL 패턴을 추가로 제어하려면 이러한 항목 중 하나 이상을 포함하십시오.
 
@@ -618,7 +618,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 
 #### 필터 예: 모두 거부 {#example-filter-deny-all}
 
-다음 예제 필터 섹션은 Dispatcher가 모든 파일에 대한 요청을 거부하도록 합니다. 모든 파일에 대한 액세스를 거부한 다음 특정 영역에 대한 액세스를 허용합니다.
+다음 예제 필터 섹션은 AEM Dispatcher가 모든 파일에 대한 요청을 거부하도록 합니다. 모든 파일에 대한 액세스를 거부한 다음 특정 영역에 대한 액세스를 허용합니다.
 
 ```xml
 /0001  { /type "deny" /url "*"  }
@@ -693,9 +693,9 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
         }
 ```
 
-### 예제 /filter 섹션 {#example-filter-section}
+### 예 `/filter` 섹션 {#example-filter-section}
 
-Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한해야 합니다. 다음 예제에서는 외부 방문자에게 최소한의 액세스 권한을 제공합니다.
+AEM Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한하십시오. 다음 예제에서는 외부 방문자에게 최소한의 액세스 권한을 제공합니다.
 
 * `/content`
 * 디자인 및 클라이언트 라이브러리와 같은 기타 콘텐츠. 예를 들면 다음과 같습니다.
@@ -809,7 +809,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 ### 쿼리 문자열 제한 {#restricting-query-strings}
 
-Dispatcher 버전 4.1.5부터 `/filter` 섹션을 사용하여 쿼리 문자열을 제한합니다. 쿼리 문자열을 명시적으로 허용하고 `allow` 필터 요소를 통해 일반 허용을 제외하는 것이 좋습니다.
+Dispatcher 버전 4.1.5부터 `/filter` 섹션을 사용하여 쿼리 문자열을 제한합니다. 쿼리 문자열을 명시적으로 허용하고 다음을 통해 일반 허용을 제외하는 것이 좋습니다. `allow` 요소를 필터링합니다.
 
 단일 항목은 `glob` 또는 `method`, `url`, `query` 및 `version`의 일부 조합을 가질 수 있지만 둘 다 가질 수는 없습니다. 다음 예제는 `a=*` 쿼리 문자열을 허용하고 `/etc` 노드로 확인되는 URL에 대한 다른 모든 쿼리 문자열을 거부합니다.
 
@@ -894,7 +894,7 @@ Dispatcher 필터는 AEM 게시 인스턴스에서 다음 페이지 및 스크�
 * `/etc/cloudservices.html`
 * `/welcome`
 
-익명 쓰기 액세스가 활성화되었는지 확인하려면 터미널 또는 명령 프롬프트에서 다음 명령을 실행합니다. 노드에 데이터를 쓸 수 없어야 합니다.
+익명 쓰기 액세스가 활성화되었는지 확인하려면 터미널 또는 명령 프롬프트에서 다음 명령을 실행합니다. 노드에 데이터를 쓸 수 없습니다.
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-AEM 페이지에 대해 구성된 vanity URL에 액세스할 수 있도록 Dispatcher를 구성합니다.
+AEM 페이지에 대해 구성된 vanity URL에 액세스할 수 있도록 AEM Dispatcher를 구성합니다.
 
 vanity URL에 대한 액세스가 활성화되면 Dispatcher는 렌더링 인스턴스에서 실행되는 서비스를 주기적으로 호출하여 vanity URL 목록을 가져옵니다. Dispatcher는 이 목록을 로컬 파일에 저장합니다. `/filter` 섹션의 필터로 인해 페이지 요청이 거부되면 Dispatcher는 vanity URL 목록을 참조합니다. 거부된 URL이 목록에 있는 경우 Dispatcher는 vanity URL에 대한 액세스를 허용합니다.
 
@@ -932,7 +932,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 * `/url`: 렌더링 인스턴스에서 실행되는 vanity URL 서비스의 경로입니다. 이 속성의 값은 `"/libs/granite/dispatcher/content/vanityUrls.html"`이어야 합니다.
 
-* `/file`: Dispatcher가 vanity URL 목록을 저장하는 로컬 파일의 경로입니다. Dispatcher에 이 파일에 대한 쓰기 권한이 있는지 확인하십시오.
+* `/file`: Dispatcher가 vanity URL 목록을 저장하는 로컬 파일의 경로입니다. AEM Dispatcher에 이 파일에 대한 쓰기 권한이 있는지 확인하십시오.
 * `/delay`:(초) vanity URL 서비스 호출 사이의 시간입니다.
 
 >[!NOTE]
@@ -946,13 +946,13 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 1. `/farms` 아래에 `/vanity_urls` 섹션을 추가합니다.
 1. Apache 웹 서버를 다시 시작합니다.
 
-## 신디케이션 요청 전달 - /propagateSyndPost {#forwarding-syndication-requests-propagatesyndpost}
+## 신디케이션 요청 전달 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
 신디케이션 요청은 Dispatcher만을 위한 것이므로 기본적으로 렌더러(예: AEM 인스턴스)로 전송되지 않습니다.
 
 필요한 경우 `/propagateSyndPost` 속성을 `"1"`로 설정하여 신디케이션 요청을 Dispatcher로 전달합니다. 설정된 경우 필터 섹션에서 POST 요청이 거부되지 않았는지 확인해야 합니다.
 
-## Dispatcher 캐시 구성 - /cache {#configuring-the-dispatcher-cache-cache}
+## Dispatcher 캐시 구성 - `/cache` {#configuring-the-dispatcher-cache-cache}
 
 `/cache` 섹션은 Dispatcher가 문서를 캐시하는 방법을 제어합니다. 여러 하위 속성을 구성하여 캐싱 전략을 구현합니다.
 
@@ -1003,7 +1003,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 >[!NOTE]
 >
->Dispatcher와 웹 서버가 동일한 파일을 처리할 수 있도록 값은 웹 서버의 문서 루트와 정확히 동일한 경로여야 합니다.\
+>AEM Dispatcher와 웹 서버가 동일한 파일을 처리할 수 있도록 값은 웹 서버의 문서 루트와 동일한 경로여야 합니다.\
 >웹 서버는 Dispatcher 캐시 파일이 사용될 때 올바른 상태 코드를 전달하는 역할을 하므로 찾을 수 있는가 하는 것도 중요합니다.
 
 여러 팜을 사용하는 경우 각 팜은 서로 다른 문서 루트를 사용해야 합니다.
@@ -1012,7 +1012,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 `/statfile` 속성은 statfile로 사용할 파일을 식별합니다. Dispatcher는 이 파일을 사용하여 최신 콘텐츠 업데이트 시간을 등록합니다. 웹 서버의 어떤 파일이든 statfile일 수 있습니다.
 
-statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat`이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
+statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 AEM Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat`이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
 
 >[!NOTE]
 >
@@ -1020,9 +1020,9 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 
 ### 오류 발생 시 오래된 문서 제공 {#serving-stale-documents-when-errors-occur}
 
-`/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 Dispatcher는 다음에 요청할 때 캐시된 콘텐츠를 삭제합니다.
+`/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 AEM Dispatcher는 캐시된 콘텐츠를 삭제합니다. 이 작업은 다음에 요청할 때 수행됩니다.
 
-`/serveStaleOnError`가 `"1"`로 설정된 경우 렌더링 서버가 성공적인 응답을 반환하지 않는 한 Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. AEM의 5xx 응답 또는 연결 시간 제한으로 인해 Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답하게 됩니다.
+If `/serveStaleOnError` 이(가) (으)로 설정됨 `"1"`, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 경우. AEM의 5xx 응답 또는 연결 시간 제한으로 인해 AEM Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답합니다.
 
 ### 인증 사용 시 캐싱 {#caching-when-authentication-is-used}
 
@@ -1064,7 +1064,7 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 `/rules` 속성의 각 항목에는 [`glob`](#designing-patterns-for-glob-properties) 패턴과 유형이 포함됩니다.
 
 * `glob` 패턴은 문서의 경로를 일치시키는 데 사용됩니다.
-* 유형은 `glob` 패턴과 일치하는 문서를 캐시할지 여부를 나타냅니다. 값은 `allow`(문서를 캐시함) 또는 `deny`(항상 문서를 렌더링함)일 수 있습니다.
+* 유형은 `glob` 패턴과 일치하는 문서를 캐시할지 여부를 나타냅니다. 값은 다음과 같을 수 있습니다 `allow` (문서 캐시) 또는 `deny` (문서를 렌더링합니다).
 
 동적 페이지가 없는 경우 (위의 규칙에 의해 이미 제외된 해당 페이지를 제외하고) 모든 것을 캐시하도록 Dispatcher를 구성할 수 있습니다. 규칙 섹션은 다음과 같습니다.
 
@@ -1075,13 +1075,13 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
   }
 ```
 
-glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties)을 참조하십시오.
+Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties).
 
 페이지의 일부 섹션이 동적(예: 뉴스 애플리케이션)이거나 폐쇄형 사용자 그룹 내에 있는 경우 예외를 정의할 수 있습니다.
 
 >[!NOTE]
 >
->캐시된 페이지에 대한 사용자 권한이 확인되지 않으므로 폐쇄형 사용자 그룹을 캐시하지 마십시오.
+>폐쇄된 사용자 그룹을 캐시하지 마십시오. 캐시된 페이지에 대한 사용자 권한이 확인되지 않기 때문입니다.
 
 ```xml
 /rules
@@ -1189,15 +1189,15 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
   }
 ```
 
-glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties)을 참조하십시오.
+Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties).
 
 이 구성으로 인해 `/content/wknd/us/en`이 활성화되면 다음 활동이 발생합니다.
 
 * 패턴이 en.인 모든 파일이* `/content/wknd/us` 폴더에서 제거됩니다.
 * `/content/wknd/us/en./_jcr_content` 폴더가 제거됩니다.
-* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 예시에서는 `/content/wknd.html`이 삭제되지 않았습니다. 대신 `/content/wknd.html` 요청 시 삭제됩니다.
+* `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 이 예에서는 `/content/wknd.html` 은(는) 삭제되지 않고 다음과 같은 경우 삭제됩니다. `/content/wknd.html` 이(가) 요청되었습니다.
 
-자동으로 생성된 PDF 및 ZIP 파일을 다운로드용으로 제공하는 경우 해당 파일도 자동으로 무효화해야 할 수 있습니다. 구성 예제는 다음과 같습니다.
+자동으로 생성된 PDF 및 ZIP 파일을 다운로드용으로 제공하는 경우 이러한 파일도 자동으로 무효화해야 할 수 있습니다. 구성 예제는 다음과 같습니다.
 
 ```xml
 /invalidate
@@ -1219,7 +1219,7 @@ Adobe Analytics와의 AEM 통합은 웹 사이트의 `analytics.sitecatalyst.js`
 
 ### 사용자 정의 무효화 스크립트 사용 {#using-custom-invalidation-scripts}
 
-`/invalidateHandler` 속성을 사용하면 Dispatcher가 수신한 각 무효화 요청에 대해 호출되는 스크립트를 정의할 수 있습니다.
+다음 `/invalidateHandler` 속성을 사용하면 Dispatcher가 수신한 각 무효화 요청에 대해 호출되는 스크립트를 정의할 수 있습니다.
 
 다음 인수와 함께 호출됩니다.
 
@@ -1260,7 +1260,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
   }
 ```
 
-glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties)을 참조하십시오.
+Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties).
 
 >[!CAUTION]
 >
@@ -1275,7 +1275,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 * 요청 URL에 모두 무시되는 매개변수가 포함되어 있으면 페이지가 캐시됩니다.
 * 요청 URL에 무시되지 않는 매개변수가 하나 이상 포함되어 있으면 페이지가 캐시되지 않습니다.
 
-페이지에 대한 매개변수가 무시되면 페이지가 처음으로 요청될 때 페이지가 캐시됩니다. 페이지에 대한 후속 요청은 요청의 매개변수 값에 관계없이 캐시된 페이지에 제공됩니다.
+페이지에 대한 매개변수가 무시되면 페이지가 처음으로 요청될 때 페이지가 캐시됩니다. 페이지에 대한 후속 요청은 요청의 매개 변수 값에 관계없이 캐시된 페이지에 제공됩니다.
 
 >[!NOTE]
 >
@@ -1283,7 +1283,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 무시할 매개변수를 지정하려면 `ignoreUrlParams` 속성에 glob 규칙을 추가합니다.
 
-* URL 매개변수를 포함하는 요청에도 불구하고 페이지를 캐시하려면 매개변수를 무시할 수 있는 glob 속성을 만듭니다.
+* URL 매개 변수가 포함된 요청과 관계없이 페이지를 캐시하려면 매개 변수를 무시할 수 있는 glob 속성을 만듭니다.
 * 페이지가 캐시되지 않도록 하려면 매개변수를 거부하는 glob 속성을 만듭니다.
 
 >[!NOTE]
@@ -1291,7 +1291,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
 > `/0002 { /glob "p1" /type "allow" }`
 
-다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 `nocache` 매개변수를 포함하는 요청 URL이 Dispatcher에 의해 캐시되지 않습니다.
+다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 따라서 Dispatcher는 다음을 포함하는 요청 URL을 캐시하지 않습니다. `nocache` 매개 변수:
 
 ```xml
 /ignoreUrlParams
@@ -1309,14 +1309,14 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 GET /mypage.html?willbecached=true
 ```
 
-`ignoreUrlParams` 구성 예제의 맥락에서 다음 HTTP 요청은 `nocache` 매개변수가 무시되지 않기 때문에 페이지가 **캐시되지 않도록** 합니다.
+의 맥락에서 `ignoreUrlParams` 구성 예: 다음 HTTP 요청으로 인해 페이지가 **아님** 다음 이유로 캐시됨: `nocache` 매개 변수는 무시되지 않습니다.
 
 ```xml
 GET /mypage.html?nocache=true
 GET /mypage.html?nocache=true&willbecached=true
 ```
 
-glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties)을 참조하십시오.
+Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties).
 
 ### HTTP 응답 헤더 캐싱 {#caching-http-response-headers}
 
@@ -1324,7 +1324,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >
 >이 기능은 Dispatcher 버전 **4.1.11**&#x200B;에서 사용할 수 있습니다.
 
-`/headers` 속성을 사용하면 Dispatcher가 캐시할 HTTP 헤더 유형을 정의할 수 있습니다. 캐시되지 않은 리소스에 대한 첫 번째 요청에서 구성된 값 중 하나와 일치하는 모든 헤더(아래 구성 샘플 참조)는 캐시 파일 옆의 별도 파일에 저장됩니다. 캐시된 리소스에 대한 후속 요청 시 저장된 헤더가 응답에 추가됩니다.
+다음 `/headers` 속성을 사용하면 Dispatcher가 캐시할 HTTP 헤더 유형을 정의할 수 있습니다. 캐시되지 않은 리소스에 대한 첫 번째 요청에서 구성된 값 중 하나와 일치하는 모든 헤더(아래 구성 샘플 참조)는 캐시 파일 옆의 별도 파일에 저장됩니다. 캐시된 리소스에 대한 후속 요청 시 저장된 헤더가 응답에 추가됩니다.
 
 다음은 기본 구성의 샘플입니다.
 
@@ -1345,11 +1345,11 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 >[!NOTE]
 >
->파일 글로빙 문자는 허용되지 않습니다. 자세한 내용은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties)을 참조하십시오.
+>파일 글로빙 문자는 허용되지 않습니다. 자세한 내용은 [Glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties).
 
 >[!NOTE]
 >
->Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음 작업을 수행하십시오.
+>AEM Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음을 수행하십시오.
 >
 >* `/cache/headers`섹션에 헤더 이름을 추가합니다.
 >* Dispatcher 관련 섹션에 다음 [Apache 지시문](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)을 추가합니다.
@@ -1360,7 +1360,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 ### Dispatcher 캐시 파일 권한 {#dispatcher-cache-file-permissions}
 
-`mode` 속성은 캐시의 새 디렉터리 및 파일에 적용되는 파일 권한을 지정합니다. 이 설정은 호출 프로세스의 `umask`에 의해 제한됩니다. 다음 값 중 하나 이상의 합계로 구성된 8진수입니다.
+`mode` 속성은 캐시의 새 디렉터리 및 파일에 적용되는 파일 권한을 지정합니다. 다음 `umask` 을(를) 호출하는 동안 이 설정이 제한됩니다. 다음 값 중 하나 이상의 합계로 구성된 8진수입니다.
 
 * `0400` 소유자가 읽을 수 있도록 허용합니다.
 * `0200` 소유자가 쓸 수 있도록 허용합니다.
@@ -1372,7 +1372,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 * `0002` 다른 사용자가 쓸 수 있도록 허용합니다.
 * `0001` 다른 사용자가 디렉터리에서 검색할 수 있도록 허용합니다.
 
-기본값은 소유자의 읽기, 쓰기 또는 검색을 허용하고 그룹 및 기타 사용자의 읽기 또는 검색을 허용하는 `0755`입니다.
+기본값은 입니다. `0755`: 소유자는 읽기, 쓰기 또는 검색을 수행할 수 있고 그룹 및 기타 사용자는 읽기 또는 검색을 수행할 수 있습니다.
 
 ### .stat 파일 터치 조절 {#throttling-stat-file-touching}
 
@@ -1382,16 +1382,16 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 자세한 내용은 미리 `/invalidate` 및 `/statfileslevel`을 참조하십시오.
 
-### 시간 기반 캐시 무효화 구성 - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### 시간 기반 캐시 무효화 구성 - `/enableTTL` {#configuring-time-based-cache-invalidation-enablettl}
 
 시간 기반 캐시 무효화는 `/enableTTL` 속성과 HTTP 표준의 일반 만료 헤더 존재 여부에 따라 다릅니다. 속성을 1(`/enableTTL "1"`)로 설정하면 백엔드에서 응답 헤더를 평가합니다. 헤더에 `Cache-Control`, `max-age` 또는 `Expires` 일자가 포함된 경우 캐시된 파일 옆에 빈 보조 파일이 생성되며 수정 시간은 만료 일자와 동일하게 됩니다. 캐시된 파일이 수정 시간 이후에 요청되면 백엔드에서 자동으로 다시 요청됩니다.
 
 Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값만을 기반으로 했습니다. Dispatcher 버전 4.3.5에서는 설정된 TTL **및** Dispatcher 캐시 무효화 규칙이 모두 고려됩니다. 따라서 캐시된 파일의 경우:
 
 1. `/enableTTL`을 1로 설정하면 파일 만료가 확인됩니다. 설정된 TTL에 따라 파일이 만료된 경우 다른 검사는 수행되지 않으며 캐시된 파일이 백엔드에서 다시 요청됩니다.
-2. 파일이 만료되지 않았거나 `/enableTTL`이(가) 구성되지 않은 경우 [/statfileslevel](#invalidating-files-by-folder-level) 및 [/invalidate](#automatically-invalidating-cached-files)에 의해 설정된 해당 규칙과 같은 표준 캐시 무효화 규칙이 적용됩니다. 이 흐름은 Dispatcher가 TTL이 만료되지 않은 파일을 무효화할 수 있음을 의미합니다.
+2. 파일이 만료되지 않은 경우 `/enableTTL` 가 구성되지 않으면 다음과 같은 표준 캐시 무효화 규칙이 적용됩니다. [`/statfileslevel`](#invalidating-files-by-folder-level) 및 [`/invalidate`](#automatically-invalidating-cached-files) 설정. 이 흐름은 AEM Dispatcher가 TTL이 만료되지 않은 파일을 무효화할 수 있음을 의미합니다.
 
-이 새 구현은 파일의 TTL이 더 길지만(예: 콘텐츠 전송 네트워크에서) TTL이 만료되지 않은 경우에도 여전히 무효화될 수 있는 사용 사례를 지원합니다. Dispatcher의 캐시 적중률보다 콘텐츠 신선도가 선호됩니다.
+이 새로운 구현은 파일의 TTL이 더 긴 사용 사례를 지원합니다(예: CDN에서). 그러나 TTL이 만료되지 않은 경우에도 이러한 파일은 무효화될 수 있습니다. Dispatcher의 캐시 적중률보다 콘텐츠 신선도가 선호됩니다.
 
 반대로 파일에 적용된 **만료 논리만** 필요한 경우 `/enableTTL`을 1로 설정하고 표준 캐시 무효화 메커니즘에서 해당 파일을 제외합니다. 예를 들어 다음 작업을 수행할 수 있습니다.
 
@@ -1406,7 +1406,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
   }
 ```
 
-* 파일이 자동으로 무효화되지 않도록 높은 [/statfilelevel](#invalidating-files-by-folder-level)을 설정할 수 있는 방식으로 콘텐츠 구조를 설계합니다.
+* 높이를 설정할 수 있는 방식으로 콘텐츠 구조 디자인 [`/statfilelevel`](#invalidating-files-by-folder-level) 따라서 파일이 자동으로 무효화되지 않습니다.
 
 그러면 `.stat` 파일 무효화가 사용되지 않고 지정된 파일에 대해 TTL 만료만 활성화됩니다.
 
@@ -1418,7 +1418,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 >
 >이 기능은 Dispatcher 버전 **4.1.11** 이상에서 사용할 수 있습니다.
 
-## 로드 밸런싱 구성 - /statistics {#configuring-load-balancing-statistics}
+## 로드 밸런싱 구성 - `/statistics` {#configuring-load-balancing-statistics}
 
 `/statistics` 섹션은 Dispatcher가 각 렌더링의 응답성을 평가하는 파일 범주를 정의합니다. Dispatcher는 점수를 사용하여 요청을 보낼 렌더링을 결정합니다.
 
@@ -1431,7 +1431,7 @@ Dispatcher는 최대 8개의 통계 범주를 지원합니다. 8개 이상의 �
 
 **렌더링 선택**
 
-Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘을 사용하여 렌더링을 선택합니다.
+AEM Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘을 사용하여 렌더링을 선택합니다.
 
 1. 요청에 `renderid` 쿠키의 렌더링 이름이 포함된 경우 Dispatcher는 해당 렌더링을 사용합니다.
 1. 요청에 `renderid` 쿠키가 포함되지 않은 경우 Dispatcher는 렌더링 통계를 비교합니다.
@@ -1455,7 +1455,7 @@ Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘�
 
 범주 `name`은 팜에 고유해야 합니다. `pattern`은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
 
-URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
+URI의 범주를 결정하기 위해 AEM Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
 
 예를 들어 Dispatcher의 기본 `dispatcher.any` 파일은 HTML 범주와 기타 범주를 정의합니다. HTML 범주가 보다 구체적이므로 먼저 표시됩니다.
 
@@ -1488,7 +1488,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 
 `/unavailablePenalty` 속성은 렌더링 연결이 실패할 때 렌더링 통계에 적용되는 시간(10분의 1초)을 설정합니다. Dispatcher는 요청된 URI와 일치하는 통계 범주에 시간을 추가합니다.
 
-예를 들어 AEM이 실행 중이 아니거나(수신 대기 중이 아님) 네트워크 관련 문제로 인해 지정된 호스트 이름/포트에 대한 TCP/IP 연결을 설정할 수 없을 때 패널티가 적용됩니다.
+예를 들어 지정된 호스트 이름/포트에 대한 TCP/IP 연결을 설정할 수 없을 때 패널티가 적용됩니다. 그 이유는 AEM이 실행 중이 아니거나(수신 대기 중이 아님) 네트워크 관련 문제 때문입니다.
 
 `/unavailablePenalty` 속성은 `/farm` 섹션의 직계 하위 항목(`/statistics` 섹션의 형제)입니다.
 
@@ -1498,7 +1498,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 /unavailablePenalty "1"
 ```
 
-## 고정 연결 폴더 식별 - /stickyConnectionsFor {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
+## 고정 연결 폴더 식별 - `/stickyConnectionsFor` {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 `/stickyConnectionsFor` 속성은 고정 문서가 포함된 한 폴더를 정의합니다. 이 속성은 URL을 사용하여 액세스됩니다. Dispatcher는 이 폴더에 있는 단일 사용자의 모든 요청을 동일한 렌더링 인스턴스로 보냅니다. 고정 연결은 세션 데이터가 존재하는지 확인하고 모든 문서에 대해 일관성을 유지합니다. 이 메커니즘은 `renderid` 쿠키를 사용합니다.
 
@@ -1548,9 +1548,9 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 
 ### 페이지 다시 시도 지연 시간 지정 {#specifying-the-page-retry-delay}
 
-`/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
+`/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 AEM Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
 
-Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값이 적절합니다.
+Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값은 보통 적절합니다.
 
 ```xml
 /retryDelay "1"
@@ -1560,7 +1560,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 
 `/numberOfRetries` 속성은 Dispatcher가 렌더링으로 수행하는 최대 연결 시도 횟수를 설정합니다. Dispatcher가 이 다시 시도 횟수 후에 렌더링에 성공적으로 연결할 수 없으면 Dispatcher는 실패한 응답을 반환합니다.
 
-각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 Dispatcher가 연결을 시도하는 최대 횟수는 (`/numberOfRetries`) x (렌더링 수)입니다.
+각 회차마다 AEM Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 AEM Dispatcher가 연결을 시도하는 최대 횟수는 ( )입니다. `/numberOfRetries`) x (렌더링 수)
 
 값이 명시적으로 정의되지 않은 경우 기본값은 `5`입니다.
 
@@ -1573,9 +1573,9 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 원본 요청이 실패할 때 다른 렌더링으로 요청을 다시 보내려면 Dispatcher 팜에서 장애 조치 메커니즘을 활성화합니다. 장애 조치가 활성화된 경우 Dispatcher는 다음과 같은 동작을 합니다.
 
 * 렌더링에 대한 요청이 HTTP 상태 503(UNAVAILABLE)을 반환하는 경우 Dispatcher가 요청을 다른 렌더링으로 보냅니다.
-* 렌더링에 대한 요청이 HTTP 상태 50x(503 제외)를 반환하는 경우 Dispatcher가 `health_check` 속성에 대해 구성된 페이지에 대한 요청을 보냅니다.
+* 렌더링에 대한 요청이 HTTP 상태 50x(503 제외)를 반환하는 경우 Dispatcher가 다음에 대해 구성된 페이지에 대한 요청을 보냅니다. `health_check` 속성.
    * 상태 검사가 500(INTERNAL_SERVER_ERROR)을 반환하는 경우 Dispatcher가 원본 요청을 다른 렌더링으로 보냅니다.
-   * 상태 검사가 HTTP 상태 200을 반환하는 경우 Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
+   * 상태 검사가 HTTP 상태 200을 반환하는 경우 AEM Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
 
 장애 조치를 활성화하려면 팜(또는 웹 사이트)에 다음 행을 추가합니다.
 
@@ -1587,7 +1587,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 >
 >본문이 포함된 HTTP 요청을 다시 시도하려면 Dispatcher는 실제 콘텐츠 스풀링하기 전에 `Expect: 100-continue` 요청 헤더를 렌더링으로 보냅니다. CQSE가 있는 CQ 5.5는 즉시 100(CONTINUE) 또는 오류 코드로 응답합니다. 다른 서블릿 컨테이너도 이 기능을 지원합니다.
 
-## 중단 오류 무시 - /ignoreEINTR {#ignoring-interruption-errors-ignoreeintr}
+## 중단 오류 무시 - `/ignoreEINTR` {#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1609,7 +1609,7 @@ read more data
 }
 ```
 
-이러한 메시지는 “`read more data`” 섹션에서 `EINTR`이 발생할 때 생성될 수 있으며 데이터가 수신되기 전에 신호를 수신하여 발생합니다.
+이러한 메시지는 다음과 같은 경우에 생성될 수 있습니다. `EINTR` 다음에서 발생 `read more data` 섹션. 그리고 데이터가 수신되기 전에 신호를 수신한 것이 원인입니다.
 
 이러한 인터럽트를 무시하려면 `dispatcher.any`에 다음 매개변수를 추가할 수 있습니다(`/farms`앞에).
 
@@ -1617,15 +1617,15 @@ read more data
 
 `/ignoreEINTR`을 `"1"`로 설정하면 Dispatcher가 전체 응답을 읽을 때까지 계속해서 데이터 읽기를 시도합니다. 기본값은 `0`이며 옵션을 비활성화합니다.
 
-## glob 속성에 대한 패턴 디자인 {#designing-patterns-for-glob-properties}
+## Glob 속성에 대한 패턴 디자인 {#designing-patterns-for-glob-properties}
 
-Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언트 요청에 대한 선택 기준으로 사용할 수 있습니다. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
+Dispatcher 구성 파일의 여러 섹션에서는 `glob` 클라이언트 요청에 대한 선택 기준으로서의 속성. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
 
 `glob` 값은 패턴을 정의하는 와일드카드 문자와 영숫자를 포함할 수 있습니다.
 
 | 와일드카드 문자 | 설명 | 예 |
 |--- |--- |--- |
-| `*` | 문자열의 0개 이상 연속 문자 인스턴스와 일치합니다. 최종 일치 문자는 다음 상황 중 하나에 의해 결정됩니다. <br/>문자열의 문자가 패턴의 다음 문자와 일치하며 패턴 문자는 다음과 같은 특성을 갖습니다.<br/><ul><li>*가 아님</li><li>?가 아님</li><li>리터럴 문자(공백 포함) 또는 문자 클래스.</li><li>패턴의 끝에 도달했습니다.</li></ul>문자 클래스 내에서 문자는 문자 그대로 해석됩니다. | `*/geo*` `/content/geometrixx` 노드 및 `/content/geometrixx-outdoors` 노드 아래의 모든 페이지와 일치합니다. 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>노드 아래의 모든 페이지와 일치합니다. `/content/geometrixx-outdoors` 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
+| `*` | 문자열의 0개 이상 연속 문자 인스턴스와 일치합니다. 다음 상황 중 하나에 따라 최종 일치 문자가 결정됩니다. <br/>문자열의 문자가 패턴의 다음 문자와 일치하고 패턴 문자는 다음과 같은 특성을 갖습니다.<br/><ul><li>아님 `*`</li><li>아님 `?`</li><li>리터럴 문자(공백 포함) 또는 문자 클래스.</li><li>패턴의 끝에 도달했습니다.</li></ul>문자 클래스 내에서 문자는 문자 그대로 해석됩니다. | `*/geo*` `/content/geometrixx` 노드 및 `/content/geometrixx-outdoors` 노드 아래의 모든 페이지와 일치합니다. 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>노드 아래의 모든 페이지와 일치합니다. `/content/geometrixx-outdoors` 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 모든 단일 문자와 일치합니다. 문자 클래스 외부에서 사용합니다. 문자 클래스 내에서 이 문자는 문자 그대로 해석됩니다. | `*outdoors/??/*`<br/> geometrixx-outdoors 사이트의 모든 언어 페이지와 일치합니다. 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 요청은 glob 패턴과 일치하지 않습니다. <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
 | `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되어 있지 않으면 패턴이 일치 항목을 생성하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 문자 범위를 나타냅니다. 문자 클래스에서 사용합니다. 문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[m-p]men.html*` 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
@@ -1727,16 +1727,16 @@ The following table describes the wildcard characters.
 
 ## 로깅 {#logging}
 
-웹 서버 구성에서 다음과 같은 항목을 설정할 수 있습니다.
+웹 서버 구성에서 다음을 설정할 수 있습니다.
 
 * Dispatcher 로그 파일의 위치입니다.
 * 로그 수준.
 
 자세한 내용은 웹 서버 설명서 및 Dispatcher 인스턴스의 추가 정보 파일을 참조하십시오.
 
-**Apache 회전된/파이프된 로그**
+**Apache 회전된 또는 파이프된 로그**
 
-**Apache** 웹 서버를 사용하는 경우 회전된 로그나 파이프된 로그 또는 두 가지 모두에 대한 표준 기능을 사용할 수 있습니다. 예를 들어 파이프된 로그를 사용하는 경우는 다음과 같습니다.
+을 사용하는 경우 **Apache** 웹 서버에서는 로그 회전, 파이프된 로그 또는 두 가지 모두에 표준 기능을 사용할 수 있습니다. 예를 들어 파이프된 로그를 사용하는 경우는 다음과 같습니다.
 
 `DispatcherLog "| /usr/apache/bin/rotatelogs logs/dispatcher.log%Y%m%d 604800"`
 
@@ -1745,7 +1745,7 @@ The following table describes the wildcard characters.
 * Dispatcher 로그 파일, 확장 기능에 타임스탬프가 있음(`logs/dispatcher.log%Y%m%d`).
 * 매주(60 x 60 x 24 x 7 = 604,800초).
 
-로그 회전 및 파이프된 로그에 대한 Apache 웹 서버 문서를 참조하십시오. 예: [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
+로그 회전 및 파이프된 로그에 대한 Apache 웹 서버 설명서를 참조하십시오. 예: [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
 
 >[!NOTE]
 >
@@ -1780,7 +1780,7 @@ The following table describes the wildcard characters.
 [Thu Mar 03 16:05:38 2016] [T] [17183] request.headers[Server-Agent] = "Communique-Dispatcher"
 ```
 
-그리고 차단 규칙과 일치하는 파일이 요청될 때 이벤트가 기록됩니다.
+그리고 차단 규칙과 일치하는 파일이 요청되면 이벤트가 기록됩니다.
 
 ```xml
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
@@ -1849,38 +1849,38 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 
 다음은 `X-Dispatcher-Info`가 반환하는 응답 헤더가 포함된 목록입니다.
 
-* **캐시됨**\
+* **대상 파일이 캐시됨**\
   대상 파일이 캐시에 포함되어 있고 Dispatcher가 해당 파일이 전달하는 데 유효하다고 결정했습니다.
 * **캐싱**\
   대상 파일이 캐시에 포함되어 있지 않고 Dispatcher가 해당 파일이 출력을 캐시하고 전달하는 데 유효하다고 결정했습니다.
-* **캐싱: stat 파일이 최신입니다**
-대상 파일이 캐시에 포함되어 있지만 최신 stat 파일에 의해 무효화됩니다. Dispatcher는 대상 파일을 삭제하고 출력에서 다시 생성하여 전달합니다.
-* **캐시 불가능: 문서 루트 없음**
-팜의 구성에 문서 루트가 포함되어 있지 않습니다(구성 요소 `cache.docroot`).
+* **캐싱: stat 파일이 최신입니다.**
+대상 파일이 캐시에 포함되어 있습니다. 그러나 최신 통계 파일이 있으면 무효화할 수 있습니다. Dispatcher가 대상 파일을 삭제하고 출력에서 다시 생성하여 전달합니다.
+* **캐시 불가능: 문서 루트가 존재하지 않습니다.**
+팜의 구성에 문서 루트(구성 요소)가 없습니다. `cache.docroot`).
 * **캐시 불가능: 캐시 파일 경로가 너무 깁니다**\
   대상 파일(문서 루트와 URL 파일의 연결)이 시스템에서 가능한 최장 파일 이름을 초과합니다.
 * **캐시 불가능: 임시 파일 경로가 너무 깁니다**\
   임시 파일 이름 템플릿이 시스템에서 가능한 최장 파일 이름을 초과합니다. Dispatcher는 캐시된 파일을 실제로 만들거나 덮어쓰기 전에 먼저 임시 파일을 만듭니다. 임시 파일 이름은 `_YYYYXXXXXX` 문자가 추가된 대상 파일 이름이며, 여기서 `Y`와 `X`는 고유 이름을 만들기 위해 대체됩니다.
-* **캐시 불가능: 요청 URL에 확장자가 없습니다**\
+* **캐시 불가능: 요청 URL에 확장명이 없습니다**\
   요청 URL에 확장자가 없거나 파일 확장자 뒤에 경로가 있습니다(예: `/test.html/a/path`).
-* **캐시 불가능: 요청이 GET 또는 HEAD가 아닙니다**
-HTTP 메서드가 GET도 HEAD도 아닙니다. Dispatcher는 출력에 캐시되어서는 안 되는 동적 데이터가 포함될 것이라고 가정합니다.
+* **캐시 불가능: GET 또는 HEAD 요청이어야 합니다.**
+HTTP 메서드는 GET 또는 HEAD이 아닙니다. Dispatcher는 출력에 캐시되어서는 안 되는 동적 데이터가 포함될 것이라고 가정합니다.
 * **캐시 불가능: 요청에 쿼리 문자열이 포함되었습니다**\
   요청에 쿼리 문자열이 포함되었습니다. Dispatcher는 출력이 제공된 쿼리 문자열에 따라 달라지므로 캐시하지 않는다고 가정합니다.
-* **캐시 불가능: 세션 관리자가 인증하지 않았습니다**\
-  팜의 캐시는 세션 관리자가 관리하며(구성에 `sessionmanagement` 노드가 포함됨) 요청에 적절한 인증 정보가 포함되어 있지 않습니다.
+* **캐시 불가능: 세션 관리자가 인증해야 합니다.**\
+  세션 관리자(구성에는 `sessionmanagement` node)가 팜의 캐시를 관리하며 요청에 적절한 인증 정보가 포함되어 있지 않습니다.
 * **캐시 불가능: 요청에 권한 부여가 포함되어 있습니다**\
   팜이 출력을 캐시할 수 없으며(`allowAuthorized 0`) 요청에 인증 정보가 포함되어 있습니다.
 * **캐시 불가능: 대상이 디렉터리입니다**\
   대상이 디렉터리입니다. 이 위치는 URL과 일부 하위 URL이 모두 캐시 가능한 출력을 포함하는 일부 개념 오류를 가리킬 수 있습니다. 예를 들어 `/test.html/a/file.ext`에 대한 요청이 먼저 시작되고 캐시 가능한 출력이 포함된 경우 Dispatcher는 후속 요청의 출력을 `/test.html`에 캐시할 수 있습니다.
 * **캐시 불가능: 요청 URL 뒤에 슬래시가 있습니다**\
   요청 URL 뒤에 슬래시가 있습니다.
-* **캐시 불가능: 캐시 규칙에 해당하지 않는 요청 URL**\
+* **캐시 불가능: 캐시 규칙에 요청 URL이 누락되었습니다**\
   팜의 캐시 규칙이 일부 요청 URL의 출력 캐싱을 명시적으로 거부합니다.
 * **캐시 불가능: 권한 부여 검사기가 액세스를 거부했습니다**\
   팜의 권한 부여 검사기가 캐시된 파일에 대한 액세스를 거부했습니다.
-* **캐시 불가능: 세션이 유효하지 않습니다**
-팜의 캐시는 세션 관리자가 관리하며(구성에 `sessionmanagement` 노드가 포함) 사용자의 세션이 유효하지 않거나 더 이상 유효하지 않습니다.
+* **캐시 불가능: 세션이 잘못되었습니다.**
+세션 관리자(구성에 `sessionmanagement` node)가 팜의 캐시를 관리하며 사용자의 세션이 유효하지 않거나 더 이상 유효하지 않습니다.
 * **캐시할 수 없음: 응답에`no_cache`** 포함
 원격 서버가 `Dispatcher: no_cache` 헤더를 반환하여 Dispatcher가 출력을 캐시하는 것을 금지했습니다.
 * **캐시 불가능: 응답 콘텐츠 길이가 0임**

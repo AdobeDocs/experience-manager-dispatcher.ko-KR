@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '78'
-ht-degree: 100%
+source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+workflow-type: tm+mt
+source-wordcount: '83'
+ht-degree: 73%
 
 ---
 
@@ -26,13 +26,13 @@ ht-degree: 100%
    + [Dispatcher 보안 검사 목록](security-checklist.md)
    + [AEM Dispatcher 릴리스 정보](release-notes.md)
 + 구성 {#configuring}
-   + [Dispatcher 구성](dispatcher-configuration.md)
+   + [AEM Dispatcher 구성](dispatcher-configuration.md)
    + [AEM에서 캐시된 페이지 무효화](page-invalidate.md)
    + [캐시 성능을 위한 웹 사이트 최적화](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [보안 콘텐츠 캐싱](permissions-cache.md)
-   + [여러 도메인에 Dispatcher 사용](dispatcher-domains.md)
-   + [Dispatcher에 SSL 사용](dispatcher-ssl.md)
-   + [CSRF 공격을 방지하도록 Dispatcher 구성](configuring-dispatcher-to-prevent-csrf.md)
+   + [여러 도메인에 AEM Dispatcher 사용](dispatcher-domains.md)
+   + [AEM Dispatcher에 SSL 사용](dispatcher-ssl.md)
+   + [CSRF 공격을 방지하도록 AEM Dispatcher 구성](configuring-dispatcher-to-prevent-csrf.md)
 + 문제 해결 {#troubleshooting}
    + [Dispatcher 문제 해결](dispatcher-troubleshooting.md)
    + [Dispatcher 주요 문제 FAQ](dispatcher-faq.md)

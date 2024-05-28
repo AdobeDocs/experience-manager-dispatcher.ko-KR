@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '538'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '539'
+ht-degree: 90%
 
 ---
 
@@ -20,9 +20,9 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM과 독립적이지만 Dispatcher 설명서는 AEM 설명서에 임베드되어 있습니다. 항상 최신 버전의 AEM 설명서에 임베드된 Dispatcher 설명서를 사용하십시오.
+>Dispatcher 버전은 AEM과 독립적입니다. 그러나 Dispatcher 설명서는 AEM 설명서에 포함되어 있습니다. 항상 최신 버전의 AEM 설명서에 임베드된 Dispatcher 설명서를 사용하십시오.
 >
->이전 버전의 AEM에 대한 설명서에 임베드된 Dispatcher 설명서에 대한 링크를 따라간 경우 이 페이지로 리디렉션되었을 수 있습니다.
+>Dispatcher 설명서에 대한 링크를 따라간 경우 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 포함되어 있습니다.
 
 >[!NOTE]
 >
@@ -78,7 +78,7 @@ Dispatcher를 통해 AEM 작성자 인스턴스에 액세스할 때 워크플로
 
 1. **예**&#x200B;를 클릭하여 확인합니다.
 1. 다음과 같은 내용을 보여 주는 오류 메시지 상자가 나타납니다.\
-   &quot; `ERROR 'Could not delete workflow model!!`&quot;.
+   `ERROR 'Could not delete workflow model!!`
 
 **해결**
 
