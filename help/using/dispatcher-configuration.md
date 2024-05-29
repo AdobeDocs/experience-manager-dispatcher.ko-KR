@@ -2,9 +2,9 @@
 title: AEM Dispatcher 구성
 description: AEM Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
 workflow-type: tm+mt
-source-wordcount: '8897'
+source-wordcount: '8898'
 ht-degree: 82%
 
 ---
@@ -1229,7 +1229,7 @@ Adobe Analytics와의 AEM 통합은 웹 사이트의 `analytics.sitecatalyst.js`
 
 이 메서드는 몇 가지 다른 사용 사례를 처리하는 데 사용할 수 있습니다. 예를 들어 다른 애플리케이션별 캐시 무효화하거나 페이지의 외재화 URL 및 docroot의 위치가 콘텐츠 경로와 일치하지 않는 사례를 처리하는 데 사용할 수 있습니다.
 
-아래 예제 스크립트는 각 무효화 요청을 파일에 기록합니다.
+다음 예제 스크립트는 무효화된 각 요청을 파일에 기록합니다.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
