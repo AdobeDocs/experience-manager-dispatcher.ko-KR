@@ -1,10 +1,10 @@
 ---
 title: AEM Dispatcher 구성
-description: AEM Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
+description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6에 대한 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '8898'
+source-wordcount: '8876'
 ht-degree: 82%
 
 ---
@@ -25,7 +25,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 설치 중에 이 파일의 이름과 위치를 변경할 수 있지만 기본적으로 Dispatcher 구성은 `dispatcher.any` 텍스트 파일에 저장됩니다.
 
-구성 파일에는 AEM Dispatcher의 동작을 제어하는 일련의 단일 값 또는 다중 값 속성이 포함되어 있습니다.
+구성 파일에는 Dispatcher의 동작을 제어하는 일련의 단일 값 또는 다중 값 속성이 포함되어 있습니다.
 
 * 속성 이름 앞에는 슬래시 `/`가 붙습니다.
 * 다중 값 속성은 중괄호 `{ }`를 사용하여 하위 항목을 묶습니다.
@@ -152,7 +152,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 `/farms` 속성은 각 세트가 다른 웹 사이트 또는 URL과 연결된 하나 이상의 Dispatcher 동작 세트를 정의합니다. `/farms` 속성에는 단일 팜 또는 여러 팜이 포함될 수 있습니다.
 
-* AEM Dispatcher가 모든 웹 페이지 또는 웹 사이트를 동일한 방식으로 처리하도록 하려면 단일 팜을 사용합니다.
+* Dispatcher가 모든 웹 페이지 또는 웹 사이트를 동일한 방식으로 처리하도록 하려면 단일 팜을 사용합니다.
 * 웹 사이트 또는 웹 사이트의 다른 영역에 다른 Dispatcher 동작이 필요한 경우 여러 팜을 만듭니다.
 
 `/farms` 속성은 구성 구조의 최상위 속성입니다. 팜을 정의하려면 `/farms` 속성에 하위 속성을 추가하고 Dispatcher 인스턴스 내에서 팜을 고유하게 식별하는 속성 이름을 사용합니다.
@@ -197,7 +197,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | 이 팜의 가상 호스트입니다. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | 세션 관리 및 인증을 지원합니다. |
 | [/renders](#defining-page-renderers-renders) | 렌더링된 페이지를 제공하는 서버(일반적으로 AEM 게시 인스턴스)입니다. |
-| [/filter](#configuring-access-to-content-filter) | AEM Dispatcher가 액세스할 수 있는 URL을 정의합니다. |
+| [/filter](#configuring-access-to-content-filter) | Dispatcher가 액세스할 수 있는 URL을 정의합니다. |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | vanity URL에 대한 액세스를 구성합니다. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | 신디케이션 요청의 전달을 지원합니다. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | 캐싱 동작을 구성합니다. |
@@ -259,7 +259,7 @@ Comment Type: draft
 
 `/clientheaders` 속성은 Dispatcher가 클라이언트 HTTP 요청에서 렌더러(AEM 인스턴스)로 전달하는 HTTP 헤더 목록을 정의합니다.
 
-기본적으로 AEM Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 추가 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
+기본적으로 Dispatcher는 표준 HTTP 헤더를 AEM 인스턴스로 전달합니다. 경우에 따라 추가 헤더를 전달하거나 특정 헤더를 제거할 수 있습니다.
 
 * AEM 인스턴스가 HTTP 요청에서 예상하는 사용자 정의 헤더와 같은 헤더를 추가합니다.
 * 인증 헤더와 같이 웹 서버에만 관련된 헤더를 제거합니다.
@@ -455,7 +455,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 ## 페이지 렌더러 정의 {#defining-page-renderers-renders}
 
-다음 `/renders` 속성은 AEM Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
+다음 `/renders` 속성은 Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
 
 ```xml
 /renders
@@ -618,7 +618,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 
 #### 필터 예: 모두 거부 {#example-filter-deny-all}
 
-다음 예제 필터 섹션은 AEM Dispatcher가 모든 파일에 대한 요청을 거부하도록 합니다. 모든 파일에 대한 액세스를 거부한 다음 특정 영역에 대한 액세스를 허용합니다.
+다음 예제 필터 섹션은 Dispatcher가 모든 파일에 대한 요청을 거부하도록 합니다. 모든 파일에 대한 액세스를 거부한 다음 특정 영역에 대한 액세스를 허용합니다.
 
 ```xml
 /0001  { /type "deny" /url "*"  }
@@ -695,7 +695,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 
 ### 예 `/filter` 섹션 {#example-filter-section}
 
-AEM Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한하십시오. 다음 예제에서는 외부 방문자에게 최소한의 액세스 권한을 제공합니다.
+Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한합니다. 다음 예제에서는 외부 방문자에게 최소한의 액세스 권한을 제공합니다.
 
 * `/content`
 * 디자인 및 클라이언트 라이브러리와 같은 기타 콘텐츠. 예를 들면 다음과 같습니다.
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-AEM 페이지에 대해 구성된 vanity URL에 액세스할 수 있도록 AEM Dispatcher를 구성합니다.
+AEM 페이지에 대해 구성된 vanity URL에 액세스할 수 있도록 Dispatcher를 구성합니다.
 
 vanity URL에 대한 액세스가 활성화되면 Dispatcher는 렌더링 인스턴스에서 실행되는 서비스를 주기적으로 호출하여 vanity URL 목록을 가져옵니다. Dispatcher는 이 목록을 로컬 파일에 저장합니다. `/filter` 섹션의 필터로 인해 페이지 요청이 거부되면 Dispatcher는 vanity URL 목록을 참조합니다. 거부된 URL이 목록에 있는 경우 Dispatcher는 vanity URL에 대한 액세스를 허용합니다.
 
@@ -932,7 +932,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 * `/url`: 렌더링 인스턴스에서 실행되는 vanity URL 서비스의 경로입니다. 이 속성의 값은 `"/libs/granite/dispatcher/content/vanityUrls.html"`이어야 합니다.
 
-* `/file`: Dispatcher가 vanity URL 목록을 저장하는 로컬 파일의 경로입니다. AEM Dispatcher에 이 파일에 대한 쓰기 권한이 있는지 확인하십시오.
+* `/file`: Dispatcher가 vanity URL 목록을 저장하는 로컬 파일의 경로입니다. Dispatcher에 이 파일에 대한 쓰기 권한이 있는지 확인하십시오.
 * `/delay`:(초) vanity URL 서비스 호출 사이의 시간입니다.
 
 >[!NOTE]
@@ -1003,7 +1003,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 >[!NOTE]
 >
->AEM Dispatcher와 웹 서버가 동일한 파일을 처리할 수 있도록 값은 웹 서버의 문서 루트와 동일한 경로여야 합니다.\
+>Dispatcher와 웹 서버가 동일한 파일을 처리할 수 있도록 값은 웹 서버의 문서 루트와 동일한 경로여야 합니다.\
 >웹 서버는 Dispatcher 캐시 파일이 사용될 때 올바른 상태 코드를 전달하는 역할을 하므로 찾을 수 있는가 하는 것도 중요합니다.
 
 여러 팜을 사용하는 경우 각 팜은 서로 다른 문서 루트를 사용해야 합니다.
@@ -1012,7 +1012,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 `/statfile` 속성은 statfile로 사용할 파일을 식별합니다. Dispatcher는 이 파일을 사용하여 최신 콘텐츠 업데이트 시간을 등록합니다. 웹 서버의 어떤 파일이든 statfile일 수 있습니다.
 
-statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 AEM Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat`이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
+statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispatcher가 타임스탬프를 업데이트합니다. 기본 statfile의 이름은 `.stat`이며 docroot에 저장됩니다. Dispatcher는 statfile에 대한 액세스를 차단합니다.
 
 >[!NOTE]
 >
@@ -1020,9 +1020,9 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 AEM Di
 
 ### 오류 발생 시 오래된 문서 제공 {#serving-stale-documents-when-errors-occur}
 
-`/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 AEM Dispatcher는 캐시된 콘텐츠를 삭제합니다. 이 작업은 다음에 요청할 때 수행됩니다.
+`/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 Dispatcher는 캐시된 콘텐츠를 삭제합니다. 이 작업은 다음에 요청할 때 수행됩니다.
 
-If `/serveStaleOnError` 이(가) (으)로 설정됨 `"1"`, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 경우. AEM의 5xx 응답 또는 연결 시간 제한으로 인해 AEM Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답합니다.
+If `/serveStaleOnError` 이(가) (으)로 설정됨 `"1"`, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 경우. AEM의 5xx 응답 또는 연결 시간 제한으로 인해 Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답하게 됩니다.
 
 ### 인증 사용 시 캐싱 {#caching-when-authentication-is-used}
 
@@ -1349,7 +1349,7 @@ Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#design
 
 >[!NOTE]
 >
->AEM Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음을 수행하십시오.
+>Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음을 수행하십시오.
 >
 >* `/cache/headers`섹션에 헤더 이름을 추가합니다.
 >* Dispatcher 관련 섹션에 다음 [Apache 지시문](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)을 추가합니다.
@@ -1389,7 +1389,7 @@ Glob 속성에 대한 정보는 [Glob 속성에 대한 패턴 디자인](#design
 Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값만을 기반으로 했습니다. Dispatcher 버전 4.3.5에서는 설정된 TTL **및** Dispatcher 캐시 무효화 규칙이 모두 고려됩니다. 따라서 캐시된 파일의 경우:
 
 1. `/enableTTL`을 1로 설정하면 파일 만료가 확인됩니다. 설정된 TTL에 따라 파일이 만료된 경우 다른 검사는 수행되지 않으며 캐시된 파일이 백엔드에서 다시 요청됩니다.
-2. 파일이 만료되지 않은 경우 `/enableTTL` 가 구성되지 않으면 다음과 같은 표준 캐시 무효화 규칙이 적용됩니다. [`/statfileslevel`](#invalidating-files-by-folder-level) 및 [`/invalidate`](#automatically-invalidating-cached-files) 설정. 이 흐름은 AEM Dispatcher가 TTL이 만료되지 않은 파일을 무효화할 수 있음을 의미합니다.
+2. 파일이 만료되지 않은 경우 `/enableTTL` 가 구성되지 않으면 다음과 같은 표준 캐시 무효화 규칙이 적용됩니다. [`/statfileslevel`](#invalidating-files-by-folder-level) 및 [`/invalidate`](#automatically-invalidating-cached-files) 설정. 이 흐름은 Dispatcher가 TTL이 만료되지 않은 파일을 무효화할 수 있음을 의미합니다.
 
 이 새로운 구현은 파일의 TTL이 더 긴 사용 사례를 지원합니다(예: CDN에서). 그러나 TTL이 만료되지 않은 경우에도 이러한 파일은 무효화될 수 있습니다. Dispatcher의 캐시 적중률보다 콘텐츠 신선도가 선호됩니다.
 
@@ -1431,7 +1431,7 @@ Dispatcher는 최대 8개의 통계 범주를 지원합니다. 8개 이상의 �
 
 **렌더링 선택**
 
-AEM Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘을 사용하여 렌더링을 선택합니다.
+Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘을 사용하여 렌더링을 선택합니다.
 
 1. 요청에 `renderid` 쿠키의 렌더링 이름이 포함된 경우 Dispatcher는 해당 렌더링을 사용합니다.
 1. 요청에 `renderid` 쿠키가 포함되지 않은 경우 Dispatcher는 렌더링 통계를 비교합니다.
@@ -1455,7 +1455,7 @@ AEM Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리
 
 범주 `name`은 팜에 고유해야 합니다. `pattern`은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
 
-URI의 범주를 결정하기 위해 AEM Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
+URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
 
 예를 들어 Dispatcher의 기본 `dispatcher.any` 파일은 HTML 범주와 기타 범주를 정의합니다. HTML 범주가 보다 구체적이므로 먼저 표시됩니다.
 
@@ -1548,7 +1548,7 @@ URI의 범주를 결정하기 위해 AEM Dispatcher는 일치하는 항목이 �
 
 ### 페이지 다시 시도 지연 시간 지정 {#specifying-the-page-retry-delay}
 
-`/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 AEM Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
+`/retryDelay` 속성은 Dispatcher가 팜 렌더링과의 연결 시도 사이에 대기하는 시간(초)을 설정합니다. 각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다.
 
 Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 값을 사용합니다. 기본값은 보통 적절합니다.
 
@@ -1560,7 +1560,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 
 `/numberOfRetries` 속성은 Dispatcher가 렌더링으로 수행하는 최대 연결 시도 횟수를 설정합니다. Dispatcher가 이 다시 시도 횟수 후에 렌더링에 성공적으로 연결할 수 없으면 Dispatcher는 실패한 응답을 반환합니다.
 
-각 회차마다 AEM Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 AEM Dispatcher가 연결을 시도하는 최대 횟수는 ( )입니다. `/numberOfRetries`) x (렌더링 수)
+각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 Dispatcher가 연결을 시도하는 최대 횟수는 ( )입니다. `/numberOfRetries`) x (렌더링 수)
 
 값이 명시적으로 정의되지 않은 경우 기본값은 `5`입니다.
 
@@ -1575,7 +1575,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 * 렌더링에 대한 요청이 HTTP 상태 503(UNAVAILABLE)을 반환하는 경우 Dispatcher가 요청을 다른 렌더링으로 보냅니다.
 * 렌더링에 대한 요청이 HTTP 상태 50x(503 제외)를 반환하는 경우 Dispatcher가 다음에 대해 구성된 페이지에 대한 요청을 보냅니다. `health_check` 속성.
    * 상태 검사가 500(INTERNAL_SERVER_ERROR)을 반환하는 경우 Dispatcher가 원본 요청을 다른 렌더링으로 보냅니다.
-   * 상태 검사가 HTTP 상태 200을 반환하는 경우 AEM Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
+   * 상태 검사가 HTTP 상태 200을 반환하는 경우 Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
 
 장애 조치를 활성화하려면 팜(또는 웹 사이트)에 다음 행을 추가합니다.
 

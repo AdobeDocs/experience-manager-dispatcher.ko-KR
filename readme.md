@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '72'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 88%
 
 ---
-# Adobe Experience Manager Dispatcher 설명서
+# Adobe Experience Manager 패턴 감지
 
-이는 Adobe Experience Manager Dispatcher 설명서용 저장소입니다.
+Adobe Experience Manager 패턴 감지용 저장소입니다.
 
 이 설명서에 대한 귀하의 기여를 환영합니다. 다음 리소스를 참조하십시오.
 

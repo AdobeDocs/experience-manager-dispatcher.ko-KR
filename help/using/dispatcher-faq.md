@@ -2,10 +2,10 @@
 title: Dispatcher의 주요 문제
 description: Adobe Experience Manager Dispatcher의 주요 문제.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1542'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1547'
+ht-degree: 89%
 
 ---
 
@@ -17,7 +17,7 @@ ht-degree: 100%
 
 ### Dispatcher란 무엇입니까?
 
-Dispatcher는 Adobe Experience Manager의 캐싱 및/또는 로드 밸런싱 도구로 빠르고 동적인 웹 저작 환경을 구현하는 데 도움이 됩니다. 캐싱을 위해 Dispatcher는 Apache와 같은 HTTP 서버의 일부로 작동합니다. 가능한 한 많은 정적 웹 사이트 콘텐츠를 저장(또는 “캐싱”)하고 웹 사이트의 레이아웃 엔진에 가능한 한 드물게 액세스합니다. 로드 밸런싱 역할로, Dispatcher는 사용자 요청(로드)을 여러 AEM 인스턴스(렌더링)에 분산합니다.
+Dispatcher는 Adobe Experience Manager의 캐싱, 또는 로드 밸런싱 도구 또는 둘 다로서 빠르고 동적인 웹 작성 환경을 구현하는 데 도움이 됩니다. 캐싱을 위해 Dispatcher는 Apache와 같은 HTTP 서버의 일부로 작동합니다. 가능한 한 많은 정적 웹 사이트 콘텐츠를 저장(또는 &quot;캐싱&quot;)하는 것을 목적으로 합니다. 또한 웹 사이트 엔진의 레이아웃에 가능한 한 자주 액세스하지 않습니다. 로드 밸런싱 역할로, Dispatcher는 사용자 요청(로드)을 여러 AEM 인스턴스(렌더링)에 분산합니다.
 
 캐싱을 위해 Dispatcher 모듈은 정적 콘텐츠를 제공하는 웹 서버의 기능을 사용합니다. Dispatcher는 캐시된 문서를 웹 서버의 문서 루트에 배치합니다.
 
@@ -71,7 +71,7 @@ Dispatcher는 정적 콘텐츠를 제공하는 웹 서버의 기능을 사용합
 
 [고정 연결](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) 기능을 사용하여 사용자의 모든 문서가 동일한 AEM 인스턴스에서 처리되도록 할 수 있습니다. 이 기능은 개인화된 페이지 및 세션 데이터를 사용하는 경우 중요합니다. 데이터는 인스턴스에 저장됩니다. 따라서 동일한 사용자의 후속 요청은 해당 인스턴스로 반환해야 하며 그렇지 않으면 데이터가 손실됩니다.
 
-고정 연결은 요청을 최적화하는 Dispatcher의 기능을 제한하므로 필요한 경우에만 이 접근 방식을 사용해야 합니다. “고정” 문서를 포함하는 폴더를 지정할 수 있으므로 해당 폴더의 모든 문서가 사용자를 위해 동일한 인스턴스에서 처리되도록 할 수 있습니다.
+고정 연결은 요청을 최적화하는 Dispatcher의 기능을 제한하므로 필요한 경우에만 이 접근 방식을 사용해야 합니다. 고정 문서가 포함된 폴더를 지정할 수 있으므로 해당 폴더의 모든 문서가 사용자를 위해 동일한 인스턴스에서 처리되도록 할 수 있습니다.
 
 ### 고정 연결과 캐싱을 함께 사용할 수 있습니까?
 
@@ -120,7 +120,7 @@ en 디렉터리 아래에 `_jcr_content`라는 이름의 모든 디렉터리(존
 
 ### Dispatcher 문제 `jcr:content`가 `jcr%3acontent`로 변경됨
 
-**질문**: 비즈니스는 최근 Dispatcher 수준의 문제에 직면했습니다. CQ 저장소에서 일부 데이터를 가져오는 Ajax 호출 중 하나에 `jcr:content`가 있습니다. `jcr%3acontent`로 인코딩되어 잘못된 결과 집합이 나옵니다.
+**질문**: 비즈니스는 최근 Dispatcher 수준의 문제에 직면했습니다. CQ 저장소에서 일부 데이터를 가져오는 AJAX 호출 중 하나에 `jcr:content` 안에. `jcr%3acontent`로 인코딩되어 잘못된 결과 집합이 나옵니다.
 
 **답변**: `ResourceResolver.map()` 메서드를 사용하여 요청을 받고 Dispatcher의 캐싱 문제를 해결하기 위해 사용될/발행될 “친숙한” URL을 가져옵니다. map() 메서드는 `:` 콜론을 밑줄로 인코딩하고 resolve() 메서드는 이를 다시 SLING JCR 읽기 가능한 포맷으로 디코딩합니다. map() 메서드를 사용하여 Ajax 호출에 사용되는 URL을 생성합니다.
 
@@ -140,12 +140,13 @@ en 디렉터리 아래에 `_jcr_content`라는 이름의 모든 디렉터리(존
 
 ### Dispatcher 캐시에서 DAM 자산을 플러시하는 방법은 무엇입니까?
 
-“체인 복제” 기능을 사용할 수 있습니다. 이 기능이 활성화되면 Dispatcher의 플러시 에이전트는 작성자로부터 복제가 수신될 때 플러시 요청을 보냅니다.
+“체인 복제” 기능을 사용할 수 있습니다. 이 기능을 활성화하면 작성자 인스턴스에서 복제가 수신될 때 Dispatcher의 플러시 에이전트가 플러시 요청을 보냅니다.
 
 활성화하려면
 
 1. 게시에서 플러싱 에이전트를 만들려면 [여기의 단계를 따르십시오](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance).
-1. 각 에이전트의 구성으로 이동하여 **트리거** 탭에서 **수신 시** 확인란을 선택합니다.
+1. 각 에이전트의 구성으로 이동합니다.
+1. 다음에서 **트리거** 탭에서 다음을 확인합니다 **수신 시** 상자.
 
 ## 기타
 

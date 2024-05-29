@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1411'
-ht-degree: 73%
+source-wordcount: '1407'
+ht-degree: 74%
 
 ---
 
@@ -124,11 +124,11 @@ Comment Type: draft
 
 페이지를 활성화하지 않고 Dispatcher 캐시를 무효화(또는 플러시)하려면 Dispatcher에 HTTP 요청을 발행할 수 있습니다. 예를 들어 관리자 또는 다른 애플리케이션이 캐시를 플러시할 수 있도록 하는 AEM 애플리케이션을 만들 수 있습니다.
 
-HTTP 요청으로 인해 AEM Dispatcher가 캐시에서 특정 파일을 삭제합니다. 그런 다음 선택적으로 Dispatcher는 새 복사본으로 캐시를 새로 고칩니다.
+HTTP 요청으로 인해 Dispatcher가 캐시에서 특정 파일을 삭제합니다. 그런 다음 선택적으로 Dispatcher는 새 복사본으로 캐시를 새로 고칩니다.
 
 ### 캐시된 파일 삭제 {#delete-cached-files}
 
-AEM Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐시합니다. 캐시된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
+Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐시합니다. 캐시된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
 
 HTTP 요청의 형식은 다음과 같습니다.
 
@@ -151,7 +151,7 @@ Dispatcher 캐시의 다른 모든 파일(또는 `/statfileslevel` 설정에 따
 
 ### 파일 삭제 및 다시 캐시 {#delete-and-recache-files}
 
-AEM Dispatcher가 캐시된 파일을 삭제하고 즉시 파일을 검색하고 다시 캐시하도록 하는 HTTP 요청을 발행합니다. 웹 사이트가 동일한 페이지에 대한 동시 클라이언트 요청을 수신할 가능성이 있는 경우 파일을 삭제하고 즉시 다시 캐시합니다. 즉시 다시 캐시하면 Dispatcher가 페이지를 한 번만 검색하고 캐시합니다(각 동시 클라이언트 요청에 대해 한 번씩 검색하고 캐시하는 대신).
+Dispatcher가 캐시된 파일을 삭제하고 즉시 파일을 검색하고 다시 캐시하도록 하는 HTTP 요청을 발행합니다. 웹 사이트가 동일한 페이지에 대한 동시 클라이언트 요청을 수신할 가능성이 있는 경우 파일을 삭제하고 즉시 다시 캐시합니다. 즉시 다시 캐시하면 Dispatcher가 페이지를 한 번만 검색하고 캐시합니다(각 동시 클라이언트 요청에 대해 한 번씩 검색하고 캐시하는 대신).
 
 **참고:** 파일 삭제 및 다시 캐시는 게시 인스턴스에서만 수행해야 합니다. 작성자 인스턴스에서 수행할 때 리소스가 게시되기 전에 다시 캐시하려는 시도가 발생하면 경합 상태가 발생합니다.
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 다음 코드는 Dispatcher에 무효화 요청을 보내는 서블릿을 구현합니다. 서블릿은 `handle` 및 `page` 매개변수가 포함된 요청 메시지를 수신합니다. 이러한 매개변수는 각각 `CQ-Handle` 헤더의 값과 다시 캐시할 페이지의 경로를 제공합니다. 서블릿은 값을 사용하여 Dispatcher에 대한 HTTP 요청을 구성합니다.
 
-서블릿이 게시 인스턴스에 배포되면 다음 URL로 인해 AEM Dispatcher가 /content/geometrixx-outdoors/en.html 페이지를 삭제한 다음 새 복사본을 캐시합니다.
+서블릿이 게시 인스턴스에 배포되면 다음 URL로 인해 Dispatcher가 /content/geometrixx-outdoors/en.html 페이지를 삭제한 다음 새 복사본을 캐시합니다.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: d8e224401e5ab041bb297b99a99c71a69ca6deac
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 73%
+source-wordcount: '82'
+ht-degree: 74%
 
 ---
 
@@ -26,7 +26,7 @@ ht-degree: 73%
    + [Dispatcher 보안 검사 목록](security-checklist.md)
    + [AEM Dispatcher 릴리스 정보](release-notes.md)
 + 구성 {#configuring}
-   + [AEM Dispatcher 구성](dispatcher-configuration.md)
+   + [Dispatcher 구성](dispatcher-configuration.md)
    + [AEM에서 캐시된 페이지 무효화](page-invalidate.md)
    + [캐시 성능을 위한 웹 사이트 최적화](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [보안 콘텐츠 캐싱](permissions-cache.md)

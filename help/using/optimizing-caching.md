@@ -9,9 +9,9 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 0189feaf345495ba2f992d91eccf5690ec7581ce
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1129'
+source-wordcount: '1128'
 ht-degree: 81%
 
 ---
@@ -57,7 +57,7 @@ HTTP 요청 헤더는 캐시되지 않으므로 헤더에 페이지 인코딩 �
 
 ## URL 매개변수 방지 {#avoid-url-parameters}
 
-가능하면 캐시하려는 페이지의 URL 매개변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(AEM Dispatcher가 [그에 따라 구성됨](dispatcher-configuration.md#main-pars_title_24)):
+가능하면 캐시하려는 페이지의 URL 매개변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(Dispatcher가 [그에 따라 구성됨](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1

@@ -9,10 +9,10 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '1302'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '1310'
+ht-degree: 89%
 
 ---
 
@@ -121,7 +121,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 * Dispatcher는 렌더링 인스턴스 인증서의 CA가 신뢰할 수 있는지 확인합니다.
 * (선택 사항) Dispatcher는 렌더링 인스턴스의 인증서가 렌더링 인스턴스의 서버 주소와 일치하는지 확인합니다.
 
-상호 SSL을 구성하려면 신뢰할 수 있는 인증 기관(CA)에서 서명한 인증서가 필요합니다. 자체 서명된 인증서는 적절하지 않습니다. 직접 CA 역할을 하거나 서드파티 CA의 서비스를 사용하여 인증서에 서명할 수 있습니다. 상호 SSL을 구성하려면 다음 항목이 필요합니다.
+상호 SSL을 구성하려면 신뢰할 수 있는 인증 기관(CA)으로 서명된 인증서가 필요합니다. 자체 서명된 인증서는 적절하지 않습니다. 직접 CA 역할을 하거나 서드파티 CA의 서비스를 사용하여 인증서에 서명할 수 있습니다. 상호 SSL을 구성하려면 다음 항목이 필요합니다.
 
 * 렌더링 인스턴스 및 Dispatcher에 대한 서명된 인증서
 * CA 인증서 (직접 CA 역할을 하는 경우)
@@ -130,8 +130,8 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 상호 SSL을 구성하도록 다음 단계를 수행합니다.
 
 1. 플랫폼을 위한 최신 버전의 Dispatcher를 [설치](dispatcher-install.md)합니다. SSL을 지원하는 Dispatcher 바이너리를 사용합니다. SSL은 파일 이름에 있습니다(예: `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. Dispatcher 및 렌더링 인스턴스를 위한 [CA 서명 인증서를 생성하거나 획득합니다](dispatcher-ssl.md#main-pars-title-3).
-1. [렌더링 인증서를 포함하는 키 저장소를 생성하고](dispatcher-ssl.md#main-pars-title-6) 렌더링의 HTTP 서비스를 구성합니다.
+1. [CA 서명 인증서 만들기 또는 받기](dispatcher-ssl.md#main-pars-title-3) Dispatcher 및 렌더링 인스턴스
+1. [렌더링 인증서를 포함하는 키 저장소 만들기](dispatcher-ssl.md#main-pars-title-6) 렌더링의 HTTP 서비스를 구성합니다.
 1. 상호 SSL을 위한 [Dispatcher 웹 서버 모듈을 구성합니다](dispatcher-ssl.md#main-pars-title-4).
 
 ### CA 서명 인증서 생성 또는 획득 {#creating-or-obtaining-ca-signed-certificates}
@@ -157,7 +157,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 
 OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 인증서 요청을 생성합니다.
 
-인증서를 만들 때 OpenSSL은 일반 이름 속성을 사용하여 인증서 소유자를 식별합니다. 렌더링 인스턴스의 인증서에 대해 인증서를 수락하도록 Dispatcher를 구성하는 경우 인스턴스 컴퓨터의 호스트 이름을 일반 이름으로 사용합니다. 게시 인스턴스의 호스트 이름과 일치하는 경우에만 이 작업을 수행하십시오. [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 속성을 참조하십시오.
+인증서를 만들 때 OpenSSL은 일반 이름 속성을 사용하여 인증서 소유자를 식별합니다. 렌더링 인스턴스의 인증서에 대해 인증서를 수락하도록 Dispatcher를 구성하는 경우 인스턴스 컴퓨터의 호스트 이름을 일반 이름으로 사용합니다. 이 절차는 게시 인스턴스의 호스트 이름과 일치하는 경우에만 수행합니다. [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) 속성을 참조하십시오.
 
 1. 터미널을 열고 현재 디렉터리를 OpenSSL 라이브러리의 CH.sh 파일이 포함된 디렉터리로 변경합니다.
 1. 다음 명령을 입력하고 메시지가 표시되면 값을 제공합니다. 필요한 경우 게시 인스턴스의 호스트 이름을 일반 이름으로 사용하십시오. 호스트 이름은 렌더링의 IP 주소에 대한 DNS 확인 가능 이름입니다.
@@ -286,7 +286,7 @@ Dispatcher 인증서와 암호화되지 않은 개인 키를 단일 PEM 파일�
 [Dispatcher 모듈 구성](dispatcher-install.md#main-pars-55-35-1022) (`httpd.conf`)에 다음 속성을 추가하십시오.
 
 * `DispatcherCertificateFile`: 공개 인증서와 암호화되지 않은 개인 키가 포함된 Dispatcher 통합 인증서 파일의 경로입니다. 이 파일은 SSL 서버가 Dispatcher 클라이언트 인증서를 요청할 때 사용됩니다.
-* `DispatcherCACertificateFile`: SSL 서버가 루트 기관에서 신뢰하지 않는 CA를 제공하는 경우 사용되는 CA 인증서 파일의 경로입니다.
+* `DispatcherCACertificateFile`: CA 인증서 파일의 경로입니다. SSL 서버가 루트 기관이 신뢰하지 않는 CA를 제공하는 경우 사용됩니다.
 * `DispatcherCheckPeerCN`: 원격 서버 인증서에 대한 호스트 이름 검사를 활성화(`On`) 또는 비활성화(`Off`)할지 여부입니다.
 
 다음 코드는 구성의 예입니다.

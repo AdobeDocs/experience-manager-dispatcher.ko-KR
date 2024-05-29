@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '2918'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '2929'
+ht-degree: 87%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 100%
 >
 >Dispatcher 버전은 AEM과 독립적입니다. AEM 또는 CQ 설명서에 임베드된 Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션될 수 있습니다.
 
-Dispatcher를 사용하여 다음의 조건을 지원하면서 여러 웹 도메인에서 페이지 요청을 처리합니다.
+Dispatcher를 사용하여 다음 조건을 지원하면서 여러 웹 도메인에서 페이지 요청을 처리합니다.
 
 * 두 도메인의 웹 콘텐츠는 단일 AEM 저장소에 저장됩니다.
 * Dispatcher 캐시의 파일은 각 도메인에 대해 별도로 무효화될 수 있습니다.
@@ -38,7 +38,7 @@ Dispatcher를 사용하여 다음의 조건을 지원하면서 여러 웹 도메
 
 `BrandA.com`의 페이지는 `/content/sitea` 아래에 저장됩니다. URL `https://BrandA.com/en.html`에 대한 클라이언트 요청은 `/content/sitea/en` 노드에 대해 렌더링된 페이지로 반환됩니다. 마찬가지로 `BrandB.com`의 페이지는 `/content/siteb` 아래에 저장됩니다.
 
-Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요청의 페이지 URL, 해당 캐시 파일의 경로, 저장소에 있는 해당 파일의 경로 간에 연결이 이루어져야 합니다.
+Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요청의 페이지 URL, 캐시된 해당 파일의 경로 및 저장소에 있는 해당 파일의 경로 간에 연결을 만듭니다.
 
 ## 클라이언트 요청
 
@@ -66,7 +66,7 @@ Dispatcher가 캐시된 파일을 무효화하도록 Dispatcher 플러시 복제
 
 ## URL 매핑 {#url-mapping}
 
-도메인 URL 및 콘텐츠 경로가 캐시된 파일로 확인되도록 하려면 프로세스의 특정 지점에서 파일 경로 또는 페이지 URL을 변환해야 합니다. 다음과 같은 일반적인 전략에 대한 설명이 제공됩니다. 여기에서는 경로 또는 URL 변환이 프로세스의 다양한 지점에서 발생합니다.
+도메인 URL 및 콘텐츠 경로가 캐시된 파일로 확인되도록 하려면 프로세스 중에 파일 경로 또는 페이지 URL을 변환해야 합니다. 다음과 같은 일반적인 전략에 대한 설명이 제공됩니다. 여기에서는 경로 또는 URL 변환이 프로세스의 다양한 지점에서 발생합니다.
 
 * (권장) AEM 게시 인스턴스는 리소스 확인을 위한 Sling 매핑을 사용하여 내부 URL 재작성 규칙을 구현합니다. 도메인 URL은 콘텐츠 저장소 경로로 변환됩니다. [AEM이 수신 URL 재작성](#aem-rewrites-incoming-urls)을 참조하십시오.
 * 웹 서버는 도메인 URL을 캐시 경로로 변환하는 내부 URL 재작성 규칙을 사용합니다. [웹 서버가 수신 URL 재작성](#the-web-server-rewrites-incoming-urls)을 참조하십시오.
@@ -201,7 +201,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 도메인 이름과 해당 가상 호스트를 포함하는 URL을 지원하려면 다음 Dispatcher 팜을 정의하십시오.
 
 * 각 가상 호스트를 위한 Dispatcher 팜을 구성합니다. 이러한 팜은 각 도메인에 대한 웹 서버의 요청을 처리하고 캐시된 파일을 확인하며 렌더링으로부터 페이지를 요청합니다.
-* 콘텐츠가 속한 도메인에 관계없이 콘텐츠 캐시를 무효화하는 데 사용되는 Dispatcher 팜을 구성합니다. 이 팜은 플러시 Dispatcher 복제 에이전트의 파일 무효화 요청을 처리합니다.
+* 콘텐츠가 속한 도메인에 관계없이 캐시에서 콘텐츠를 무효화하는 데 사용되는 Dispatcher 팜을 구성합니다. 이 팜은 플러시 Dispatcher 복제 에이전트의 파일 무효화 요청을 처리합니다.
 
 ### 가상 호스트를 위한 Dispatcher 팜 생성
 
@@ -210,7 +210,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 * `/virtualhosts` 속성은 도메인 이름으로 설정됩니다. 이 속성을 사용하면 Dispatcher가 팜을 도메인과 연결할 수 있습니다.
 * `/filter` 속성은 도메인 이름 부분 뒤에서 잘린 요청 URL의 경로에 대한 액세스를 허용합니다. 예를 들어 `https://branda.com/en.html` URL의 경우, 경로는 `/en.html`로 해석되므로 필터는 이 경로에 대한 액세스를 허용해야 합니다.
 
-* `/docroot` 속성은 Dispatcher 캐시에 있는 도메인 사이트 콘텐츠의 루트 디렉터리 경로로 설정됩니다. 이 경로는 원래 요청에서 연결된 URL의 접두사로 사용됩니다. 예를 들어 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea`의 docroot는 `https://branda.com/en.html`에 대한 요청이 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` 파일로 확인되도록 합니다.
+* 다음 `/docroot` 속성은 루트 디렉터리의 경로로 설정됩니다. 즉, Dispatcher 캐시에 있는 도메인 사이트 콘텐츠의 루트 디렉터리입니다. 이 경로는 원래 요청에서 연결된 URL의 접두사로 사용됩니다. 예를 들어 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea`의 docroot는 `https://branda.com/en.html`에 대한 요청이 `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` 파일로 확인되도록 합니다.
 
 또한 AEM 게시 인스턴스는 가상 호스트에 대한 렌더링으로 지정되어야 합니다. 필요에 따라 다른 팜 속성을 구성합니다. 다음 코드는 branda.com 도메인에 대한 축약된 팜 구성입니다.
 
@@ -236,11 +236,11 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### 캐시 무효화를 위한 Dispatcher 팜 생성
 
-캐시된 파일 무효화 요청을 처리하려면 Dispatcher 팜이 필요합니다. 이 팜은 각 가상 호스트의 docroot 디렉터리에 있는 .stat 파일에 액세스할 수 있어야 합니다.
+캐시된 파일 무효화 요청을 처리하려면 Dispatcher 팜이 필요합니다. 이 팜은 의 .stat 파일에 액세스할 수 있어야 합니다. `docroot` 각 가상 호스트의 디렉토리입니다.
 
 다음 속성 구성을 사용하면 Dispatcher가 캐시의 파일에서 AEM 콘텐츠 저장소의 파일을 확인할 수 있습니다.
 
-* `/docroot` 속성은 웹 서버의 기본 docroot로 설정됩니다. 일반적으로 `/content` 폴더가 생성되는 디렉터리입니다. Linux®에서 Apache의 예제 값 `/usr/lib/apache/httpd-2.4.3/htdocs`입니다.
+* 다음 `/docroot` 속성은 기본값으로 설정됩니다 `docroot` 웹 서버. 일반적으로 /`docroot` 는 이(가) 있는 디렉토리입니다. `/content` 폴더가 생성됩니다. Linux®에서 Apache의 예제 값 `/usr/lib/apache/httpd-2.4.3/htdocs`입니다.
 * `/filter` 속성은 `/content` 디렉터리 아래의 파일에 대한 액세스를 허용합니다.
 
 `/statfileslevel`속성은 .stat 파일이 각 가상 호스트의 루트 디렉터리에 생성될 수 있을 만큼 충분히 높아야 합니다. 이 속성을 사용하면 각 도메인의 캐시를 개별적으로 무효화할 수 있습니다. 예제 설정의 경우 `/statfileslevel` 값이 `2`이면 `*docroot*/content/sitea` 디렉터리와 `*docroot*/content/siteb` 디렉터리에 .stat 파일을 생성합니다.
@@ -302,7 +302,7 @@ Sling 리소스 매핑에 대한 자세한 내용은 Sling 설명서의 [리소�
 
 ### 예제 리소스 매핑 노드
 
-다음 표에는 branda.com 도메인에 대한 리소스 매핑을 구현하는 노드가 나열되어 있습니다. `brandb.com` 도메인에 대해 유사한 노드가 생성됩니다(예: `/etc/map/http/brandb.com`). 페이지 HTML의 참조가 Sling의 컨텍스트에서 올바르게 해석되지 않을 때 모든 경우에 매핑이 필요합니다.
+다음 표에는 branda.com 도메인에 대한 리소스 매핑을 구현하는 노드가 나열되어 있습니다. `brandb.com` 도메인에 대해 유사한 노드가 생성됩니다(예: `/etc/map/http/brandb.com`). HTML 페이지의 참조가 Sling의 컨텍스트에서 올바르게 확인되지 않는 경우 모든 경우에 매핑이 필요합니다.
 
 | 노드 경로 | 유형 | 속성 |
 |--- |--- |--- |
@@ -344,10 +344,10 @@ Dispatcher 캐시는 저장소 노드 구조를 미러링합니다. 따라서 �
 
 다음 예제 httpd.conf 파일은 Apache 웹 서버에 대해 두 개의 가상 호스트를 구성합니다.
 
-* 도메인 이름과 일치하는 서버 이름은 `brandA.com` (16행) 및 `brandB.com` (32행)입니다.
+* 도메인 이름과 일치하는 서버 이름은 다음과 같습니다 `brandA.com` (16행) 및 `brandB.com` (32행)
 
 * 각 가상 도메인의 문서 루트는 사이트의 페이지를 포함하는 Dispatcher 캐시의 디렉터리입니다. (20행 및 33행)
-* 각 가상 도메인에 대한 URL 재작성 규칙은 요청된 페이지의 경로 앞에 캐시의 페이지 경로를 붙이는 정규 표현식입니다. (19행 및 35행)
+* 각 가상 도메인에 대한 URL 재작성 규칙은 정규 표현식입니다. 정규 표현식은 요청된 페이지의 경로 앞에 추가됩니다. 접두사로 캐시의 페이지에 대한 경로가 사용됩니다. (19행 및 35행)
 * `DispatherUseProcessedURL` 속성은 `1`로 설정됩니다. (10행)
 
 예를 들어 웹 서버는 `https://brandA.com/en/products.html` URL이 포함된 요청을 수신할 때 다음 작업을 수행합니다.

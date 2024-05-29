@@ -6,10 +6,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '910'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '924'
+ht-degree: 86%
 
 ---
 
@@ -42,7 +42,7 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 1. Dispatcher가 콘텐츠가 캐시되지 않았는지 또는 업데이트가 필요한지 확인합니다.
 1. Dispatcher가 원본 요청을 렌더링에 전달합니다.
-1. 렌더링이 AEM 권한 부여자 서블릿(Dispatcher AuthChcker 서블릿이 아님)을 호출하여 보안 검사를 수행합니다. 사용자에게 권한이 부여되면 렌더링이 렌더링된 페이지를 응답 메시지 본문에 포함합니다.
+1. 렌더링이 AEM 권한 부여자 서블릿(이 서블릿은 Dispatcher AuthChcker 서블릿이 아님)을 호출하여 보안 검사를 수행합니다. 사용자에게 권한이 부여되면 렌더링이 렌더링된 페이지를 응답 메시지 본문에 포함합니다.
 1. Dispatcher가 응답을 브라우저에 전달합니다. Dispatcher가 렌더링 응답 메시지의 본문을 캐시에 추가합니다.
 
 ## 사용자가 승인되지 않음 {#user-is-not-authorized}
@@ -51,9 +51,9 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 1. Dispatcher가 캐시를 확인합니다.
 1. Dispatcher가 브라우저 요청의 모든 헤더 행을 포함하는 요청 메시지를 렌더링에 보냅니다.
-1. 렌더링이 AuthChcker 서블릿을 호출하여 실패한 보안 검사를 수행하고, 렌더링이 원본 요청을 Dispatcher로 전달합니다.
+1. 렌더링이 인증 검사기 서블릿을 호출하여 실패하는 보안 검사를 수행하고, 렌더링이 원본 요청을 Dispatcher로 전달합니다.
 1. Dispatcher가 원본 요청을 렌더링에 전달합니다.
-1. 렌더링이 AEM 권한 부여자 서블릿(Dispatcher AuthChcker 서블릿이 아님)을 호출하여 보안 검사를 수행합니다. 사용자에게 권한이 부여되면 렌더링이 렌더링된 페이지를 응답 메시지 본문에 포함합니다.
+1. 렌더링이 AEM 권한 부여자 서블릿(이 서블릿은 Dispatcher AuthChcker 서블릿이 아님)을 호출하여 보안 검사를 수행합니다. 사용자에게 권한이 부여되면 렌더링이 렌더링된 페이지를 응답 메시지 본문에 포함합니다.
 1. Dispatcher가 응답을 브라우저에 전달합니다. Dispatcher가 렌더링 응답 메시지의 본문을 캐시에 추가합니다.
 
 ## 권한 구분 캐싱 구현 {#implementing-permission-sensitive-caching}
@@ -74,7 +74,7 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 ## AuthChcker 서블릿 만들기 {#create-the-auth-checker-servlet}
 
-웹 콘텐츠를 요청하는 사용자의 인증 및 권한 부여를 수행하는 서블릿을 만들고 배포합니다. 서블릿은 AEM 사용자 계정 및 저장소 ACL 또는 LDAP 조회 서비스와 같은 모든 인증 및 권한 부여 메서드를 사용할 수 있습니다. Dispatcher가 렌더링으로 사용하는 AEM 인스턴스에 서블릿을 배포합니다.
+웹 콘텐츠를 요청하는 사용자의 인증 및 권한 부여를 수행하는 서블릿을 만들고 배포합니다. 서블릿은 모든 인증을 사용할 수 있습니다. 또한 모든 인증 방법을 사용할 수 있습니다. 예를 들어 AEM 사용자 계정 및 저장소 ACL을 사용할 수 있습니다. 또는 LDAP 조회 서비스를 사용할 수 있습니다. Dispatcher가 렌더링으로 사용하는 AEM 인스턴스에 서블릿을 배포합니다.
 
 서블릿은 모든 사용자가 액세스할 수 있어야 합니다. 따라서 서블릿은 시스템에 대한 읽기 전용 액세스를 제공하는 `org.apache.sling.api.servlets.SlingSafeMethodsServlet` 클래스를 확장해야 합니다.
 

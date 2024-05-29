@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '3083'
-ht-degree: 81%
+source-wordcount: '3079'
+ht-degree: 82%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 81%
 
 Dispatcher는 엔터프라이즈급 웹 서버와 함께 사용하는 Adobe Experience Manager의 캐싱 및 로드 밸런싱 도구입니다.
 
-AEM Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 독립적입니다.
+Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 독립적입니다.
 
 1. Dispatcher에 대해 알아보십시오(이 페이지). 또한 [Dispatcher에 대해 자주 묻는 질문](/help/using/dispatcher-faq.md)을 참조하십시오.
 1. 웹 서버 설명서에 따라 [지원되는 웹 서버](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements)를 설치하십시오.
@@ -30,7 +30,7 @@ AEM Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 �
 
 >[!NOTE]
 >
->AEM Dispatcher가 AEM에서 작동하는 방식을 더 잘 이해하려면 다음을 수행하십시오.
+>Dispatcher가 AEM에서 작동하는 방식을 더 잘 이해하려면 다음을 수행하십시오.
 >
 >* [2017년 7월 AEM 커뮤니티 전문가에게 질문하기](https://communities.adobeconnect.com/pf0gem7igw1f/)를 참조하십시오.
 >* [이 저장소](https://github.com/adobe/aem-dispatcher-experiments)에 액세스하십시오. 여기에는 “테이크 홈” 실험실 포맷의 실험 모음이 포함되어 있습니다.
@@ -41,7 +41,7 @@ AEM Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 �
 * [Dispatcher 보안 검사 목록](security-checklist.md)
 * [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html)
 * [캐시 성능을 위한 웹 사이트 최적화](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [여러 도메인에 AEM Dispatcher 사용](dispatcher-domains.md)
+* [여러 도메인에 Dispatcher 사용](dispatcher-domains.md)
 * [Dispatcher에 SSL 사용](dispatcher-ssl.md)
 * [권한 구분 캐싱 구현](permissions-cache.md)
 * [Dispatcher 문제 해결](dispatcher-troubleshooting.md)
@@ -129,7 +129,7 @@ Dispatcher에는 웹 사이트를 변경할 때 캐시 콘텐츠를 업데이트
 다음 요점을 명시해야 합니다.
 
 * 콘텐츠 업데이트는 일반적으로 대체해야 하는 항목을 &quot;아는&quot; 작성 시스템에서 사용됩니다.
-* 파일에 영향을 주는 콘텐츠 업데이트는 제거되지만 즉시 대체되지는 않습니다. 다음에 이러한 파일이 요청되면 AEM Dispatcher는 AEM 인스턴스에서 새 파일을 가져와 캐시에 배치하여 이전 콘텐츠를 덮어씁니다.
+* 파일에 영향을 주는 콘텐츠 업데이트는 제거되지만 즉시 대체되지는 않습니다. 다음에 이러한 파일이 요청되면 Dispatcher는 AEM 인스턴스에서 새 파일을 가져와 캐시에 배치하여 이전 콘텐츠를 덮어씁니다.
 * 일반적으로 페이지에서 텍스트를 통합하는 자동 생성된 사진은 같은 핸들로 시작하는 사진 파일에 저장되어 삭제를 위한 연결이 존재하도록 합니다. 예를 들어 같은 폴더에 사진 mypage.titlePicture.gif로 페이지 mypage.html의 제목 테스트를 저장할 수 있습니다. 이 방법으로 페이지가 업데이트될 때마다 사진은 캐시에서 자동으로 삭제되므로 사진이 항상 페이지의 현재 버전을 반영한다는 것을 확인할 수 있습니다.
 * 여러 개의 상태 파일이 있을 수 있습니다(예: 언어 폴더별 1개). 페이지가 업데이트되면 AEM은 상태 파일이 포함된 다음 상위 폴더를 찾아 해당 파일을 *수정* 합니다.
 
