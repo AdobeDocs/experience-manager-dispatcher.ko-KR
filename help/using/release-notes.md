@@ -6,9 +6,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1089'
-ht-degree: 79%
+ht-degree: 100%
 
 ---
 
@@ -27,7 +27,7 @@ ht-degree: 79%
 
 ## 시스템 요구 사항 및 사전 요구 사항 {#system-requirements-and-prerequisites}
 
-시스템 요구 사항 및 필수 요구 사항에 대한 자세한 내용은 [지원되는 플랫폼](https://experienceleague.adobe.com/en/docs/experience-manager-64/deploying/introduction/technical-requirements)을 참조하십시오.
+시스템 요구 사항 및 필수 요구 사항에 대한 자세한 내용은 [지원되는 플랫폼](https://experienceleague.adobe.com/kr/docs/experience-manager-64/deploying/introduction/technical-requirements)을 참조하십시오.
 
 Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 이용하기 위해 최신 버전의 AEM Dispatcher를 사용할 것을 권장합니다.
 
@@ -59,7 +59,7 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 **개선 사항**:
 
 * DISP-954 - 만료일이 경과되지 않았음에도 지원이 이루어지지 않음
-* DISP-949 - 필터가 POST 요청을 차단하더라도 Dispatcher가 404 대신 200을 반환
+* DISP-949 - 필터에 의해 POST 요청이 차단되더라도 Dispatcher가 404 대신 200을 반환
 
 ### 릴리스 4.3.4 (2021년 11월 29일) {#nov}
 
@@ -70,17 +70,17 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 **개선 사항**:
 
-* DISP-874 - 플래그 `DispatcherRestrictUncacheableContent`를 통해 DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다. 기본값은 해제(Off)입니다. 옵션을 켜면 캐시 불가능한 콘텐츠에 대해 mod 만료별로 설정된 캐싱 헤더가 제거됩니다. 이 설정은 버전 4.3.3(기본값은 켜기(On)임)의 비헤이비어와 다르지만, 4.3.3 이전 버전(기본값은 끄기(Off))과 동일합니다. 브라우저 캐시의 보다 높은 유연성을 위해 `DispatcherRestrictUncacheableContent`의 기본값인 해제(Off) 상태를 유지하는 것이 좋습니다. 버전 4.3.3에서 4.3.4로 업그레이드할 때 버전 4.3.3과 동일한 비헤이비어를 유지하려면 를 명시적으로 설정해야 합니다 `DispatcherRestrictUncacheableContent` 켜짐.
+* DISP-874 - 플래그 `DispatcherRestrictUncacheableContent`를 통해 DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다. 기본값은 해제(Off)입니다. 옵션을 켜면 캐시 불가능한 콘텐츠에 대해 mod 만료별로 설정된 캐싱 헤더가 제거됩니다. 이 설정은 버전 4.3.3(기본값 켜짐(On))의 비헤이비어와 다르지만 4.3.3 이전의 버전(기본값 꺼짐(Off))과는 동일합니다. 브라우저 캐시의 보다 높은 유연성을 위해 `DispatcherRestrictUncacheableContent`의 기본값인 해제(Off) 상태를 유지하는 것이 좋습니다. 버전 4.3.3에서 4.3.4로 업그레이드할 때 버전 4.3.3과 동일한 비헤이비어를 유지하고자 한다면 `DispatcherRestrictUncacheableContent`를 명시적으로 설정(On)해야 합니다.
 * DISP-841 - Dispatcher가 504 응답 코드에 대한 /serverStaleOnError를 무시합니다.
 * DISP-874 - DISP-818의 구현을 설정하거나 해제하는 Dispatcher 구성을 만듭니다.
 * DISP-883 - Dispatcher에서 URL 요청 분해를 보여 주는 추적입니다.
-* DISP-944 - vanity URL 미리 로드
+* DISP-944 - Vanity URL 사전 로드
 
 ### 릴리스 4.3.3 (2019년 10월 18일) {#october}
 
 **버그 수정**:
 
-* DISP-739 - 로그 수준 Dispatcher: **수준** 작동하지 않음
+* DISP-739 - LogLevel Dispatcher: **수준**&#x200B;이 작동하지 않음
 * DISP-749 - Alpine Linux® Dispatcher가 추적 로그 수준과 충돌함
 
 **개선 사항**:
@@ -91,7 +91,7 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 * DISP-821 - 소켓에 로그 컨텍스트를 저장하지 않음
 * DISP-822 - Dispatcher는 `pselect` 대신 `ppoll`을 사용해야 합니다.
 * DISP-824 - 보안 DispatcherUseForwardedHost
-* DISP-825 - 디스크에 더 이상 공간이 없을 때 특수 메시지를 기록합니다.
+* DISP-825 - 디스크에 더 이상 공간이 없을 때 특수 메시지를 기록함
 * DISP-826 - 쿼리 문자열로 URI 다시 가져오기 지원
 
 **새로운 기능**:
