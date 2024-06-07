@@ -3,9 +3,9 @@ title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8876'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
@@ -19,7 +19,7 @@ ht-degree: 95%
 
 ## IPv4 및 IPv6 지원 {#support-for-ipv-and-ipv}
 
-AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설치할 수 있습니다. [IPV4 및 IPV6](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv)를 참조하십시오.
+AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설치할 수 있습니다. [IPV4 및 IPV6](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv)를 참조하십시오.
 
 ## Dispatcher 구성 파일 {#dispatcher-configuration-files}
 
@@ -402,9 +402,9 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 >[!CAUTION]
 >
->이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [인증 사용 시 캐싱](#caching-when-authentication-is-used) 섹션에서 자세히 설명한 바와 같이 `/allowAuthorized 0 `을 설정하면 인증 정보가 포함된 요청은 캐시되지 **않습니다.** 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/kr/docs/experience-manager-dispatcher/using/configuring/permissions-cache) 페이지를 참조하십시오.
+>이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [인증 사용 시 캐싱](#caching-when-authentication-is-used) 섹션에서 자세히 설명한 바와 같이 `/allowAuthorized 0 `을 설정하면 인증 정보가 포함된 요청은 캐시되지 **않습니다.** 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/permissions-cache) 페이지를 참조하십시오.
 
-사용자가 팜의 모든 페이지에 액세스하려면 로그인해야 하도록 렌더링 팜에 액세스를 위한 보안 세션을 만듭니다. 로그인 후 사용자는 팜의 페이지에 액세스할 수 있습니다. CUG와 함께 이 기능을 사용하는 방법에 대한 정보는 [폐쇄형 사용자 그룹 만들기](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used)를 참조하십시오. 시작하기 전에 Dispatcher [보안 체크리스트](/help/using/security-checklist.md) 도 참조하십시오.
+사용자가 팜의 모든 페이지에 액세스하려면 로그인해야 하도록 렌더링 팜에 액세스를 위한 보안 세션을 만듭니다. 로그인 후 사용자는 팜의 페이지에 액세스할 수 있습니다. CUG와 함께 이 기능을 사용하는 방법에 대한 정보는 [폐쇄형 사용자 그룹 만들기](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used)를 참조하십시오. 시작하기 전에 Dispatcher [보안 체크리스트](/help/using/security-checklist.md) 도 참조하십시오.
 
 `/sessionmanagement` 속성은 `/farms`의 하위 속성입니다.
 
@@ -455,7 +455,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 ## 페이지 렌더러 정의 {#defining-page-renderers-renders}
 
-다음 `/renders` 속성은 Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
+`/renders` 속성은 Dispatcher가 문서 렌더링에 대한 요청을 보내는 URL을 정의합니다. 다음 예제 `/renders` 섹션은 렌더링을 위한 단일 AEM 인스턴스를 식별합니다.
 
 ```xml
 /renders
@@ -555,7 +555,7 @@ Dispatcher 버전 **4.1.6**&#x200B;에서는 `/always-resolve` 속성을 다음�
 
 >[!CAUTION]
 >
->AEM Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 또한 AEM 설치와 관련된 추가 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/security/security-checklist#security)를 참조하십시오.
+>AEM Dispatcher를 사용하여 액세스를 제한할 때 추가 고려 사항은 [Dispatcher 보안 체크리스트](security-checklist.md)를 참조하십시오. 또한 AEM 설치와 관련된 추가 보안 세부 정보는 [AEM 보안 체크리스트](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/security/security-checklist#security)를 참조하십시오.
 
 `/filter` 섹션은 HTTP 요청의 요청 라인 부분에 있는 패턴에 따라 콘텐츠에 대한 액세스를 거부하거나 허용하는 일련의 규칙으로 구성됩니다. `/filter` 섹션에 허용 목록 전략을 사용합니다.
 
@@ -805,7 +805,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!CAUTION]
 >
->[게시 환경에서 보고서를 사용](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment) 하는 경우 외부 방문자의 `/etc/reports`에 대한 액세스를 거부하도록 Dispatcher를 구성해야 합니다.
+>[게시 환경에서 보고서를 사용](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment) 하는 경우 외부 방문자의 `/etc/reports`에 대한 액세스를 거부하도록 Dispatcher를 구성해야 합니다.
 
 ### 쿼리 문자열 제한 {#restricting-query-strings}
 
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-AEM 페이지에 대해 구성된 vanity URL에 액세스할 수 있도록 Dispatcher를 구성합니다.
+AEM 페이지에 대해 구성된 Vanity URL에 액세스할 수 있도록 Dispatcher를 구성합니다.
 
 vanity URL에 대한 액세스가 활성화되면 Dispatcher는 렌더링 인스턴스에서 실행되는 서비스를 주기적으로 호출하여 vanity URL 목록을 가져옵니다. Dispatcher는 이 목록을 로컬 파일에 저장합니다. `/filter` 섹션의 필터로 인해 페이지 요청이 거부되면 Dispatcher는 vanity URL 목록을 참조합니다. 거부된 URL이 목록에 있는 경우 Dispatcher는 vanity URL에 대한 액세스를 허용합니다.
 
@@ -937,7 +937,7 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 
 >[!NOTE]
 >
->렌더링이 AEM의 인스턴스인 경우 [소프트웨어 배포의 VanityURLS-Components 패키지](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)를 설치하여 vanity URL 서비스를 활성화해야 합니다. (자세한 내용은 [소프트웨어 배포](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution)를 참조하십시오.)
+>렌더링이 AEM의 인스턴스인 경우 [소프트웨어 배포의 VanityURLS-Components 패키지](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components)를 설치하여 vanity URL 서비스를 활성화해야 합니다. (자세한 내용은 [소프트웨어 배포](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution)를 참조하십시오.)
 
 다음 절차를 사용하여 vanity URL에 대한 액세스를 활성화합니다.
 
@@ -1167,7 +1167,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 >[!NOTE]
 >
->추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 자세한 내용은 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [수동으로 Dispatcher 캐시 무효화](https://experienceleague.adobe.com/kr/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring)를 참조하십시오.
+>추가 헤더 `CQ-Action-Scope:ResourceOnly`를 전송하여 무효화를 방지할 수 있습니다. 이 메서드는 캐시의 다른 부분을 무효화하지 않고 특정 리소스를 플러시하는 데 사용할 수 있습니다. 자세한 내용은 [이 페이지](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) 및 [수동으로 Dispatcher 캐시 무효화](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring)를 참조하십시오.
 
 >[!NOTE]
 >
@@ -1229,7 +1229,7 @@ Adobe Analytics와의 AEM 통합은 웹 사이트의 `analytics.sitecatalyst.js`
 
 이 메서드는 몇 가지 다른 사용 사례를 처리하는 데 사용할 수 있습니다. 예를 들어 다른 애플리케이션별 캐시 무효화하거나 페이지의 외재화 URL 및 docroot의 위치가 콘텐츠 경로와 일치하지 않는 사례를 처리하는 데 사용할 수 있습니다.
 
-다음 예제 스크립트는 무효화된 각 요청을 파일에 기록합니다.
+다음 예제 스크립트는 각 무효화 요청을 파일에 기록합니다.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1349,7 +1349,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 >[!NOTE]
 >
->Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음을 수행하십시오.
+>Dispatcher가 AEM의 ETag 응답 헤더를 저장하고 전달해야 하는 경우 다음 작업을 수행하십시오.
 >
 >* `/cache/headers`섹션에 헤더 이름을 추가합니다.
 >* Dispatcher 관련 섹션에 다음 [Apache 지시문](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)을 추가합니다.
@@ -1560,7 +1560,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 
 `/numberOfRetries` 속성은 Dispatcher가 렌더링으로 수행하는 최대 연결 시도 횟수를 설정합니다. Dispatcher가 이 다시 시도 횟수 후에 렌더링에 성공적으로 연결할 수 없으면 Dispatcher는 실패한 응답을 반환합니다.
 
-각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 Dispatcher가 연결을 시도하는 최대 횟수는 ( )입니다. `/numberOfRetries`) x (렌더링 수)
+각 회차마다 Dispatcher가 렌더링에 대한 연결을 시도하는 최대 횟수는 팜의 렌더링 수입니다. 따라서 Dispatcher가 연결을 시도하는 최대 횟수는 (`/numberOfRetries`) x(렌더링 수)입니다.
 
 값이 명시적으로 정의되지 않은 경우 기본값은 `5`입니다.
 
@@ -1575,7 +1575,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 * 렌더링에 대한 요청이 HTTP 상태 503(UNAVAILABLE)을 반환하는 경우, Dispatcher가 요청을 다른 렌더링으로 보냅니다.
 * 렌더링에 대한 요청이 HTTP 상태 50x(503 제외)를 반환하는 경우, Dispatcher가 `health_check` 속성에 대해 구성된 페이지에 대한 요청을 보냅니다.
    * 상태 검사가 500(INTERNAL_SERVER_ERROR)을 반환하는 경우 Dispatcher가 원본 요청을 다른 렌더링으로 보냅니다.
-   * 상태 검사가 HTTP 상태 200을 반환하는 경우 Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
+   * 상태 검사가 HTTP 상태 200을 반환하는 경우, Dispatcher가 초기 HTTP 500 오류를 클라이언트로 반환합니다.
 
 장애 조치를 활성화하려면 팜(또는 웹 사이트)에 다음 행을 추가합니다.
 

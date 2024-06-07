@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3748'
-ht-degree: 83%
+ht-degree: 100%
 
 ---
 
@@ -88,7 +88,7 @@ Comment Type: draft
 
 ## Microsoft® Internet Information Server {#microsoft-internet-information-server}
 
-이 웹 서버를 설치하는 방법에 대한 자세한 내용은 다음 리소스를 참조하십시오.
+이 웹 서버를 설치하는 방법에 대한 정보는 다음 리소스를 참조하십시오.
 
 * Internet Information Server에 대한 Microsoft® 자체 설명서
 * [“공식 Microsoft® IIS 사이트”](https://www.iis.net/)
@@ -116,7 +116,7 @@ ZIP 파일에는 다음 파일이 포함되어 있습니다.
 | `dispatcher.any` | Dispatcher에 대한 예제 구성 파일입니다. |
 | `author_dispatcher.any` | 작성자 인스턴스로 작업하는 Dispatcher의 예제 구성 파일입니다. |
 | 추가 정보 | 설치 지침과 최신 정보가 포함된 추가 정보 파일입니다. **참고**: 설치를 시작하기 전에 이 파일을 확인하십시오. |
-| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 파일을 변경합니다. |
+| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 변경 사항 파일. |
 
 다음 절차에 따라 Dispatcher 파일을 올바른 위치에 복사합니다.
 
@@ -147,10 +147,10 @@ replaceauthorization=0|1
 | 매개변수 | 설명 |
 |--- |--- |
 | `configpath` | 로컬 파일 시스템 내 `dispatcher.any`의 위치(절대 경로)입니다. |
-| `logfile` | `dispatcher.log` 파일의 위치입니다. 이 위치가 설정되지 않은 경우 로그 메시지는 Windows 이벤트 로그로 이동합니다. |
+| `logfile` | `dispatcher.log` 파일의 위치입니다. 위치가 설정되지 않은 경우, 로그 메시지는 Windows 이벤트 로그로 이동합니다. |
 | `loglevel` | 이벤트 로그에 메시지를 출력하는 데 사용되는 로그 수준을 정의합니다. 다음과 같은 로그 파일의 로그 수준에서 지정할 수 있습니다. <br/>0 - 오류 메시지만. <br/>1 - 오류 및 경고. <br/>2 - 오류, 경고 및 정보 메시지 <br/>3 - 오류, 경고, 정보 및 디버그 메시지. <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정하고 프로덕션 환경에서 실행할 때는 0으로 설정하십시오. |
 | `replaceauthorization` | HTTP 요청의 권한 부여 헤더가 처리되는 방식을 지정합니다. 다음 값이 유효합니다.<br/>0 - 인증 헤더가 수정되지 않습니다. <br/>1 - “Basic” 이외의 “Authorization”이라는 헤더를 `Basic <IIS:LOGON\_USER>`에 해당하는 헤더로 바꿉니다.<br/> |
-| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher 또는 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
+| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
 | `enable_chunked_transfer` | 클라이언트 응답에 대한 청크 전송을 활성화(1) 또는 비활성화(0)할지 여부를 정의합니다. 기본값은 0입니다. |
 
 예제 구성:
@@ -179,7 +179,7 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
 
 ### Dispatcher ISAPI 모듈 통합 - IIS 8.5 및 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
-다음 절차를 사용하여 Dispatcher ISAPI 모듈을 IIS에 추가합니다.
+다음 절차에 따라 Dispatcher ISAPI 모듈을 IIS에 추가합니다.
 
 1. IIS 관리자를 엽니다.
 1. Dispatcher 캐시로 사용 중인 웹 사이트를 선택합니다.
@@ -190,13 +190,13 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
    * 실행 파일: disp_iis.dll 파일의 절대 경로(예: `C:\inetpub\Scripts\disp_iis.dll`).
    * 이름: 핸들러 매핑에 대한 설명적인 이름(예: `Dispatcher`).
 
-1. 표시되는 대화 상자에서 ISAPI 및 CGI 제한 목록에 disp_iis.dll 라이브러리를 추가하려면 **예**.
+1. 표시되는 대화 상자에서 ISAPI 및 CGI 제한 목록에 disp_iis.dll 라이브러리를 추가하려면 **예**&#x200B;를 클릭합니다.
 
    IIS 7.0 및 7.5의 경우 구성이 완료되었습니다. IIS 8.0을 구성하는 경우 나머지 단계를 계속 진행합니다.
 
-1. (IIS 8.0) 핸들러 매핑 목록에서 만든 매핑을 선택하고 작업 영역에서 [편집]을 클릭합니다.
+1. (IIS 8.0) 핸들러 매핑 목록에서 방금 만든 매핑을 선택하고 작업 영역에서 [편집]을 클릭합니다.
 1. (IIS 8.0) 스크립트 맵 편집 대화 상자에서 요청 제한 버튼을 클릭합니다.
-1. (IIS 8.0) 아직 캐시되지 않은 파일 및 폴더에 핸들러가 사용되도록 하려면 선택을 해제합니다 **요청이 매핑된 경우에만 핸들러 호출**. **확인**&#x200B;을 클릭합니다.
+1. (IIS 8.0) 아직 캐시되지 않은 파일 및 폴더에 핸들러가 사용되도록 하려면 **요청이 매핑된 경우에만 핸들러 호출**&#x200B;을 선택 취소합니다. **확인**&#x200B;을 클릭합니다.
 1. (IIS 8.0) 스크립트 맵 편집 대화 상자에서 [확인]을 클릭합니다.
 
 ### 캐시에 대한 액세스 구성 - IIS 8.5 및 10 {#configuring-access-to-the-cache-iis-and}
@@ -204,7 +204,7 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
 기본 앱 풀 사용자에게 Dispatcher 캐시로 사용 중인 폴더에 대한 쓰기 액세스 권한을 제공합니다.
 
 1. Dispatcher 캐시로 사용 중인 웹 사이트의 루트 폴더를 마우스 오른쪽 버튼으로 클릭하고 속성(예: `C:\inetpub\wwwroot`)을 클릭합니다.
-1. 보안 탭에서 편집을 클릭한 다음 권한 대화 상자에서 추가를 클릭합니다. 사용자 계정을 선택하는 대화 상자가 열립니다. 위치 버튼을 클릭하고 컴퓨터 이름을 선택한 다음 [확인]을 클릭합니다.
+1. 보안 탭에서 [편집]을 클릭한 다음 사용 권한 대화 상자에서 [추가]를 클릭합니다. 사용자 계정을 선택하는 대화 상자가 열립니다. 위치 버튼을 클릭하고 컴퓨터 이름을 선택한 다음 [확인]을 클릭합니다.
 
    다음 단계를 완료하는 동안 이 대화 상자를 열어 두십시오.
 
@@ -215,7 +215,7 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
    `IIS AppPool\DefaultAppPool`
 
 1. 이름 확인 버튼을 클릭합니다. Windows에서 사용자 계정을 확인하면 [확인]을 클릭합니다.
-1. Dispatcher 폴더의 권한 대화 상자에서 방금 추가한 계정을 선택하고 계정에 대한 모든 권한을 활성화합니다 **전체 제어 제외** 확인을 클릭합니다. [확인]을 클릭하여 폴더 속성 대화 상자를 닫을 수 있습니다.
+1. Dispatcher 폴더의 권한 대화 상자에서 방금 추가한 계정을 선택하고 **전체 제어를 제외한** 계정에 대한 모든 권한을 활성화한 다음 [확인]을 클릭합니다. [확인]을 클릭하여 폴더 속성 대화 상자를 닫을 수 있습니다.
 
 ### JSON Mime 유형 등록 - IIS 8.5 및 10 {#registering-the-json-mime-type-iis-and}
 
@@ -240,9 +240,9 @@ Dispatcher가 JSON 호출을 허용하도록 하려면 다음 절차를 사용�
 
 1. Windows 탐색기를 사용하여 IIS 설치의 로그 폴더 아래에 `dispatcher` 라는 폴더를 만듭니다. 일반 설치의 경우 이 폴더의 경로는 `C:\inetpub\logs\dispatcher`입니다.
 
-1. Dispatcher 폴더를 마우스 오른쪽 버튼으로 클릭하고 를 클릭합니다. **속성**.
-1. 보안 탭에서 **편집**.
-1. 권한 대화 상자에서 **추가**. 사용자 계정을 선택하는 대화 상자가 열립니다. 위치 버튼을 클릭하고 컴퓨터 이름을 선택한 다음 [확인]을 클릭합니다.
+1. Dispatcher 폴더를 마우스 오른쪽 버튼으로 클릭하고 **속성**&#x200B;을 클릭합니다.
+1. 보안 탭에서 **편집**&#x200B;을 클릭합니다.
+1. 권한 대화 상자에서 **추가**&#x200B;를 클릭합니다. 사용자 계정을 선택하는 대화 상자가 열립니다. 위치 버튼을 클릭하고 컴퓨터 이름을 선택한 다음 [확인]을 클릭합니다.
 
    다음 단계를 완료하는 동안 이 대화 상자를 열어 두십시오.
 
@@ -280,7 +280,7 @@ Apache 웹 서버를 설치하는 방법에 대한 자세한 내용은 설치 �
 
 >[!CAUTION]
 >
->소스 파일을 컴파일하여 Apache 바이너리를 생성하는 경우 **`dynamic modules support`**&#x200B;을 사용하도록 설정해야 합니다. 이 옵션을 활성화하는 것은 다음 중 하나를 사용하여 수행할 수 있습니다. **—enable-shared** 옵션. 최소한 `mod_so` 모듈을 포함하십시오.
+>소스 파일을 컴파일하여 Apache 바이너리를 생성하는 경우 **`dynamic modules support`**&#x200B;을 사용하도록 설정해야 합니다. 이 옵션은 **--enable-shared** 옵션을 사용하여 활성화할 수 있습니다. 최소한 `mod_so` 모듈을 포함하십시오.
 >
 >자세한 내용은 Apache 웹 서버 설치 설명서에서 확인할 수 있습니다.
 
@@ -303,7 +303,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
 | http.conf.disp&lt;x> | Apache 서버에 대한 예제 구성 파일입니다. |
 | dispatcher.any | Dispatcher에 대한 예제 구성 파일입니다. |
 | 추가 정보 | 설치 지침과 최신 정보가 포함된 추가 정보 파일입니다. **참고**: 설치를 시작하기 전에 이 파일을 확인하십시오. |
-| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 파일을 변경합니다. |
+| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 변경 사항 파일입니다. |
 
 다음 단계를 사용하여 Apache 웹 서버에 Dispatcher를 추가합니다.
 
@@ -325,7 +325,7 @@ SELinux가 활성화된 Red Hat® Linux® Kernel 2.6에서 Dispatcher를 실행�
 
 `Mon Jun 30 00:03:59 2013] [E] [16561(139642697451488)] Unable to connect to backend rend01 (10.122.213.248:4502): Permission denied`
 
-이 오류는 SELinux 보안 기능이 설정되어 있기 때문일 수 있습니다. 이 경우 다음 작업을 수행합니다.
+이 오류는 SELinux 보안 기능이 활성화되어 있기 때문일 수 있습니다. 그렇다면 다음 작업을 수행합니다.
 
 * Dispatcher 모듈 파일의 SELinux 컨텍스트를 구성합니다.
 * HTTPD 스크립트 및 모듈을 활성화하여 네트워크 연결을 만듭니다.
@@ -353,7 +353,7 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
    * 시작 시 모듈을 로드하는 **LoadModule**.
    * **DispatcherConfig, DispatcherLog** 및 **DispatcherLogLevel**&#x200B;을 포함한 Dispatcher 관련 구성 항목.
    * Dispatcher를 활성화하는 **SetHandler**. **LoadModule**.
-   * **ModMimeUsePathInfo** 의 비헤이비어를 구성하려면 **mod_mime**.
+   * **mod_mime**&#x200B;의 동작을 구성하는 **ModMimeUsePathInfo**.
 
 1. (선택 사항) htdocs 디렉터리의 소유자를 변경하는 것이 좋습니다.
 
@@ -371,7 +371,7 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 |  |  |
 |--- |--- |
 | Windows | `... LoadModule dispatcher_module modules\disp_apache.dll ...` |
-| UNIX® (심볼 링크로 가정함) | `... LoadModule dispatcher_module libexec/mod_dispatcher.so ...` |
+| UNIX®(심볼 링크로 가정함) | `... LoadModule dispatcher_module libexec/mod_dispatcher.so ...` |
 
 >[!NOTE]
 >
@@ -410,8 +410,8 @@ DispatcherKeepAliveTimeout 60
 | DispatcherLog | 로그 파일의 위치 및 이름입니다. |
 | DispatcherLogLevel | 로그 파일의 로그 수준: <br/>0 - 오류 <br/>1 - 경고 <br/>2 - 정보 <br/>3 - 디버그 <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정한 다음 프로덕션 환경에서 실행할 때는 0으로 설정합니다. |
 | DispatcherNoServerHeader | *이 매개변수는 권장되지 않으며 효과가 없습니다.*<br/><br/> 사용할 서버 헤더를 정의합니다. <br/><ul><li>정의되지 않음 또는 0 - HTTP 서버 헤더에 AEM 버전이 포함됩니다. </li><li>1 - Apache 서버 헤더가 사용됩니다.</li></ul> |
-| DispatcherDeclineRoot | 루트 &quot;/&quot;에 대한 요청을 거절할지 여부를 정의합니다. <br/>**0** - /(으)로의 요청 수락 <br/>**1** - Dispatcher가 /에 대한 요청을 처리하지 않습니다. 대신 올바른 매핑을 위해 mod_alias를 사용하십시오. |
-| DispatcherUseProcessedURL | Dispatcher의 모든 추가 처리에 사전 처리된 URL을 사용할지 여부를 정의합니다. <br/>**0** - 웹 서버에 전달된 원래 URL을 사용합니다. <br/>**1** - Dispatcher가 웹 서버에 전달된 원래 URL 대신 Dispatcher 앞에 오는 핸들러에 의해 이미 처리된 URL(즉, `mod_rewrite`)을 사용합니다. 예를 들어 원본 또는 처리된 URL이 Dispatcher 필터와 일치합니다. URL은 캐시 파일 구조의 기초로도 사용됩니다. mod_rewrite에 대한 정보는 Apache 웹 사이트 설명서를 참조하십시오. 예: Apache 2.4. mod_rewrite를 사용할 때 &#39;passthrough&#39;(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 request_rec 구조의 URI 필드를 파일 이름 필드의 값으로 설정하도록 합니다. |
+| DispatcherDeclineRoot | 루트 “/”에 대한 요청을 거부할지 정의합니다. <br/>**0** - / <br/>**1**&#x200B;에 대한 요청 수락 - Dispatcher가 /에 대한 요청을 처리하지 않습니다. 대신 올바른 매핑을 위해 mod_alias를 사용합니다. |
+| DispatcherUseProcessedURL | Dispatcher의 모든 추가 처리에 사전 처리된 URL을 사용할지 여부를 정의합니다. <br/>**0** - 웹 서버에 전달된 원래 URL을 사용합니다. <br/>**1** - Dispatcher가 웹 서버에 전달된 원래 URL 대신 Dispatcher 앞에 오는 핸들러에 의해 이미 처리된 URL(즉, `mod_rewrite`)을 사용합니다. 예를 들어 원본 또는 처리된 URL이 Dispatcher 필터와 일치합니다. URL은 캐시 파일 구조의 기초로도 사용됩니다. Apache 2.4와 같은 mod_rewrite에 대한 자세한 내용은 Apache 웹 사이트 설명서를 참조하십시오. mod_rewrite를 사용할 때 “passthrough”(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 request_rec 구조의 URI 필드를 파일 이름 필드의 값으로 설정하도록 강제합니다. |
 | DispatcherPassError | ErrorDocument 처리를 위해 오류 코드를 지원하는 방법을 정의합니다. <br/>**0** - Dispatcher가 클라이언트에 대한 모든 오류 응답을 스풀 처리합니다. <br/>**1** - Dispatcher는 클라이언트에 대한 오류 응답을 스풀링하지 않습니다(상태 코드가 400보다 크거나 같은 경우). 대신 상태 코드를 Apache에 전달하여 ErrorDocument 지시문이 이러한 상태 코드를 처리할 수 있도록 합니다. <br/>**코드 범위** -응답이 Apache에 전달되는 오류 코드의 범위를 지정합니다. 다른 오류 코드는 클라이언트에 전달됩니다. 예를 들어 다음 구성은 오류 412에 대한 응답을 클라이언트에 전달하고 다른 모든 오류는 Apache에 전달합니다. DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | keep-alive 시간 제한을 초 단위로 지정합니다. Dispatcher 버전 4.2.0부터 기본 keep-alive 값은 60입니다. 값이 0이면 keep-alive가 비활성화됩니다. |
 | DispatcherNoCanonURL | 이 매개변수를 On으로 설정하면 정규화된 URL 대신 원시 URL이 백엔드에 전달되고 DispatcherUseProcessedURL 설정이 무시됩니다. 기본값은 해제(Off)입니다. <br/>**참고**: Dispatcher 구성의 필터 규칙은 항상 원시 URL이 아닌 정리된 URL에 대해 평가됩니다. |
@@ -491,7 +491,7 @@ AllowOverride None
 
 >[!NOTE]
 >
->의 매개 변수 **SetHandler** 문을 작성해야 합니다. *위의 예제와 정확히 동일* 모듈에 정의된 처리기의 이름이므로
+>**SetHandler** 문의 매개변수는 모듈에 정의된 핸들러 이름이므로 *위의 예제와 정확히 동일하게* 작성되어야 합니다.
 >
 >이 명령에 대한 자세한 내용은 제공된 예제 구성 파일 및 Apache 웹 서버 설명서를 참조하십시오.
 
@@ -509,7 +509,7 @@ AllowOverride None
 
 `ModMimeUsePathInfo On`
 
-mod_mime 모듈(예: [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html))은 HTTP 응답을 위해 선택한 콘텐츠에 콘텐츠 메타데이터를 할당하는 데 사용됩니다. 기본 설정은 다음을 의미합니다 `mod_mime` 콘텐츠 유형을 결정합니다. 따라서 파일이나 디렉터리에 매핑되는 URL 부분만 고려됩니다.
+mod_mime 모듈(예: [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html))은 HTTP 응답을 위해 선택한 콘텐츠에 콘텐츠 메타데이터를 할당하는 데 사용됩니다. 기본 설정은 `mod_mime`이 콘텐츠 유형을 결정한다는 의미입니다. 따라서 파일이나 디렉터리에 매핑되는 URL 부분만 고려됩니다.
 
 `On`인 경우 `ModMimeUsePathInfo` 매개변수는 `mod_mime`이 *complete* URL을 기반으로 콘텐츠 유형을 결정하도록 지정합니다. 즉, 해당 확장을 기반으로 가상 리소스에 메타 정보가 적용됩니다.
 
@@ -533,7 +533,7 @@ AllowOverride None
 
 ### HTTPS 지원 활성화(UNIX® 및 Linux®){#enable-support-for-https-unix-and-linux}
 
-Dispatcher는 OpenSSL을 사용하여 HTTP를 통한 보안 통신을 구현합니다. Dispatcher 버전 **4.2.0**&#x200B;부터 OpenSSL 1.0.0 및 OpenSSL 1.0.1이 지원됩니다. Dispatcher는 기본적으로 OpenSSL 1.0.0을 사용합니다. OpenSSL 1.0.1을 사용하려면 Dispatcher가 설치된 OpenSSL 라이브러리를 사용하도록 다음 절차를 사용하여 심볼 링크를 만듭니다.
+Dispatcher는 OpenSSL을 사용하여 HTTP를 통한 보안 통신을 구현합니다. Dispatcher 버전 **4.2.0**&#x200B;부터 OpenSSL 1.0.0 및 OpenSSL 1.0.1이 지원됩니다. Dispatcher는 기본적으로 OpenSSL 1.0.0을 사용합니다. OpenSSL 1.0.1을 사용하려면 Dispatcher가 설치된 OpenSSL 라이브러리를 사용하도록 다음 절차에 따라 심볼 링크를 만듭니다.
 
 1. 터미널을 열고 현재 디렉터리를 OpenSSL 라이브러리가 설치된 디렉터리로 변경합니다. 예를 들면 다음과 같습니다.
 
@@ -591,7 +591,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
 | `obj.conf.disp` | iPlanet/Sun Java™ System 웹 서버에 대한 예제 구성 파일입니다. |
 | `dispatcher.any` | Dispatcher에 대한 예제 구성 파일입니다. |
 | 추가 정보 | 설치 지침과 최신 정보가 포함된 추가 정보 파일입니다. **참고:** 설치를 시작하기 전에 이 파일을 확인하십시오. |
-| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 파일을 변경합니다. |
+| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 변경 사항 파일입니다. |
 
 다음 단계를 사용하여 웹 서버에 Dispatcher를 추가합니다.
 
@@ -619,7 +619,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
 
 >[!NOTE]
 >
->다음 구성은 모두 한 줄에 있어야 합니다. 또한 `$(SERVER_ROOT)` 및 `$(PRODUCT_SUBDIR)` 는 해당 값으로 대체해야 합니다.
+>다음 구성은 모두 한 행에 있어야 합니다. 또한 `$(SERVER_ROOT)` 및 `$(PRODUCT_SUBDIR)`을 해당 값으로 바꿔야 합니다.
 
 **Init**
 

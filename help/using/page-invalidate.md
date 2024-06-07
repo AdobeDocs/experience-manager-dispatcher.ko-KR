@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -24,7 +24,7 @@ AEM과 함께 Dispatcher를 사용하는 경우 효과적인 캐시 관리를 �
 
 기본 `admin` 사용자 계정은 기본적으로 설치된 복제 에이전트를 인증하는 데 사용됩니다. 복제 에이전트에 사용할 전용 사용자 계정을 생성합니다.
 
-자세한 내용은 AEM 보안 체크리스트의 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/kr/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션을 참조하십시오.
+자세한 내용은 AEM 보안 체크리스트의 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션을 참조하십시오.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
@@ -66,7 +66,7 @@ AEM 작성자 인스턴스에서 복제 에이전트를 구성하려면 다음 �
 1. 필요에 따라 다른 매개변수를 구성합니다.
 1. 확인을 클릭하여 에이전트를 활성화할 수 있습니다.
 
-또는 [AEM Touch UI](https://experienceleague.adobe.com/kr/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent)에서 Dispatcher 플러시 에이전트에 액세스하고 구성할 수도 있습니다.
+또는 [AEM Touch UI](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent)에서 Dispatcher 플러시 에이전트에 액세스하고 구성할 수도 있습니다.
 
 vanity URL에 대한 액세스를 활성화하는 방법에 대한 자세한 내용은 [Vanity URL에 대한 액세스 활성화](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls)를 참조하십시오.
 
@@ -128,7 +128,7 @@ HTTP 요청으로 인해 Dispatcher가 캐시에서 특정 파일을 삭제합�
 
 ### 캐시된 파일 삭제 {#delete-cached-files}
 
-Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐시합니다. 캐시된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
+AEM Dispatcher가 캐시에서 파일을 삭제하도록 하는 HTTP 요청을 발행합니다. Dispatcher는 페이지에 대한 클라이언트 요청을 수신할 때만 파일을 다시 캐시합니다. 캐시된 파일을 이러한 방식으로 삭제하는 것은 동일한 페이지에 대한 동시 요청을 수신할 가능성이 없는 웹 사이트에 적합합니다.
 
 HTTP 요청의 형식은 다음과 같습니다.
 

@@ -1,13 +1,13 @@
 ---
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '70'
-ht-degree: 88%
+ht-degree: 100%
 
 ---
 # Adobe Experience Manager 패턴 감지
 
-Adobe Experience Manager 패턴 감지용 저장소입니다.
+이 저장소는 Adobe Experience Manager 패턴 감지용입니다.
 
 이 설명서에 대한 귀하의 기여를 환영합니다. 다음 리소스를 참조하십시오.
 
