@@ -7,8 +7,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
+source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+workflow-type: tm+mt
 source-wordcount: '2929'
 ht-degree: 100%
 
@@ -348,7 +348,7 @@ Dispatcher 캐시는 저장소 노드 구조를 미러링합니다. 따라서 �
 
 * 각 가상 도메인의 문서 루트는 사이트의 페이지를 포함하는 Dispatcher 캐시의 디렉터리입니다. (20행 및 33행)
 * 각 가상 도메인에 대한 URL 재작성 규칙은 정규 표현식입니다. 정규 표현식은 요청된 페이지의 경로 앞에 붙습니다. 캐시의 페이지 경로와 함께 앞에 붙습니다. (19행 및 35행)
-* `DispatherUseProcessedURL` 속성은 `1`로 설정됩니다. (10행)
+* `DispatcherUseProcessedURL` 속성은 `1`로 설정됩니다. (10행)
 
 예를 들어 웹 서버는 `https://brandA.com/en/products.html` URL이 포함된 요청을 수신할 때 다음 작업을 수행합니다.
 
