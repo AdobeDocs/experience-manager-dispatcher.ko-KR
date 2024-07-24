@@ -5,10 +5,10 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: e38352c25737c2b2a2ccd71fe23ce673a2390f51
+source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
 workflow-type: tm+mt
 source-wordcount: '1062'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -27,7 +27,7 @@ ht-degree: 100%
 
 ## 시스템 요구 사항 및 사전 요구 사항 {#system-requirements-and-prerequisites}
 
-시스템 요구 사항 및 필수 요구 사항에 대한 자세한 내용은 [지원되는 플랫폼](https://experienceleague.adobe.com/ko/docs/experience-manager-64/deploying/introduction/technical-requirements)을 참조하십시오.
+시스템 요구 사항 및 필수 요구 사항에 대한 자세한 내용은 [지원되는 플랫폼](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers)을 참조하십시오.
 
 Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 이용하기 위해 최신 버전의 AEM Dispatcher를 사용할 것을 권장합니다.
 
