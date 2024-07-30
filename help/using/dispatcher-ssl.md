@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 971cffd4f7ba8b1fa88a8af620a723ce59957007
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 98%
+ht-degree: 100%
 
 ---
 
@@ -31,10 +31,10 @@ Dispatcher와 렌더링 컴퓨터 간에 SSL 연결을 사용합니다.
 
 SSL 연결을 사용하여 AEM 또는 CQ 렌더링 인스턴스와 통신하도록 Dispatcher를 구성합니다.
 
-Dispatcher을 구성하기 전에 SSL을 사용하도록 AEM 또는 CQ를 구성하십시오. 자세한 내용은 다음을 참조하십시오.
+Dispatcher를 구성하기 전에 SSL을 사용하도록 AEM 또는 CQ를 구성하십시오. 자세한 내용은 다음을 참조하십시오.
 
-* [기본적으로 SSL/TLS](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/ssl-by-default)
-* [AEM에서 SSL 마법사 사용](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [SSL/TLS (기본값)](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/security/ssl-by-default)
+* [AEM에서 SSL 마법사 사용](https://experienceleague.adobe.com/ko/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### SSL 관련 요청 헤더 {#ssl-related-request-headers}
 
