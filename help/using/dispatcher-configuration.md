@@ -3,9 +3,9 @@ title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -946,9 +946,9 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 1. `/farms` 아래에 `/vanity_urls` 섹션을 추가합니다.
 1. Apache 웹 서버를 다시 시작합니다.
 
-Dispatcher **버전 4.3.6**&#x200B;을 사용하여 새 `/loadOnStartup` 매개 변수를 추가했습니다. 이 매개 변수를 사용하여 시작 시 다음과 같이 vanity URL 로드를 구성할 수 있습니다.
+Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수가 추가되었습니다. 이 매개변수를 사용하면 다음과 같이 시작 시 사용자 지정 URL 로딩을 구성할 수 있습니다.
 
-`/loadOnStartup 0`을(를) 추가하여(아래 샘플 참조) 시작 시 vanity URL 로드를 비활성화할 수 있습니다.
+`/loadOnStartup 0`을 추가하면(아래 샘플 참조) 시작 시 사용자 지정 URL 로딩을 비활성화할 수 있습니다.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Dispatcher **버전 4.3.6**&#x200B;을 사용하여 새 `/loadOnStartup` 매개 
       } 
 ```
 
-시작할 때 `/loadOnStartup 1`에서 vanity URL을 로드합니다. `/loadOnStartup 1`은(는) 이 매개 변수의 현재 기본값입니다.
+반면 `/loadOnStartup 1`은 시작 시 사용자 지정 URL을 로드합니다. 현재 이 매개변수의 기본값은 `/loadOnStartup 1`임을 참고하십시오.
 
 ## 신디케이션 요청 전달 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
