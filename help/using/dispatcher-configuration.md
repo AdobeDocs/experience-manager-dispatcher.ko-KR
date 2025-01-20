@@ -2,10 +2,10 @@
 title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: ht
+source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
+workflow-type: tm+mt
 source-wordcount: '8938'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -391,7 +391,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
   }
 ```
 
-다음 표는 이 예제를 사용하여 주어진 HTTP 요청에 대해 확인된 가상 호스트를 보여 줍니다.
+다음 테이블은 이 예제를 사용하여 주어진 HTTP 요청에 대해 확인된 가상 호스트를 보여 줍니다.
 
 | 요청 URL | 확인된 가상 호스트 |
 |---|---|
