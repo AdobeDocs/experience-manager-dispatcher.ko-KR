@@ -3,9 +3,9 @@ title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -355,7 +355,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 * `virtualhosts` 값에 요청의 `scheme` 및 `uri`와 일치하는 `scheme` 및 `uri` 부분이 없는 경우 요청의 `host`와 일치하는 처음 발견된 가상 호스트가 사용됩니다.
 * `virtualhosts` 값에 요청의 호스트와 일치하는 호스트 부분이 없으면 최상위 팜의 최상위 가상 호스트가 사용됩니다.
 
-따라서 기본 가상 호스트를 `virtualhosts` 속성 상단에 배치해야 합니다. `dispatcher.any` 파일의 최상위 팜에 배치합니다.
+따라서 기본 가상 호스트를 `virtualhosts` 속성 상단에 배치해야 합니다. `dispatcher.any` 파일의 최상위 팜에 배치하십시오.
 
 ### 예제 가상 호스트 확인 {#example-virtual-host-resolution}
 
