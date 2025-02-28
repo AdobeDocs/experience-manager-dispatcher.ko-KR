@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
 workflow-type: tm+mt
-source-wordcount: '2929'
-ht-degree: 100%
+source-wordcount: '3008'
+ht-degree: 97%
 
 ---
 
@@ -196,6 +196,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 가상 호스트는 주 서버 섹션에 구성된 [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) 속성 값을 상속합니다. 가상 호스트는 자체 DispatcherConfig 속성을 포함하여 기본 서버 구성을 재정의할 수 있습니다.
 
+>[!NOTE]
+>
+>AEM as a Cloud Service에서 각 하위 페이지보다 상위 수준의 DocumentRoot와 함께 별도의 vhost 구성을 사용해야 합니다. 이 작업은 Archetype에서 기본적으로 처리되지만, 여러 DocumentRoots를 사용하는 경우 각 사이트에 대해 별도로 구성할 수 없으므로 전체 캐시에 대해 캐시 무효화를 처리할 수 있도록 우선 순위가 높은 vhost 구성을 사용해야 합니다. 이 새 구성의 ServerAlias는 호스트 헤더 &quot;localhost&quot;를 허용해야 합니다.
+
 ### 여러 도메인을 처리하도록 Dispatcher 구성 {#configure-dispatcher-to-handle-multiple-domains}
 
 도메인 이름과 해당 가상 호스트를 포함하는 URL을 지원하려면 다음 Dispatcher 팜을 정의하십시오.
@@ -302,7 +306,7 @@ Sling 리소스 매핑에 대한 자세한 내용은 Sling 설명서의 [리소�
 
 ### 예제 리소스 매핑 노드
 
-다음 표에는 branda.com 도메인에 대한 리소스 매핑을 구현하는 노드가 나열되어 있습니다. `brandb.com` 도메인에 대해 유사한 노드가 생성됩니다(예: `/etc/map/http/brandb.com`). HTML 페이지의 참조가 Sling의 컨텍스트에서 올바르게 해석되지 않을 때 모든 경우에 매핑이 필요합니다.
+다음 테이블에는 branda.com 도메인에 대한 리소스 매핑을 구현하는 노드가 나열되어 있습니다. `brandb.com` 도메인에 대해 유사한 노드가 생성됩니다(예: `/etc/map/http/brandb.com`). HTML 페이지의 참조가 Sling의 컨텍스트에서 올바르게 해석되지 않을 때 모든 경우에 매핑이 필요합니다.
 
 | 노드 경로 | 유형 | 속성 |
 |--- |--- |--- |
