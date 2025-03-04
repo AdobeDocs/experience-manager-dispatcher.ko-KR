@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3008'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -198,7 +198,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 >[!NOTE]
 >
->AEM as a Cloud Service에서 각 하위 페이지보다 상위 수준의 DocumentRoot와 함께 별도의 vhost 구성을 사용해야 합니다. 이 작업은 Archetype에서 기본적으로 처리되지만, 여러 DocumentRoots를 사용하는 경우 각 사이트에 대해 별도로 구성할 수 없으므로 전체 캐시에 대해 캐시 무효화를 처리할 수 있도록 우선 순위가 높은 vhost 구성을 사용해야 합니다. 이 새 구성의 ServerAlias는 호스트 헤더 &quot;localhost&quot;를 허용해야 합니다.
+>AEM as a Cloud Service에서는 각각의 하위 페이지보다 상위 레벨에 DocumentRoot를 두고 별도의 vhost 구성을 사용해야 합니다. 이는 Archetype에서 기본적으로 처리되지만 여러 개의 DocumentRoot가 사용되는 경우 캐시 무효화를 각 사이트에 대해 별도로 구성할 수 없으므로 전체 캐시에 대해 처리할 수 있도록 더 높은 우선순위의 vhost 구성을 사용해야 합니다. 이 새로운 구성의 ServerAlias는 호스트 헤더 “localhost”를 허용해야 합니다.
 
 ### 여러 도메인을 처리하도록 Dispatcher 구성 {#configure-dispatcher-to-handle-multiple-domains}
 
