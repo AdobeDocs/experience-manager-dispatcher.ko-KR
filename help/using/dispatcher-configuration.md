@@ -2,10 +2,10 @@
 title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: da9bf0c1f4cceccfc6be9f4871a21d2bb703f0a4
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
+workflow-type: tm+mt
+source-wordcount: '8941'
+ht-degree: 99%
 
 ---
 
@@ -1037,7 +1037,7 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 
 `/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 Dispatcher는 캐시된 콘텐츠를 삭제합니다. 이 작업은 다음에 요청할 때 수행됩니다.
 
-`/serveStaleOnError`가 `"1"`로 설정된 경우, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 한입니다. AEM의 5xx 응답 또는 연결 시간 제한으로 인해 Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답하게 됩니다.
+`/serveStaleOnError`가 `"1"`로 설정된 경우, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 한입니다. AEM의 502, 503 또는 504 응답 또는 연결 시간 제한으로 인해 Dispatcher이 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답합니다.
 
 ### 인증 사용 시 캐싱 {#caching-when-authentication-is-used}
 
