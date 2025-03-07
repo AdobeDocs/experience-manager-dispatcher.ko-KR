@@ -3,9 +3,9 @@ title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -201,7 +201,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | vanity URL에 대한 액세스를 구성합니다. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | 신디케이션 요청의 전달을 지원합니다. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | 캐싱 동작을 구성합니다. |
-| [/statistics](#configuring-load-balancing-statistics) | 부하 분산 계산을 위한 통계 범주를 정의합니다. |
+| [/statistics](#configuring-load-balancing-statistics) | 부하 분산 계산을 위한 통계 카테고리를 정의합니다. |
 | [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor) | 고정 문서가 포함된 폴더입니다. |
 | [/health_check](#specifying-a-health-check-page) | 서버 가용성을 확인하는 데 사용할 URL입니다. |
 | [/retryDelay](#specifying-the-page-retry-delay) | 실패한 연결을 재시도하기 전의 지연입니다. |
@@ -946,9 +946,9 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 1. `/farms` 아래에 `/vanity_urls` 섹션을 추가합니다.
 1. Apache 웹 서버를 다시 시작합니다.
 
-Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수가 추가되었습니다. 이 매개변수를 사용하면 다음과 같이 시작 시 사용자 지정 URL 로딩을 구성할 수 있습니다.
+Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수가 추가되었습니다. 이 매개변수를 사용하면 다음과 같이 시작 시 사용자 정의 URL 로딩을 구성할 수 있습니다.
 
-`/loadOnStartup 0`을 추가하면(아래 샘플 참조) 시작 시 사용자 지정 URL 로딩을 비활성화할 수 있습니다.
+`/loadOnStartup 0`을 추가하면(아래 샘플 참조) 시작 시 사용자 정의 URL 로딩을 비활성화할 수 있습니다.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수�
       } 
 ```
 
-반면 `/loadOnStartup 1`은 시작 시 사용자 지정 URL을 로드합니다. 현재 이 매개변수의 기본값은 `/loadOnStartup 1`임을 참고하십시오.
+반면 `/loadOnStartup 1`은 시작 시 사용자 정의 URL을 로드합니다. 현재 이 매개변수의 기본값은 `/loadOnStartup 1`임을 참고하십시오.
 
 ## 신디케이션 요청 전달 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1037,7 +1037,7 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 
 `/serveStaleOnError` 속성은 렌더링 서버가 오류를 반환할 때 Dispatcher가 무효화된 문서를 반환할지 여부를 제어합니다. 기본적으로 statfile이 터치되어 캐시된 콘텐츠가 무효화되면 Dispatcher는 캐시된 콘텐츠를 삭제합니다. 이 작업은 다음에 요청할 때 수행됩니다.
 
-`/serveStaleOnError`가 `"1"`로 설정된 경우, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 한입니다. AEM의 502, 503 또는 504 응답 또는 연결 시간 제한으로 인해 Dispatcher이 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답합니다.
+`/serveStaleOnError`가 `"1"`로 설정된 경우, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 한입니다. AEM의 502, 503 또는 504 응답 또는 연결 시간 제한으로 인해 Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답하게 됩니다.
 
 ### 인증 사용 시 캐싱 {#caching-when-authentication-is-used}
 
@@ -1435,14 +1435,14 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 
 ## 로드 밸런싱 구성 - `/statistics` {#configuring-load-balancing-statistics}
 
-`/statistics` 섹션은 Dispatcher가 각 렌더링의 응답성을 평가하는 파일 범주를 정의합니다. Dispatcher는 점수를 사용하여 요청을 보낼 렌더링을 결정합니다.
+`/statistics` 섹션은 Dispatcher가 각 렌더링의 응답성을 평가하는 파일 카테고리를 정의합니다. Dispatcher는 점수를 사용하여 요청을 보낼 렌더링을 결정합니다.
 
-생성하는 각 범주는 glob 패턴을 정의합니다. Dispatcher는 요청된 콘텐츠의 URI를 다음 패턴과 비교하여 요청된 콘텐츠의 범주를 결정합니다.
+생성하는 각 카테고리는 glob 패턴을 정의합니다. Dispatcher는 요청된 콘텐츠의 URI를 다음 패턴과 비교하여 요청된 콘텐츠의 카테고리를 결정합니다.
 
-* 범주의 순서는 URI와 비교되는 순서를 결정합니다.
-* URI와 일치하는 첫 번째 범주 패턴이 파일의 범주입니다. 더 이상 범주 패턴은 평가되지 않습니다.
+* 카테고리의 순서는 URI와 비교되는 순서를 결정합니다.
+* URI와 일치하는 첫 번째 카테고리 패턴이 파일의 카테고리입니다. 더 이상 카테고리 패턴은 평가되지 않습니다.
 
-Dispatcher는 최대 8개의 통계 범주를 지원합니다. 8개 이상의 범주를 정의하는 경우 처음 8개만 사용됩니다.
+Dispatcher는 최대 8개의 통계 카테고리를 지원합니다. 8개 이상의 카테고리를 정의하는 경우 처음 8개만 사용됩니다.
 
 **렌더링 선택**
 
@@ -1451,28 +1451,28 @@ Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘�
 1. 요청에 `renderid` 쿠키의 렌더링 이름이 포함된 경우 Dispatcher는 해당 렌더링을 사용합니다.
 1. 요청에 `renderid` 쿠키가 포함되지 않은 경우 Dispatcher는 렌더링 통계를 비교합니다.
 
-   1. Dispatcher는 요청 URI의 범주를 결정합니다.
-   1. Dispatcher는 해당 범주에 대한 응답 점수가 가장 낮은 렌더링을 확인하고 해당 렌더링을 선택합니다.
+   1. Dispatcher는 요청 URI의 카테고리를 결정합니다.
+   1. Dispatcher는 해당 카테고리에 대한 응답 점수가 가장 낮은 렌더링을 확인하고 해당 렌더링을 선택합니다.
 
 1. 렌더링을 아직 선택하지 않은 경우 목록에서 첫 번째 렌더링을 사용합니다.
 
-렌더링 범주에 대한 점수는 Dispatcher가 시도하는 실패 및 성공 이전 연결과 이전 응답 시간을 기반으로 합니다. 각 시도에 대해, 요청된 URI의 범주에 대한 점수가 업데이트됩니다.
+렌더링 카테고리에 대한 점수는 Dispatcher가 시도하는 실패 및 성공 이전 연결과 이전 응답 시간을 기반으로 합니다. 각 시도에 대해, 요청된 URI의 카테고리에 대한 점수가 업데이트됩니다.
 
 >[!NOTE]
 >
 >로드 밸런싱을 사용하지 않는 경우 이 섹션을 생략할 수 있습니다.
 
-### 통계 범주 정의 {#defining-statistics-categories}
+### 통계 카테고리 정의 {#defining-statistics-categories}
 
-렌더링 선택을 위한 통계를 유지할 각 문서 유형에 대한 범주를 정의합니다. `/statistics` 섹션은 `/categories` 섹션을 포함합니다. 범주를 정의하려면 `/categories` 섹션 아래에 다음 형식의 행을 추가합니다.
+렌더링 선택을 위한 통계를 유지할 각 문서 유형에 대한 카테고리를 정의합니다. `/statistics` 섹션은 `/categories` 섹션을 포함합니다. 카테고리를 정의하려면 `/categories` 섹션 아래에 다음 형식의 행을 추가합니다.
 
 `/name { /glob "pattern"}`
 
-범주 `name`은 팜에 고유해야 합니다. `pattern`은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
+카테고리 `name`은 팜에 고유해야 합니다. `pattern`은 [glob 속성에 대한 패턴 디자인](#designing-patterns-for-glob-properties) 섹션에 설명되어 있습니다.
 
-URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 범주 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 범주부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 범주를 먼저 배치하십시오.
+URI의 카테고리를 결정하기 위해 Dispatcher는 일치하는 항목이 발견될 때까지 URI를 각 카테고리 패턴과 비교합니다. Dispatcher는 목록의 첫 번째 카테고리부터 시작하여 순서대로 계속 진행합니다. 따라서 보다 구체적인 패턴을 가진 카테고리를 먼저 배치하십시오.
 
-예를 들어 Dispatcher의 기본 `dispatcher.any` 파일은 HTML 범주와 기타 범주를 정의합니다. HTML 범주가 보다 구체적이므로 먼저 표시됩니다.
+예를 들어 Dispatcher의 기본 `dispatcher.any` 파일은 HTML 카테고리와 기타 카테고리를 정의합니다. HTML 카테고리가 보다 구체적이므로 먼저 표시됩니다.
 
 ```xml
 /statistics
@@ -1485,7 +1485,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
   }
 ```
 
-다음 예제에는 검색 페이지 범주도 포함되어 있습니다.
+다음 예제에는 검색 페이지 카테고리도 포함되어 있습니다.
 
 ```xml
 /statistics
@@ -1501,7 +1501,7 @@ URI의 범주를 결정하기 위해 Dispatcher는 일치하는 항목이 발견
 
 ### Dispatcher 통계에 서버 비가용성 반영 {#reflecting-server-unavailability-in-dispatcher-statistics}
 
-`/unavailablePenalty` 속성은 렌더링 연결이 실패할 때 렌더링 통계에 적용되는 시간(10분의 1초)을 설정합니다. Dispatcher는 요청된 URI와 일치하는 통계 범주에 시간을 추가합니다.
+`/unavailablePenalty` 속성은 렌더링 연결이 실패할 때 렌더링 통계에 적용되는 시간(10분의 1초)을 설정합니다. Dispatcher는 요청된 URI와 일치하는 통계 카테고리에 시간을 추가합니다.
 
 예를 들어 지정된 호스트 이름/포트에 대한 TCP/IP 연결을 설정할 수 없는 경우에 페널티가 적용됩니다 AEM이 실행 중이 아니거나(수신 대기 중이 아님) 네트워크 관련 문제가 발생했을 수 있기 때문입니다.
 
