@@ -26,7 +26,7 @@ AEM과 함께 Dispatcher를 사용하는 경우 효과적인 캐시 관리를 �
 
 자세한 내용은 AEM 보안 검사 목록의 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션을 참조하십시오.
 
-<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/kr/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## 작성자 환경에서 Dispatcher 캐시 무효화 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
