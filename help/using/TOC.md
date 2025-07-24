@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '82'
-ht-degree: 100%
+source-wordcount: '81'
+ht-degree: 50%
 
 ---
 
@@ -29,7 +29,7 @@ ht-degree: 100%
    + [Dispatcher 구성](dispatcher-configuration.md)
    + [AEM에서 캐시된 페이지 무효화](page-invalidate.md)
    + [캐시 성능을 위한 웹 사이트 최적화](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-   + [보안 콘텐츠 캐싱](permissions-cache.md)
+   + [보안 콘텐츠 캐시](permissions-cache.md)
    + [여러 도메인에 AEM Dispatcher 사용](dispatcher-domains.md)
    + [AEM Dispatcher에 SSL 사용](dispatcher-ssl.md)
    + [CSRF 공격을 방지하도록 AEM Dispatcher 구성](configuring-dispatcher-to-prevent-csrf.md)

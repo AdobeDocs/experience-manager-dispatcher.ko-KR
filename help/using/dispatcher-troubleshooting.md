@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '539'
-ht-degree: 100%
+source-wordcount: '472'
+ht-degree: 93%
 
 ---
 
@@ -20,13 +20,13 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM과 독립적입니다. 단, Dispatcher 설명서는 AEM 설명서에 포함되어 있습니다. 항상 최신 버전의 AEM 설명서에 임베드된 Dispatcher 설명서를 사용하십시오.
+>Dispatcher 버전은 AEM과 독립적입니다. 단, Dispatcher 설명서는 AEM 설명서에 임베드되어 있습니다. 항상 최신 버전의 AEM 설명서에 임베드된 Dispatcher 설명서를 사용하십시오.
 >
->Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 포함되어 있습니다.
+>Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 임베드되어 있습니다.
 
 >[!NOTE]
 >
->자세한 내용은 [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html), [Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) 및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md)를 참조하십시오.
+>자세한 내용은 <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Dispatcher 플러싱 문제 해결](https://experienceleague.adobe.com/search.html?lang=ko-KR#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) 및 [Dispatcher 주요 문제 FAQ](dispatcher-faq.md)를 참조하십시오.
 
 ## 기본 구성 확인 {#check-the-basic-configuration}
 
@@ -54,16 +54,17 @@ IIS는 실제 버전에 따라 다양한 추적 도구를 제공합니다.
 
 해당 도구는 활동을 모니터링하는 데 도움이 될 수 있습니다.
 
-## IIS 및 404를 찾을 수 없음 {#iis-and-not-found}
+<!-- Both URLs in this topic 404! >
+## IIS and 404 Not Found {#iis-and-not-found}
 
-IIS를 사용할 때 다양한 시나리오에서 `404 Not Found`가 반환되는 것을 경험할 수 있습니다. 이 경우 다음 기술 자료 문서를 참조하십시오.
+When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
 
-* [IIS 6/7: POST 메서드가 404를 반환합니다](https://helpx.adobe.com/kr/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6: 기본 경로 `/bin`이 포함된 URL에 대한 요청은 `404 Not Found`](https://helpx.adobe.com/kr/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)을 반환합니다.
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-또한 Dispatcher 캐시 루트와 IIS 문서 루트가 동일한 디렉터리로 설정되어 있는지 확인합니다.
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## 워크플로 모델 삭제 문제 {#problems-deleting-workflow-models}
+## 워크플로우 모델 삭제 문제 {#problems-deleting-workflow-models}
 
 **증상**
 

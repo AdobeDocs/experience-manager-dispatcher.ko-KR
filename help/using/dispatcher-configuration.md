@@ -2,10 +2,10 @@
 title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: a9ef9d7d2fe5c421cd8039579fd84961ea901def
-workflow-type: ht
-source-wordcount: '8941'
-ht-degree: 100%
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
+source-wordcount: '8937'
+ht-degree: 95%
 
 ---
 
@@ -13,7 +13,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM(Adobe Experience Manager)과 별도입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 포함되어 있습니다.
+>Dispatcher 버전은 AEM(Adobe Experience Manager)과 별도입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 임베드되어 있습니다.
 
 다음 섹션에서는 Dispatcher의 다양한 측면을 구성하는 방법을 설명합니다.
 
@@ -357,7 +357,7 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 
 따라서 기본 가상 호스트를 `virtualhosts` 속성 상단에 배치해야 합니다. `dispatcher.any` 파일의 최상위 팜에 배치하십시오.
 
-### 예제 가상 호스트 확인 {#example-virtual-host-resolution}
+### 가상 호스트 확인 예 {#example-virtual-host-resolution}
 
 다음 예제는 두 개의 Dispatcher 팜을 정의하는 `dispatcher.any` 파일의 스니펫을 나타내며 각 팜은 `virtualhosts` 속성을 정의합니다.
 
@@ -398,11 +398,11 @@ Dispatcher는 다음과 같은 방식으로 가장 일치하는 가상 호스트
 | `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
-## 보안 세션 활성화 - `/sessionmanagement` {#enabling-secure-sessions-sessionmanagement}
+## 보안 세션 사용 - `/sessionmanagement` {#enabling-secure-sessions-sessionmanagement}
 
 >[!CAUTION]
 >
->이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [인증 사용 시 캐싱](#caching-when-authentication-is-used) 섹션에서 자세히 설명한 바와 같이 `/allowAuthorized 0 `을 설정하면 인증 정보가 포함된 요청은 캐시되지 **않습니다.** 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/permissions-cache) 페이지를 참조하십시오.
+>이 기능을 사용하려면 `/allowAuthorized`는 `/cache` 섹션에서 `"0"`으로 설정됨. [ 섹션 &quot;인증 사용 시 캐싱&quot;](#caching-when-authentication-is-used) 섹션에 자세히 설명된 대로 인증 정보가 포함된 `/allowAuthorized 0 ` 요청을 설정할 때 **캐싱되지 않음**&#x200B;됩니다. 권한 구분 캐싱이 요구된다면 [보안 콘텐츠 캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/permissions-cache) 페이지를 참조하십시오.
 
 사용자가 팜의 모든 페이지에 액세스하려면 로그인해야 하도록 렌더링 팜에 액세스를 위한 보안 세션을 만듭니다. 로그인 후 사용자는 팜의 페이지에 액세스할 수 있습니다. CUG와 함께 이 기능을 사용하는 방법에 대한 정보는 [폐쇄형 사용자 그룹 만들기](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used)를 참조하십시오. 시작하기 전에 Dispatcher [보안 체크리스트](/help/using/security-checklist.md) 도 참조하십시오.
 
@@ -698,7 +698,7 @@ HTTP/1.1은 [요청 라인](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.ht
 Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한합니다. 다음 예제에서는 외부 방문자에게 최소한의 액세스 권한을 제공합니다.
 
 * `/content`
-* 디자인 및 클라이언트 라이브러리와 같은 기타 콘텐츠. 예를 들면 다음과 같습니다.
+* 디자인 및 클라이언트 라이브러리와 같은 기타 콘텐츠. 예:
 
    * `/etc/designs/default*`
    * `/etc/designs/mydesign*`
@@ -946,9 +946,9 @@ vanity URL에 대한 액세스를 활성화하려면 다음 예제와 같이 `/f
 1. `/farms` 아래에 `/vanity_urls` 섹션을 추가합니다.
 1. Apache 웹 서버를 다시 시작합니다.
 
-Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수가 추가되었습니다. 이 매개변수를 사용하면 다음과 같이 시작 시 사용자 정의 URL 로딩을 구성할 수 있습니다.
+Dispatcher **버전 4.3.6**&#x200B;을(를) 사용하여 새 `/loadOnStartup` 매개 변수를 추가했습니다. 이 매개변수를 사용하면 다음과 같이 시작 시 사용자 정의 URL 로딩을 구성할 수 있습니다.
 
-`/loadOnStartup 0`을 추가하면(아래 샘플 참조) 시작 시 사용자 정의 URL 로딩을 비활성화할 수 있습니다.
+`/loadOnStartup 0`을(를) 추가하여(아래 샘플 참조) 시작 시 vanity URL 로드를 비활성화할 수 있습니다.
 
 ```
 /vanity_urls {
@@ -959,7 +959,7 @@ Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수�
       } 
 ```
 
-반면 `/loadOnStartup 1`은 시작 시 사용자 정의 URL을 로드합니다. 현재 이 매개변수의 기본값은 `/loadOnStartup 1`임을 참고하십시오.
+`/loadOnStartup 1`이(가) 시작 시 vanity URL을 로드하는 동안 `/loadOnStartup 1`이(가) 이 매개 변수의 현재 기본값임을 유의하십시오.
 
 ## 신디케이션 요청 전달 - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
@@ -1023,7 +1023,7 @@ Dispatcher **버전 4.3.6**&#x200B;에 새로운 `/loadOnStartup` 매개변수�
 
 여러 팜을 사용하는 경우 각 팜은 서로 다른 문서 루트를 사용해야 합니다.
 
-### statfile 이름 지정 {#naming-the-statfile}
+### statfile에 이름을 지정합니다. {#naming-the-statfile}
 
 `/statfile` 속성은 statfile로 사용할 파일을 식별합니다. Dispatcher는 이 파일을 사용하여 최신 콘텐츠 업데이트 시간을 등록합니다. 웹 서버의 어떤 파일이든 statfile일 수 있습니다.
 
@@ -1039,7 +1039,7 @@ statfile에는 콘텐츠가 없습니다. 콘텐츠가 업데이트되면 Dispat
 
 `/serveStaleOnError`가 `"1"`로 설정된 경우, Dispatcher는 캐시에서 무효화된 콘텐츠를 삭제하지 않습니다. 즉, 렌더링 서버가 성공적인 응답을 반환하지 않는 한입니다. AEM의 502, 503 또는 504 응답 또는 연결 시간 제한으로 인해 Dispatcher가 오래된 콘텐츠를 제공하고 HTTP 상태 111(유효성 재검사 실패)로 응답하게 됩니다.
 
-### 인증 사용 시 캐싱 {#caching-when-authentication-is-used}
+### 인증 사용 시 캐시 {#caching-when-authentication-is-used}
 
 `/allowAuthorized` 속성은 다음 인증 정보를 포함하는 요청이 캐시되는지 여부를 제어합니다.
 
@@ -1283,7 +1283,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >
 >이 작업이 수행되지 않으면 모든 클라이언트가 캐시를 지우도록 호출을 실행할 수 있습니다. 이러한 작업이 반복적으로 수행되면 사이트 성과에 심각한 영향을 줄 수 있습니다.
 
-### URL 매개변수 무시 {#ignoring-url-parameters}
+### URL 매개 변수 무시 {#ignoring-url-parameters}
 
 `ignoreUrlParams` 섹션은 페이지가 캐시되는지 또는 캐시에서 전달되는지 여부를 결정할 때 무시되는 URL 매개변수를 정의합니다.
 
@@ -1304,7 +1304,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >[!NOTE]
 >
 >glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
-> `/0002 { /glob "p1" /type "allow" }`
+>> `/0002 { /glob "p1" /type "allow" }`
 
 다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 Dispatcher는 `nocache` 매개변수를 포함하는 요청 URL을 캐시하지 않습니다.
 
@@ -1433,7 +1433,7 @@ Dispatcher 버전 4.3.5 이전에는 TTL 무효화 로직이 구성된 TTL 값�
 >
 >이 기능은 Dispatcher 버전 **4.1.11** 이상에서 사용할 수 있습니다.
 
-## 로드 밸런싱 구성 - `/statistics` {#configuring-load-balancing-statistics}
+## 부하 분산 구성 - `/statistics` {#configuring-load-balancing-statistics}
 
 `/statistics` 섹션은 Dispatcher가 각 렌더링의 응답성을 평가하는 파일 카테고리를 정의합니다. Dispatcher는 점수를 사용하여 요청을 보낼 렌더링을 결정합니다.
 
@@ -1462,7 +1462,7 @@ Dispatcher는 렌더링된 페이지가 필요할 때마다 다음 알고리즘�
 >
 >로드 밸런싱을 사용하지 않는 경우 이 섹션을 생략할 수 있습니다.
 
-### 통계 카테고리 정의 {#defining-statistics-categories}
+### 통계 범주 정의 {#defining-statistics-categories}
 
 렌더링 선택을 위한 통계를 유지할 각 문서 유형에 대한 카테고리를 정의합니다. `/statistics` 섹션은 `/categories` 섹션을 포함합니다. 카테고리를 정의하려면 `/categories` 섹션 아래에 다음 형식의 행을 추가합니다.
 
@@ -1571,7 +1571,7 @@ Dispatcher는 `/retryDelay`가 명시적으로 지정되지 않은 경우 `"1"` 
 /retryDelay "1"
 ```
 
-### 다시 시도 횟수 구성 {#configuring-the-number-of-retries}
+### 재시도 횟수 구성 {#configuring-the-number-of-retries}
 
 `/numberOfRetries` 속성은 Dispatcher가 렌더링으로 수행하는 최대 연결 시도 횟수를 설정합니다. Dispatcher가 이 다시 시도 횟수 후에 렌더링에 성공적으로 연결할 수 없으면 Dispatcher는 실패한 응답을 반환합니다.
 
@@ -1624,7 +1624,7 @@ read more data
 }
 ```
 
-이러한 메시지는 `read more data` 섹션에서 `EINTR`이 발생할 때 생성될 수 있습니다. 데이터가 수신되기 전에 신호를 수신하여 발생합니다.
+이러한 메시지는 `read more data` 섹션에서 `EINTR`이 발생할 때 생성될 수 있습니다. 이 문제는 신호가 데이터 전에 도달하기 때문에 발생합니다.
 
 이러한 인터럽트를 무시하려면 `dispatcher.any`에 다음 매개변수를 추가할 수 있습니다(`/farms`앞에).
 
@@ -1632,7 +1632,7 @@ read more data
 
 `/ignoreEINTR`을 `"1"`로 설정하면 Dispatcher가 전체 응답을 읽을 때까지 계속해서 데이터 읽기를 시도합니다. 기본값은 `0`이며 옵션을 비활성화합니다.
 
-## glob 속성에 대한 패턴 디자인 {#designing-patterns-for-glob-properties}
+## glob 속성에 대한 디자인 패턴 {#designing-patterns-for-glob-properties}
 
 Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언트 요청에 대한 선택 기준으로 사용합니다. `glob` 속성의 값은 Dispatcher가 요청된 리소스의 경로 또는 클라이언트의 IP 주소와 같은 요청 측면과 비교하는 패턴입니다. 예를 들어 `/filter` 섹션의 항목은 `glob` 패턴을 사용하여 Dispatcher가 작동하거나 거부하는 페이지의 경로를 식별합니다.
 
@@ -1740,7 +1740,7 @@ The following table describes the wildcard characters.
 </table>
 -->
 
-## 로깅 {#logging}
+## 로그 {#logging}
 
 웹 서버 구성에서 다음과 같은 항목을 설정할 수 있습니다.
 
@@ -1749,7 +1749,7 @@ The following table describes the wildcard characters.
 
 자세한 내용은 웹 서버 설명서 및 Dispatcher 인스턴스의 추가 정보 파일을 참조하십시오.
 
-**Apache 회전되거나 파이프된 로그**
+**Apache 회전된 또는 파이프된 로그**
 
 **Apache** 웹 서버를 사용하는 경우, 회전된 로그나 파이프된 로그 또는 두 가지 모두에 대한 표준 기능을 사용할 수 있습니다. 예를 들어 파이프된 로그를 사용하는 경우는 다음과 같습니다.
 
@@ -1775,7 +1775,7 @@ The following table describes the wildcard characters.
 이 기능은 로그에 추가 정보를 표시하는 디버그 로깅보다 높은 수준입니다. 다음에 대한 로깅을 추가합니다.
 
 * 전달된 헤더의 값,
-* 특정 작업에 적용되는 규칙.
+* 특정 작업에 적용되는 규칙입니다.
 
 웹 서버에서 로그 수준을 `4`로 설정하여 추적 로깅을 활성화할 수 있습니다.
 
@@ -1801,7 +1801,7 @@ The following table describes the wildcard characters.
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## 기본 작동 확인 {#confirming-basic-operation}
+## 기본 작업 확인 {#confirming-basic-operation}
 
 웹 서버, Dispatcher 및 AEM 인스턴스의 기본 작동 및 상호 작용을 확인하려면 다음 단계를 사용할 수 있습니다.
 
@@ -1833,7 +1833,7 @@ The following table describes the wildcard characters.
 
 이러한 경우 각 요청이 하나의 Dispatcher만 통과하는지 확인하십시오. Dispatcher는 다른 Dispatcher의 요청을 처리하지 않습니다. 따라서 Dispatcher가 모두 AEM 웹 사이트에 직접 액세스하도록 하십시오.
 
-## 디버깅 {#debugging}
+## 디버그 {#debugging}
 
 헤더 `X-Dispatcher-Info`를 요청에 추가할 때 Dispatcher는 대상이 캐시되었는지, 캐시에서 반환되었는지 또는 전혀 캐시할 수 없는지 응답합니다. 응답 헤더 `X-Cache-Info`에는 이 정보가 읽을 수 있는 형식으로 포함되어 있습니다. 이러한 응답 헤더를 사용하여 Dispatcher에 의해 캐시된 응답과 관련된 문제를 디버그할 수 있습니다.
 

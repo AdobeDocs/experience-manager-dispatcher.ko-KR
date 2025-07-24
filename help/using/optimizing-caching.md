@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/kr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1128'
-ht-degree: 100%
+ht-degree: 96%
 
 ---
 
@@ -31,7 +31,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM과 독립적입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 포함되어 있습니다.
+>Dispatcher 버전은 AEM과 독립적입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 임베드되어 있습니다.
 
 Dispatcher는 성능을 최적화하는 데 사용할 수 있는 여러 기본 제공 메커니즘을 제공합니다. 이 섹션에서는 캐싱의 이점을 극대화하기 위해 웹 사이트를 디자인하는 방법을 설명합니다.
 
@@ -55,7 +55,7 @@ HTTP 요청 헤더는 캐시되지 않으므로 헤더에 페이지 인코딩 �
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## URL 매개변수 방지 {#avoid-url-parameters}
+## URL 매개 변수 방지 {#avoid-url-parameters}
 
 가능하면 캐시하려는 페이지의 URL 매개변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(Dispatcher가 [적절하게 구성](dispatcher-configuration.md#main-pars_title_24)되지 않은 경우).
 

@@ -5,14 +5,14 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '1062'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
-# AEM Dispatcher 릴리스 정보{#aem-dispatcher-release-notes}
+# AEM Dispatcher 릴리스 노트{#aem-dispatcher-release-notes}
 
 ## 릴리스 정보 {#release-information}
 
@@ -35,7 +35,7 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 자세한 지침은 [Dispatcher 설치](dispatcher-install.md)를 참조하십시오.
 
-## 릴리스 기록 {#release-history}
+## 릴리스 내역 {#release-history}
 
 ### Release 4.3.7 (2024년 3월 27일) {#march}
 

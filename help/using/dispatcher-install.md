@@ -6,10 +6,10 @@ converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '3748'
-ht-degree: 100%
+source-wordcount: '3720'
+ht-degree: 94%
 
 ---
 
@@ -35,13 +35,13 @@ Comment Type: draft
 
 예를 들어 `dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz` 파일에는 Linux® i686에서 실행되는 Apache 2.4 웹 서버용 Dispatcher 버전 4.3.1이 포함되어 있으며 파일은 **tar** 형식을 사용하여 패키징됩니다.
 
-다음 표에는 각 웹 서버의 파일 이름에 사용되는 웹 서버 식별자가 나열되어 있습니다.
+다음 테이블에는 각 웹 서버의 파일 이름에 사용되는 웹 서버 식별자가 나열되어 있습니다.
 
 | 웹 서버 | 설치 키트 |
 |--- |--- |
-| Apache 2.4 | dispatcher-apache **2.4**-&lt;기타 매개변수> |
-| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | dispatcher-**iis**-&lt;기타 매개변수> |
-| Sun Java™ 웹 서버 iPlanet | dispatcher-**ns**-&lt;기타 매개변수> |
+| Apache 2.4 | `dispatcher-apache**2.4**-<other parameters>` |
+| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | `dispatcher-**iis**-<other parameters>` |
+| Sun Java™ 웹 서버 iPlanet | `dispatcher-**ns**-<other parameters>` |
 
 >[!CAUTION]
 >
@@ -142,7 +142,7 @@ servervariables=0|1
 replaceauthorization=0|1
 ```
 
-다음 표에서는 각 속성에 대해 설명합니다.
+다음 테이블에서는 각 속성에 대해 설명합니다.
 
 | 매개변수 | 설명 |
 |--- |--- |
@@ -150,7 +150,7 @@ replaceauthorization=0|1
 | `logfile` | `dispatcher.log` 파일의 위치입니다. 위치가 설정되지 않은 경우, 로그 메시지는 Windows 이벤트 로그로 이동합니다. |
 | `loglevel` | 이벤트 로그에 메시지를 출력하는 데 사용되는 로그 수준을 정의합니다. 다음과 같은 로그 파일의 로그 수준에서 지정할 수 있습니다. <br/>0 - 오류 메시지만. <br/>1 - 오류 및 경고. <br/>2 - 오류, 경고 및 정보 메시지 <br/>3 - 오류, 경고, 정보 및 디버그 메시지. <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정하고 프로덕션 환경에서 실행할 때는 0으로 설정하십시오. |
 | `replaceauthorization` | HTTP 요청의 권한 부여 헤더가 처리되는 방식을 지정합니다. 다음 값이 유효합니다.<br/>0 - 인증 헤더가 수정되지 않습니다. <br/>1 - “Basic” 이외의 “Authorization”이라는 헤더를 `Basic <IIS:LOGON\_USER>`에 해당하는 헤더로 바꿉니다.<br/> |
-| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
+| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청된 헤더와 함께 Dispatcher으로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
 | `enable_chunked_transfer` | 클라이언트 응답에 대한 청크 전송을 활성화(1) 또는 비활성화(0)할지 여부를 정의합니다. 기본값은 0입니다. |
 
 예제 구성:
@@ -169,9 +169,9 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
 
 ### 익명 액세스 구성 - IIS 8.5 및 10 {#configuring-anonymous-access-iis-and}
 
-작성자 인스턴스의 기본 플러시 복제 에이전트가 플러시 요청과 함께 보안 자격 증명을 전송하지 않도록 구성되었습니다. 따라서 Dispatcher 캐시를 사용하는 웹 사이트에서는 익명 액세스를 허용해야 합니다.
+작성자 인스턴스의 기본 `Flush` 복제 에이전트가 플러시 요청과 함께 보안 자격 증명을 전송하지 않도록 구성되었습니다. 따라서 Dispatcher 캐시를 사용하는 웹 사이트에서는 익명 액세스를 허용해야 합니다.
 
-웹 사이트에서 인증 방법을 사용하는 경우 플러시 복제 에이전트를 그에 따라 구성해야 합니다.
+웹 사이트에서 인증 방법을 사용하는 경우 `Flush` 복제 에이전트를 그에 따라 구성해야 합니다.
 
 1. IIS 관리자를 열고 Dispatcher 캐시로 사용 중인 웹 사이트를 선택합니다.
 1. 기능 보기 모드를 사용하여 IIS 섹션에서 인증을 더블 클릭합니다.
@@ -217,7 +217,7 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
 1. 이름 확인 버튼을 클릭합니다. Windows에서 사용자 계정을 확인하면 [확인]을 클릭합니다.
 1. Dispatcher 폴더의 권한 대화 상자에서 방금 추가한 계정을 선택하고 **전체 제어를 제외한** 계정에 대한 모든 권한을 활성화한 다음 [확인]을 클릭합니다. [확인]을 클릭하여 폴더 속성 대화 상자를 닫을 수 있습니다.
 
-### JSON Mime 유형 등록 - IIS 8.5 및 10 {#registering-the-json-mime-type-iis-and}
+### JSON MIME 유형 등록 - IIS 8.5 및 10 {#registering-the-json-mime-type-iis-and}
 
 Dispatcher가 JSON 호출을 허용하도록 하려면 다음 절차를 사용하여 JSON MIME 유형을 등록하십시오.
 
@@ -234,7 +234,7 @@ Dispatcher가 JSON 호출을 허용하도록 하려면 다음 절차를 사용�
 1. IIS 관리자에서 웹 사이트를 선택하고 기능 보기를 사용하여 요청 필터링을 더블 클릭합니다.
 1. `bin` 세그먼트를 선택하고 [제거]를 클릭한 다음 확인 대화 상자에서 [예]를 클릭합니다.
 
-### 파일에 IIS 메시지 로깅 - IIS 8.5 및 10 {#logging-iis-messages-to-a-file-iis-and}
+### 파일에 IIS 메시지 기록 - IIS 8.5 및 10 {#logging-iis-messages-to-a-file-iis-and}
 
 다음 절차를 사용하여 Dispatcher 로그 메시지를 Windows 이벤트 로그 대신 로그 파일에 기록합니다. 로그 파일을 사용하도록 Dispatcher를 구성하고 IIS에 파일에 대한 쓰기 권한을 제공합니다.
 
@@ -297,13 +297,13 @@ Dispatcher는 다음 중 하나로 제공됩니다.
 
 | 파일 | 설명 |
 |--- |--- |
-| disp_apache&lt;x.y>.dll | Windows: Dispatcher 동적 링크 라이브러리 파일입니다. |
-| dispatcher-apache&lt;x.y>-&lt;rel-nr>.so | UNIX®: Dispatcher 공유 오브젝트 라이브러리 파일입니다. |
-| mod_dispatcher.so | UNIX®: 예제 링크. |
-| http.conf.disp&lt;x> | Apache 서버에 대한 예제 구성 파일입니다. |
-| dispatcher.any | Dispatcher에 대한 예제 구성 파일입니다. |
-| 추가 정보 | 설치 지침과 최신 정보가 포함된 추가 정보 파일입니다. **참고**: 설치를 시작하기 전에 이 파일을 확인하십시오. |
-| 변경 사항 | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 변경 사항 파일입니다. |
+| d`isp_apache<x.y>.dll` | Windows: Dispatcher 동적 링크 라이브러리 파일입니다. |
+| `dispatcher-apacheM<x.y>-<rel-nr>.so` | UNIX®: Dispatcher 공유 오브젝트 라이브러리 파일입니다. |
+| `mod_dispatcher.so` | UNIX®: 예제 링크. |
+| `http.conf.disp<x>` | Apache 서버에 대한 예제 구성 파일입니다. |
+| `dispatcher.any` | Dispatcher에 대한 예제 구성 파일입니다. |
+| `README` | 설치 지침과 최신 정보가 포함된 추가 정보 파일입니다. **참고**: 설치를 시작하기 전에 이 파일을 확인하십시오. |
+| C`HANGES` | 현재 및 과거 릴리스에서 수정된 문제를 나열하는 변경 사항 파일입니다. |
 
 다음 단계를 사용하여 Apache 웹 서버에 Dispatcher를 추가합니다.
 
@@ -366,7 +366,7 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 
 **LoadModule**
 
-다음 표에는 사용할 수 있는 예제가 나열되어 있습니다. 정확한 항목은 특정 Apache 웹 서버에 따라 다릅니다.
+다음 테이블에는 사용할 수 있는 예제가 나열되어 있습니다. 정확한 항목은 특정 Apache 웹 서버에 따라 다릅니다.
 
 |  |  |
 |--- |--- |
@@ -381,7 +381,7 @@ semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 
 **Dispatcher별 구성 항목**
 
-Dispatcher별 구성 항목은 LoadModule 항목 뒤에 배치됩니다. 다음 표에는 UNIX®와 Windows 모두에 적용할 수 있는 예제 구성이 나열되어 있습니다.
+Dispatcher별 구성 항목은 LoadModule 항목 뒤에 배치됩니다. 다음 테이블에는 UNIX®와 Windows 모두에 적용할 수 있는 예제 구성이 나열되어 있습니다.
 
 **Windows 및 UNIX®**
 
@@ -531,7 +531,7 @@ AllowOverride None
 ...
 ```
 
-### HTTPS 지원 활성화(UNIX® 및 Linux®){#enable-support-for-https-unix-and-linux}
+### HTTPS 지원 활성화(UNIX® 및 Linux®) {#enable-support-for-https-unix-and-linux}
 
 Dispatcher는 OpenSSL을 사용하여 HTTP를 통한 보안 통신을 구현합니다. Dispatcher 버전 **4.2.0**&#x200B;부터 OpenSSL 1.0.0 및 OpenSSL 1.0.1이 지원됩니다. Dispatcher는 기본적으로 OpenSSL 1.0.0을 사용합니다. OpenSSL 1.0.1을 사용하려면 Dispatcher가 설치된 OpenSSL 라이브러리를 사용하도록 다음 절차에 따라 심볼 링크를 만듭니다.
 
@@ -550,7 +550,7 @@ Dispatcher는 OpenSSL을 사용하여 HTTP를 통한 보안 통신을 구현합�
 
 >[!NOTE]
 >
->사용자 정의된 Apache 버전을 사용하는 경우 Apache와 Dispatcher가 동일한 버전의 [OpenSSL](https://www.openssl.org/source/)을 사용하여 컴파일되었는지 확인하십시오.
+>사용자 지정된 Apache 버전을 사용하는 경우 Apache와 Dispatcher이 동일한 버전의 OpenSSL을 사용하여 컴파일되었는지 확인하십시오. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### 다음 단계 {#next-steps-1}
 
@@ -623,7 +623,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
 
 **Init**
 
-다음 표에는 사용할 수 있는 예제가 나열되어 있습니다. 정확한 항목은 특정 웹 서버에 따라 다릅니다.
+다음 테이블에는 사용할 수 있는 예제가 나열되어 있습니다. 정확한 항목은 특정 웹 서버에 따라 다릅니다.
 
 **Windows 및 UNIX®**
 

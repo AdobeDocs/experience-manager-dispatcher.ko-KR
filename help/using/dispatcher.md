@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '3079'
-ht-degree: 100%
+source-wordcount: '3073'
+ht-degree: 95%
 
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Dispatcher 버전은 AEM(Adobe Experience Manager)과 별도입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 포함되어 있습니다.
+>Dispatcher 버전은 AEM(Adobe Experience Manager)과 별도입니다. Dispatcher 설명서 링크를 따라가면 이 페이지로 리디렉션되었을 수 있습니다. 해당 링크는 이전 버전의 AEM에 대한 설명서에 임베드되어 있습니다.
 
 Dispatcher는 엔터프라이즈급 웹 서버와 함께 사용하는 Adobe Experience Manager의 캐싱 및 로드 밸런싱 도구입니다.
 
@@ -39,7 +39,7 @@ Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 독�
 필요에 따라 다음 정보를 사용하십시오.
 
 * [Dispatcher 보안 검사 목록](security-checklist.md)
-* [Dispatcher 기술 자료](https://helpx.adobe.com/kr/experience-manager/kb/index/dispatcher.html)
+<!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
 * [캐시 성능을 위한 웹 사이트 최적화](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [여러 도메인에 Dispatcher 사용](dispatcher-domains.md)
 * [Dispatcher에 SSL 사용](dispatcher-ssl.md)
@@ -53,7 +53,7 @@ Dispatcher 배포 프로세스는 선택한 웹 서버 및 OS 플랫폼과 독�
 >
 >하지만 Dispatcher를 사용하여 **작성자 인스턴스**&#x200B;의 응답성을 향상시킬 수도 있습니다. 특히 웹 사이트를 편집하고 업데이트하는 사용자 수가 많은 경우에는 더욱 그렇습니다. 이 경우에 특정적인 세부 사항은 아래에서 [작성자 서버에 Dispatcher 사용](#using-a-dispatcher-with-an-author-server)을 참조하십시오.
 
-## Dispatcher를 사용하여 캐싱을 구현하는 이유는 무엇입니까? {#why-use-dispatcher-to-implement-caching}
+## Dispatcher을 사용하여 캐싱을 구현하는 이유는 무엇입니까? {#why-use-dispatcher-to-implement-caching}
 
 웹 게시에 대한 두 가지 기본 접근 방법이 있습니다.
 
@@ -147,11 +147,11 @@ Dispatcher에는 자동 무효화의 대상이 되는 파일 목록이 있습니
 * 자동 무효화는 일반적으로 HTML 페이지와 같이 상호 관계가 복잡할 때 사용됩니다. 이러한 페이지에는 링크 및 탐색 항목이 포함되어 있으므로 일반적으로 콘텐츠 업데이트 후에 업데이트해야 합니다. PDF 또는 사진 파일을 자동으로 생성한 경우 해당 파일을 자동으로 무효화하도록 선택할 수도 있습니다.
 * 자동 무효화는 상태 파일을 수정하는 것 외에는 업데이트 시 Dispatcher가 수행하는 작업을 포함하지 않습니다. 단, 상태 파일을 수정하면 캐시 콘텐츠가 캐시에서 물리적으로 제거되지 않고 자동으로 사용되지 않습니다.
 
-## Dispatcher가 문서를 반환하는 방법 {#how-dispatcher-returns-documents}
+## Dispatcher에서 문서를 반환하는 방법 {#how-dispatcher-returns-documents}
 
 ![](assets/chlimage_1-6.png)
 
-### 문서의 캐싱 대상 여부 확인
+### 문서의 캐시 대상 여부 확인
 
 [Dispatcher가 구성 파일에서 캐시하는 문서를 정의할 수 있습니다](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration). Dispatcher는 캐싱 가능한 문서 목록에 대해 요청을 확인합니다. 문서가 이 목록에 없으면 Dispatcher가 AEM 인스턴스에서 문서를 요청합니다.
 
@@ -207,7 +207,7 @@ Dispatcher가 인스턴스로부터 응답을 받지 못하면 자동으로 요�
 >
 >단일 Dispatcher는 사용 가능한 게시 인스턴스의 용량을 채울 수 있지만, 일부 드문 애플리케이션의 경우에는 두 Dispatcher 인스턴스 간의 로드 균형을 조정할 수도 있습니다. 여러 Dispatcher가 포함된 구성은 신중하게 고려해야 합니다. 추가 Dispatcher가 사용 가능한 게시 인스턴스의 로드를 늘리고 대부분의 애플리케이션 성능을 쉽게 줄일 수 있기 때문입니다.
 
-## Dispatcher가 로드 밸런싱을 수행하는 방법 {#how-the-dispatcher-performs-load-balancing}
+## Dispatcher에서 로드 밸런싱을 수행하는 방법 {#how-the-dispatcher-performs-load-balancing}
 
 ### 성능 통계
 
@@ -238,7 +238,7 @@ Dispatcher는 AEM의 각 인스턴스가 문서를 처리하는 속도에 대한
 
 이러한 경우 각 요청이 하나의 Dispatcher만 통과하는지 확인하십시오. Dispatcher는 다른 Dispatcher의 요청을 처리하지 않습니다. 따라서 Dispatcher가 모두 AEM 웹 사이트에 직접 액세스하도록 하십시오.
 
-## 콘텐츠 전송 네트워크에 Dispatcher 사용 {#using-dispatcher-with-a-cdn}
+## CDN과 함께 Dispatcher 사용 {#using-dispatcher-with-a-cdn}
 
 Akamai Edge Delivery 또는 Amazon Cloud Front와 같은 콘텐츠 전송 네트워크(CDN)는 최종 사용자에게 가까운 위치에서 콘텐츠를 제공합니다. 이로 인해
 
@@ -258,19 +258,19 @@ HTTP 인프라 구성 요소로서 콘텐츠 전송 네트워크는 Dispatcher�
 
 일반적으로 Dispatcher는 캐시에서 문서를 제공하고 콘텐츠 전송 네트워크 서버로 반환되는 응답 헤더에 영향을 줄 수 있는 다음 서버입니다.
 
-## 콘텐츠 전송 네트워크 캐시 제어 {#controlling-a-cdn-cache}
+## CDN 캐시 제어 {#controlling-a-cdn-cache}
 
 콘텐츠 전송 네트워크가 Dispatcher에서 다시 가져오기 전에 리소스를 캐시하는 시간을 제어하는 방법에는 몇 가지가 있습니다.
 
-1. 명시적 구성\
-   MIME 유형, 확장, 요청 유형 등에 따라 콘텐츠 전송 네트워크의 캐시에서 특정 리소스가 얼마나 오래 보관되는지를 구성합니다.
+1. 명시적 구성.
+MIME 유형, 확장, 요청 유형 등에 따라 CDN의 캐시에서 특정 리소스가 얼마나 오래 보관되는지를 구성합니다.
 
-1. 만료 및 캐시 제어 헤더\
-   대부분의 콘텐츠 전송 네트워크는 업스트림 서버에서 보내는 경우 `Expires:` 및 `Cache-Control:` HTTP 헤더를 처리합니다. 예를 들어 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache Module을 사용하여 이 메서드를 달성할 수 있습니다.
+1. 만료 및 캐시 제어 헤더입니다.
+대부분의 콘텐츠 전송 네트워크는 업스트림 서버에서 보내는 경우 `Expires:` 및 `Cache-Control:` HTTP 헤더를 처리합니다. 예를 들어 [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache Module을 사용하여 이 메서드를 달성할 수 있습니다.
 
-1. 수동 무효화\
-   콘텐츠 전송 네트워크를 사용하면 웹 인터페이스를 통해 캐시에서 리소스를 제거할 수 있습니다.
-1. API 기반 무효화\
+1. 수동 무효화.
+콘텐츠 전송 네트워크를 사용하면 웹 인터페이스를 통해 캐시에서 리소스를 제거할 수 있습니다.
+1. API 기반 무효화.\
    또한 대부분의 콘텐츠 전송 네트워크는 캐시에서 리소스를 제거할 수 있는 REST 및/또는 SOAP API를 제공합니다.
 
 일반적인 AEM 설정에서 확장, 경로별 또는 둘 다를 통한 구성은 위의 포인트 1과 2를 통해 수행할 수 있으며 적절한 캐싱 기간을 설정할 수 있습니다. 이러한 캐싱 기간은 디자인 이미지 및 클라이언트 라이브러리와 같이 자주 변경되지 않고 자주 사용되는 리소스에 대한 것입니다. 새 릴리스가 배포되면 일반적으로 수동 무효화가 필요합니다.
@@ -283,7 +283,7 @@ HTTP 인프라 구성 요소로서 콘텐츠 전송 네트워크는 Dispatcher�
 >
 >[AEM (CQ) Dispatcher 보안 및 콘텐츠 전송 네트워크+브라우저 캐싱](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015)과 [Dispatcher 캐싱](https://experienceleague.adobe.com/ko/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations)에 대한 녹화된 프레젠테이션을 참조하십시오.
 
-## 작성자 서버에 Dispatcher 사용 {#using-a-dispatcher-with-an-author-server}
+## 작성자 서버와 함께 Dispatcher 사용 {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
