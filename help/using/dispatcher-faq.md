@@ -3,9 +3,9 @@ title: Dispatcher의 주요 문제
 description: Adobe Experience Manager Dispatcher의 주요 문제.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1538'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -122,7 +122,7 @@ en 디렉터리 아래에 `_jcr_content`라는 이름의 모든 디렉터리(존
 
 **질문**: 비즈니스는 최근 Dispatcher 수준의 문제에 직면했습니다. CQ 저장소에서 일부 데이터를 가져오는 AJAX 호출 중 하나에 `jcr:content`가 있습니다. `jcr%3acontent`로 인코딩되어 잘못된 결과 집합이 나옵니다.
 
-**답변**: `ResourceResolver.map()`을(를) 호출하여 GET 요청에 대한 알기 쉬운 URL을 생성하고 Dispatcher 캐싱 문제를 해결합니다. map() 메서드는 `:` 콜론을 밑줄로 인코딩하고 resolve() 메서드는 이를 다시 SLING JCR 읽기 가능한 포맷으로 디코딩합니다. map() 메서드를 사용하여 Ajax 호출에 사용되는 URL을 생성합니다.
+**답변**: `ResourceResolver.map()` 호출을 통해 GET 요청에 대한 친숙한 URL을 생성하고 Dispatcher 캐싱 문제를 해결합니다. map() 메서드는 `:` 콜론을 밑줄로 인코딩하고 resolve() 메서드는 이를 다시 SLING JCR 읽기 가능한 포맷으로 디코딩합니다. map() 메서드를 사용하여 Ajax 호출에 사용되는 URL을 생성합니다.
 
 추가 참조: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 

@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/kr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
@@ -55,7 +55,7 @@ HTTP 요청 헤더는 캐시되지 않으므로 헤더에 페이지 인코딩 �
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## URL 매개 변수 방지 {#avoid-url-parameters}
+## URL 매개변수 방지 {#avoid-url-parameters}
 
 가능하면 캐시하려는 페이지의 URL 매개변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(Dispatcher가 [적절하게 구성](dispatcher-configuration.md#main-pars_title_24)되지 않은 경우).
 

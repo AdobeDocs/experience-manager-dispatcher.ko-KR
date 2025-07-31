@@ -1,5 +1,5 @@
 ---
-title: 보안 콘텐츠 캐시
+title: 보안 콘텐츠 캐싱
 description: Dispatcher에서 권한 구분 캐싱이 작동하는 방식에 대해 알아봅니다.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -7,13 +7,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '923'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
-# 보안 콘텐츠 캐시 {#caching-secured-content}
+# 보안 콘텐츠 캐싱 {#caching-secured-content}
 
 권한 구분 캐싱을 사용하면 보안 페이지를 캐시할 수 있습니다. Dispatcher는 캐시된 페이지를 전달하기 전에 페이지에 대한 사용자의 액세스 권한을 확인합니다.
 
@@ -70,7 +70,7 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 >[!NOTE]
 >
 >Dispatcher 앞에 콘텐츠 전송 네트워크(또는 다른 캐시)이 있는 경우에는 이 콘텐츠 전송 네트워크가 비공개 콘텐츠를 캐시하지 않도록 캐싱 헤더를 설정해야 합니다. 예: `Header always set Cache-Control private`.
->&#x200B;>AEM as a Cloud Service의 경우 비공개 캐싱 헤더를 설정하는 방법에 대한 자세한 내용은 [캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) 페이지를 참조하십시오.
+>>AEM as a Cloud Service의 경우 비공개 캐싱 헤더를 설정하는 방법에 대한 자세한 내용은 [캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) 페이지를 참조하십시오.
 
 ## AuthChcker 서블릿 만들기 {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ Dispatcher에는 권한에 구분 캐싱을 구현하는 AuthChecker 모듈이 �
 
 >[!NOTE]
 >
->`Sling` Servlet Resolver(org.apache.sling.servlets.resolver.SlingServletResolver) 서비스에서 sling.servlet.paths 속성 값을 사용하도록 설정해야 합니다.
+>`Sling` Servlet Resolver(org.apache.sling.servlets.resolver.SlingServletResolver) 서비스에서 sling.servlet.paths 속성 값을 활성화해야 합니다.
 
 ### 예제 서블릿 {#example-servlet}
 

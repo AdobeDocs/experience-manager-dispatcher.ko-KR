@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3720'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -150,7 +150,7 @@ replaceauthorization=0|1
 | `logfile` | `dispatcher.log` 파일의 위치입니다. 위치가 설정되지 않은 경우, 로그 메시지는 Windows 이벤트 로그로 이동합니다. |
 | `loglevel` | 이벤트 로그에 메시지를 출력하는 데 사용되는 로그 수준을 정의합니다. 다음과 같은 로그 파일의 로그 수준에서 지정할 수 있습니다. <br/>0 - 오류 메시지만. <br/>1 - 오류 및 경고. <br/>2 - 오류, 경고 및 정보 메시지 <br/>3 - 오류, 경고, 정보 및 디버그 메시지. <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정하고 프로덕션 환경에서 실행할 때는 0으로 설정하십시오. |
 | `replaceauthorization` | HTTP 요청의 권한 부여 헤더가 처리되는 방식을 지정합니다. 다음 값이 유효합니다.<br/>0 - 인증 헤더가 수정되지 않습니다. <br/>1 - “Basic” 이외의 “Authorization”이라는 헤더를 `Basic <IIS:LOGON\_USER>`에 해당하는 헤더로 바꿉니다.<br/> |
-| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청된 헤더와 함께 Dispatcher으로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
+| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
 | `enable_chunked_transfer` | 클라이언트 응답에 대한 청크 전송을 활성화(1) 또는 비활성화(0)할지 여부를 정의합니다. 기본값은 0입니다. |
 
 예제 구성:
@@ -217,7 +217,7 @@ Dispatcher ISAPI 모듈을 통합하도록 IIS를 구성합니다. IIS에서는 
 1. 이름 확인 버튼을 클릭합니다. Windows에서 사용자 계정을 확인하면 [확인]을 클릭합니다.
 1. Dispatcher 폴더의 권한 대화 상자에서 방금 추가한 계정을 선택하고 **전체 제어를 제외한** 계정에 대한 모든 권한을 활성화한 다음 [확인]을 클릭합니다. [확인]을 클릭하여 폴더 속성 대화 상자를 닫을 수 있습니다.
 
-### JSON MIME 유형 등록 - IIS 8.5 및 10 {#registering-the-json-mime-type-iis-and}
+### JSON Mime 유형 등록 - IIS 8.5 및 10 {#registering-the-json-mime-type-iis-and}
 
 Dispatcher가 JSON 호출을 허용하도록 하려면 다음 절차를 사용하여 JSON MIME 유형을 등록하십시오.
 
@@ -234,7 +234,7 @@ Dispatcher가 JSON 호출을 허용하도록 하려면 다음 절차를 사용�
 1. IIS 관리자에서 웹 사이트를 선택하고 기능 보기를 사용하여 요청 필터링을 더블 클릭합니다.
 1. `bin` 세그먼트를 선택하고 [제거]를 클릭한 다음 확인 대화 상자에서 [예]를 클릭합니다.
 
-### 파일에 IIS 메시지 기록 - IIS 8.5 및 10 {#logging-iis-messages-to-a-file-iis-and}
+### 파일에 IIS 메시지 로깅 - IIS 8.5 및 10 {#logging-iis-messages-to-a-file-iis-and}
 
 다음 절차를 사용하여 Dispatcher 로그 메시지를 Windows 이벤트 로그 대신 로그 파일에 기록합니다. 로그 파일을 사용하도록 Dispatcher를 구성하고 IIS에 파일에 대한 쓰기 권한을 제공합니다.
 
@@ -550,7 +550,7 @@ Dispatcher는 OpenSSL을 사용하여 HTTP를 통한 보안 통신을 구현합�
 
 >[!NOTE]
 >
->사용자 지정된 Apache 버전을 사용하는 경우 Apache와 Dispatcher이 동일한 버전의 OpenSSL을 사용하여 컴파일되었는지 확인하십시오. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
+>사용자 정의된 Apache 버전을 사용하는 경우 Apache와 Dispatcher가 동일한 버전의 OpenSSL을 사용하여 컴파일되었는지 확인하십시오. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### 다음 단계 {#next-steps-1}
 

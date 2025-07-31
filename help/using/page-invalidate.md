@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
@@ -24,11 +24,11 @@ AEM과 함께 Dispatcher를 사용하는 경우 효과적인 캐시 관리를 �
 
 기본 `admin` 사용자 계정은 기본적으로 설치된 복제 에이전트를 인증하는 데 사용됩니다. 복제 에이전트에 사용할 전용 사용자 계정을 생성합니다.
 
-자세한 내용은 AEM 보안 검사 목록의 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) 섹션을 참조하십시오.
+자세한 내용은 AEM 보안 체크리스트의 섹션 [복제 및 전송 사용자 구성](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps)을 참조하십시오.
 
-<!-- OLD URL from above https://helpx.adobe.com/kr/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## 작성자 환경에서 Dispatcher 캐시 무효화 {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## 작성 환경에서 Dispatcher 캐시 무효화 {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 AEM 작성자 인스턴스의 복제 에이전트는 페이지가 게시될 때 캐시 무효화 요청을 Dispatcher에 보냅니다. 새 콘텐츠가 게시되면 Dispatcher가 결국 캐시 파일을 새로 고칩니다.
 
@@ -120,7 +120,7 @@ Comment Type: draft
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## 수동으로 Dispatcher 캐시 무효화 {#manually-invalidating-the-dispatcher-cache}
+## Dispatcher 캐시 수동 무효화 {#manually-invalidating-the-dispatcher-cache}
 
 페이지를 활성화하지 않고 Dispatcher 캐시를 무효화(또는 플러시)하려면 Dispatcher에 HTTP 요청을 발행할 수 있습니다. 예를 들어 관리자 또는 다른 애플리케이션이 캐시를 플러시할 수 있도록 하는 AEM 애플리케이션을 만들 수 있습니다.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-다시 캐시할 페이지 경로는 즉시 메시지 본문의 별도 행에 나열됩니다. `CQ-Handle` 값은 다시 캐시할 페이지를 무효화하는 페이지의 경로입니다. (`/statfileslevel`Cache[ 구성 항목의 ](dispatcher-configuration.md#main-pars_146_44_0010) 매개 변수를 참조하십시오.) 다음 예제 HTTP 요청 메시지는 `/content/geometrixx-outdoors/en.html page`을(를) 삭제하고 다시 캐시합니다.
+다시 캐시할 페이지 경로는 즉시 메시지 본문의 별도 행에 나열됩니다. `CQ-Handle` 값은 다시 캐시할 페이지를 무효화하는 페이지의 경로입니다. ([캐시](dispatcher-configuration.md#main-pars_146_44_0010) 구성 항목의 `/statfileslevel` 매개변수를 참조하십시오.) 다음 예제 HTTP 요청 메시지는 `/content/geometrixx-outdoors/en.html page`를 삭제하고 다시 캐시합니다.
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

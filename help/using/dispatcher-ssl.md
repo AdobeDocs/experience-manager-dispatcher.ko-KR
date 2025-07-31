@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -27,7 +27,7 @@ Dispatcher와 렌더링 컴퓨터 간에 SSL 연결을 사용합니다.
 >
 >SSL 인증서와 관련된 작업은 서드파티 제품에 바인딩됩니다. Adobe Platinum 유지 관리 및 지원 계약이 적용되지 않습니다.
 
-## Dispatcher이 AEM에 연결할 때 SSL 사용 {#use-ssl-when-dispatcher-connects-to-aem}
+## Dispatcher가 AEM에 연결할 때 SSL 사용 {#use-ssl-when-dispatcher-connects-to-aem}
 
 SSL 연결을 사용하여 AEM 또는 CQ 렌더링 인스턴스와 통신하도록 Dispatcher를 구성합니다.
 
@@ -111,7 +111,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 }
 ```
 
-## Dispatcher과 AEM 간의 상호 SSL 구성 {#configuring-mutual-ssl-between-dispatcher-and-aem}
+## Dispatcher와 AEM 간의 상호 SSL 구성 {#configuring-mutual-ssl-between-dispatcher-and-aem}
 
 상호 SSL을 사용하도록 Dispatcher와 렌더링 컴퓨터(일반적으로 AEM 또는 CQ 게시 인스턴스) 간의 연결을 구성합니다.
 
@@ -137,9 +137,9 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 
 게시 인스턴스 및 Dispatcher를 인증하는 CA 서명 인증서를 생성하거나 획득합니다.
 
-#### 내 CA 만들기 {#creating-your-ca}
+#### CA 생성 {#creating-your-ca}
 
-직접 CA 역할을 하는 경우 [OpenSSL](https://www.openssl.org/)을 사용하여 서버 및 클라이언트 인증서에 서명하는 인증 기관을 생성합니다. OpenSSL 라이브러리가 설치되어 있어야 합니다. 서드파티 CA를 사용하는 경우 이 절차를 수행하지 마십시오.
+직접 CA 역할을 하는 경우 [OpenSSL](https://www.openssl.org/)을 사용하여 서버 및 클라이언트 인증서에 서명하는 인증 기관을 생성합니다. (OpenSSL 라이브러리가 설치되어 있어야 합니다.) 서드파티 CA를 사용하는 경우 이 절차를 수행하지 마십시오.
 
 1. 터미널을 열고 현재 디렉터리를 `CA.sh` 파일이 포함된 디렉터리로 변경합니다(예: `/usr/local/ssl/misc`).
 1. CA를 생성하려면 다음 명령을 입력한 다음 메시지가 표시될 때 값을 제공합니다
@@ -152,7 +152,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
    >
    >`openssl.cnf` 파일의 여러 속성은 CA.sh 스크립트의 동작을 제어합니다. CA를 만들기 전에 필요에 따라 이 파일을 편집합니다.
 
-#### 인증서 만들기 {#creating-the-certificates}
+#### 인증서 생성 {#creating-the-certificates}
 
 OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 인증서 요청을 생성합니다.
 
@@ -183,7 +183,7 @@ OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 �
 
 `rendercert.pem` 및 `renderkey.pem` 파일을 사용하여 렌더링 인스턴스에서 SSL을 구성합니다.
 
-#### 렌더링 인증서를 JKS(Java™ KeyStore) 형식으로 변환 {#converting-the-render-certificate-to-jks-format}
+#### JKS(Java™ KeyStore) 포맷으로 렌더링 인증서 변환 {#converting-the-render-certificate-to-jks-format}
 
 다음 명령을 사용하여 PEM 파일인 렌더링 인증서를 PKCS#12 파일로 변환합니다. 또한 렌더링 인증서에 서명한 CA의 인증서를 포함합니다.
 
@@ -206,7 +206,7 @@ OpenSSL을 사용하여 서드파티 CA로 보내거나 자체 CA로 서명할 �
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### 렌더링의 Truststore에 CA 인증서 추가 {#adding-the-ca-cert-to-the-render-s-truststore}
+#### 렌더링의 신뢰 저장소에 CA 인증서 추가 {#adding-the-ca-cert-to-the-render-s-truststore}
 
 CA 역할을 하는 경우 CA 인증서를 키 저장소로 가져옵니다. 그런 다음 키 저장소를 신뢰하도록 렌더링 인스턴스를 실행하는 JVM을 구성합니다.
 
@@ -252,11 +252,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 * AEM 6.1: [SSL을 통한 HTTP 활성화](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * 이전 AEM 버전: [이 페이지](https://experienceleague.adobe.com/ko/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)를 참조하십시오.
 
-### Dispatcher 모듈에 대한 SSL 구성 {#configuring-ssl-for-the-dispatcher-module}
+### Dispatcher 모듈용 SSL 구성 {#configuring-ssl-for-the-dispatcher-module}
 
 Dispatcher가 상호 SSL을 사용하도록 구성하려면 Dispatcher 인증서를 준비한 후 웹 서버 모듈을 구성합니다.
 
-### 통합 Dispatcher 인증서 만들기 {#creating-a-unified-dispatcher-certificate}
+### 통합 Dispatcher 인증서 생성 {#creating-a-unified-dispatcher-certificate}
 
 Dispatcher 인증서와 암호화되지 않은 개인 키를 단일 PEM 파일로 결합합니다. 텍스트 편집기 또는 `cat` 명령을 사용하여 다음 예제와 유사한 파일을 생성하십시오.
 

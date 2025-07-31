@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2986'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -56,12 +56,12 @@ Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요�
 
 ## 캐시 무효화
 
-`Dispatcher Flush` 복제 에이전트가 Dispatcher에서 캐시된 파일을 무효화하도록 요청할 때 저장소의 콘텐츠 경로는 캐시의 콘텐츠로 확인되어야 합니다.
+Dispatcher가 캐시된 파일을 무효화하도록 `Dispatcher Flush` 복제 에이전트가 요청할 때 저장소의 콘텐츠 경로는 캐시의 콘텐츠로 확인되어야 합니다.
 
 ![](assets/chlimage_1-9.png)
 
 * a - AEM 작성자 인스턴스에서 페이지가 활성화되고 콘텐츠가 게시 인스턴스에 복제됩니다.
-* b - `Dispatcher Flush` 에이전트가 Dispatcher을 호출하여 복제된 콘텐츠에 대한 캐시를 무효화합니다.
+* b - `Dispatcher Flush` 에이전트는 Dispatcher를 호출하여 복제된 콘텐츠에 대한 캐시를 무효화합니다.
 * c - Dispatcher가 하나 이상의 .stat 파일을 터치하여 캐시된 파일을 무효화합니다.
 
 여러 도메인에서 Dispatcher를 사용하려면 AEM, Dispatcher 및 웹 서버를 구성해야 합니다. 이 페이지에 설명된 솔루션은 일반적이며 대부분의 환경에 적용됩니다. 일부 AEM 토폴로지의 복잡성으로 인해 특정 문제를 해결하기 위해 솔루션에 추가 사용자 정의 구성이 필요할 수 있습니다. 기존 IT 인프라 및 관리 정책을 충족하도록 예제를 조정해야 할 수 있습니다.
@@ -75,7 +75,7 @@ Dispatcher를 사용하여 콘텐츠를 캐시할 때 클라이언트 HTTP 요�
 
 웹 페이지에 짧은 URL을 사용하는 것이 바람직합니다. 일반적으로 페이지 URL은 웹 콘텐츠가 포함된 저장소 폴더의 구조를 반영합니다. 단, URL은 최상위 저장소 노드(예: `/content`)를 표시하지 않습니다. 클라이언트가 AEM 저장소의 구조를 반드시 알고 있는 것은 아닙니다.
 
-## 일반 요구 사항 {#general-requirements}
+## 일반적인 요구 사항 {#general-requirements}
 
 여러 도메인에서 작동하는 Dispatcher를 지원하려면 환경에서 다음 구성을 구현해야 합니다.
 
@@ -200,7 +200,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 >[!NOTE]
 >
->AEM as a Cloud Service에서 각 하위 페이지보다 높은 수준의 DocumentRoot와 함께 별도의 vhost 구성을 사용해야 합니다. 이 프로세스는 기본적으로 Archetype에서 처리됩니다. 그러나 여러 DocumentRoots를 사용하는 경우 각 사이트에 대해 별도로 구성할 수 없으므로 전체 캐시에 대한 캐시 무효화를 처리하려면 우선 순위가 높은 vhost 구성이 필요합니다. 이 새 구성의 ServerAlias는 호스트 헤더 &quot;localhost&quot;를 허용해야 합니다.
+>AEM as a Cloud Service에서는 각각의 하위 페이지보다 상위 레벨에 DocumentRoot를 두고 별도의 vhost 구성을 사용해야 합니다. 이 과정은 Archetype에서 기본적으로 처리됩니다. 여러 개의 DocumentRoot가 사용되는 경우 캐시 무효화를 각 사이트에 대해 별도로 구성할 수 없으므로 전체 캐시에 대해 처리할 수 있도록 더 높은 우선순위의 vhost 구성을 사용해야 합니다. 이 새로운 구성의 ServerAlias는 호스트 헤더 “localhost”를 허용해야 합니다.
 
 ### 여러 도메인을 처리하도록 Dispatcher 구성 {#configure-dispatcher-to-handle-multiple-domains}
 
@@ -286,9 +286,9 @@ Dispatcher initializing (build 4.1.2)
 
 ### 리소스 확인을 위한 Sling 매핑 구성 {#configure-sling-mapping-for-resource-resolution}
 
-도메인 기반 URL이 AEM 게시 인스턴스의 콘텐츠로 확인되도록 리소스 확인에 `Sling` 매핑을 사용합니다. 리소스 매핑은 Dispatcher에서(원래 클라이언트 HTTP 요청에서) 들어오는 URL을 콘텐츠 노드로 변환합니다.
+리소스 확인을 위한 `Sling` 매핑을 사용하여 도메인 기반 URL이 AEM 게시 인스턴스의 콘텐츠로 확인되도록 합니다. 리소스 매핑은 Dispatcher에서(원래 클라이언트 HTTP 요청에서) 들어오는 URL을 콘텐츠 노드로 변환합니다.
 
-`Sling` 리소스 매핑에 대한 자세한 내용은 [ 설명서의 ](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html)리소스 확인을 위한 매핑`Sling`을 참조하세요.
+`Sling` 리소스 매핑에 대한 자세한 내용은 `Sling` 설명서의 [리소스 해결을 위한 매핑](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html)을 참조하십시오.
 
 다른 매핑이 필요할 수 있지만 일반적으로 다음 리소스에 매핑이 필요합니다.
 
@@ -320,7 +320,7 @@ Dispatcher initializing (build 4.1.2)
 
 ## Dispatcher 플러시 복제 에이전트 구성 {#configuring-the-dispatcher-flush-replication-agent}
 
-AEM 게시 인스턴스의 `Dispatcher Flush` 복제 에이전트는 올바른 Dispatcher 팜에 무효화 요청을 보내야 합니다. 팜을 대상으로 지정하려면 전송 탭에서 `Dispatcher Flush` 복제 에이전트의 URI 속성을 사용하십시오. 캐시를 무효화하도록 구성된 Dispatcher 팜의 `/virtualhost` 속성 값을 포함합니다.
+AEM 게시 인스턴스의 `Dispatcher Flush` 복제 에이전트는 올바른 Dispatcher 팜에 무효화 요청을 보내야 합니다. 팜을 대상으로 지정하려면 전송 탭에서 `Dispatcher Flush` 복제 에이전트의 URI 속성을 사용합니다. 캐시를 무효화하도록 구성된 Dispatcher 팜의 `/virtualhost` 속성 값을 포함합니다.
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -500,15 +500,15 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 >[!NOTE]
 >
->단일 Dispatcher 팜이 정의되어 있으므로 AEM 게시 인스턴스의 `Dispatcher Flush` 복제 에이전트에는 특수 구성이 필요하지 않습니다.
+>단일 Dispatcher 팜이 정의되어 있으므로 AEM 게시 인스턴스의 `Dispatcher Flush` 복제 에이전트에는 특별한 구성이 필요하지 않습니다.
 
-## HTML이 아닌 파일에 대한 링크 다시 작성 {#rewriting-links-to-non-html-files}
+## 비 HTML 파일에 대한 링크 재작성 {#rewriting-links-to-non-html-files}
 
 확장자가 .html 또는 .htm이 아닌 파일에 대한 참조를 재작성하려면 Sling 재작성기 변환기 구성 요소를 생성하고 기본 재작성기 파이프라인에 추가합니다.
 
 리소스 경로가 웹 서버 컨텍스트에서 올바르게 확인되지 않는 경우 참조를 재작성합니다. 예를 들어 이미지 생성 구성 요소가 /content/sitea/en/products.navimage.png와 같은 링크를 만들 때 변환기가 필요합니다. [완벽한 기능을 갖춘 인터넷 웹 사이트를 만드는 방법](https://experienceleague.adobe.com/ko/docs/experience-manager-65/content/implementing/developing/introduction/the-basics)의 `topnav` 구성 요소는 이러한 링크를 만듭니다.
 
-[`Sling` 재작성기](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)은(는) `Sling` 출력을 후처리하는 모듈입니다. 재작성기의 SAX 파이프라인 구현은 생성기, 하나 이상의 변환기 및 직렬 변환기로 구성됩니다.
+[`Sling` 재작성기](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html)는 `Sling` 출력을 후처리하는 모듈입니다. 재작성기의 SAX 파이프라인 구현은 생성기, 하나 이상의 변환기 및 직렬 변환기로 구성됩니다.
 
 * **생성기:** `Sling` 출력 스트림(HTML 문서)을 구문 분석하고 특정 요소 유형이 발생하면 SAX 이벤트를 생성합니다.
 * **변환기:** SAX 이벤트를 수신하여 이벤트 대상(HTML 요소)을 수정합니다. 재작성기 파이프라인에는 0개 이상의 변환기가 포함되어 있습니다. 변환기는 순서대로 실행되어 SAX 이벤트를 순서의 다음 변환기로 전달합니다.
@@ -516,7 +516,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ![](assets/chlimage_1-15.png)
 
-### AEM 기본 재작성기 파이프라인 {#the-aem-default-rewriter-pipeline}
+### AEM 기본 Rewriter 파이프라인 {#the-aem-default-rewriter-pipeline}
 
 AEM은 text/html 유형의 문서를 처리하는 기본 파이프라인 재작성기를 사용합니다.
 
@@ -526,7 +526,7 @@ AEM은 text/html 유형의 문서를 처리하는 기본 파이프라인 재작�
 
 `/libs/cq/config/rewriter/default` 노드는 파이프라인을 정의합니다.
 
-### 변환기 만들기 {#creating-a-transformer}
+### 변환기 생성 {#creating-a-transformer}
 
 변환기 구성 요소를 생성하고 파이프라인에서 사용하려면 다음 작업을 수행합니다.
 

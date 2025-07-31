@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '582'
-ht-degree: 85%
+ht-degree: 100%
 
 ---
 
@@ -89,7 +89,7 @@ Dispatcher를 구성할 때 외부 액세스를 가능한 한 제한합니다. D
 
 ## 전용 시스템 사용자로 Dispatcher 실행 {#run-dispatcher-with-a-dedicated-system-user}
 
-권한이 가장 적은 전용 사용자 계정이 웹 서버를 실행하도록 Dispatcher을 구성합니다. Adobe에서는 Dispatcher 캐시 폴더에 대한 쓰기 액세스 권한만 부여할 것을 권장합니다.
+최소 권한을 가진 전용 사용자 계정이 웹 서버를 실행하도록 Dispatcher를 구성합니다. Adobe는 Dispatcher 캐시 폴더에 대한 쓰기 권한만 부여하는 것을 권장하여 드립니다.
 
 또한 IIS 사용자는 다음과 같이 웹 사이트를 구성해야 합니다.
 

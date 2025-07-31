@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
@@ -64,7 +64,7 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 
 Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## 워크플로우 모델 삭제 문제 {#problems-deleting-workflow-models}
+## 워크플로 모델 삭제 문제 {#problems-deleting-workflow-models}
 
 **증상**
 
