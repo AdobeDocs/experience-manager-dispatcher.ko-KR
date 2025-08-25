@@ -1304,7 +1304,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >[!NOTE]
 >
 >glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
->> `/0002 { /glob "p1" /type "allow" }`
+>&#x200B;> `/0002 { /glob "p1" /type "allow" }`
 
 다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 Dispatcher는 `nocache` 매개변수를 포함하는 요청 URL을 캐시하지 않습니다.
 
@@ -1644,7 +1644,7 @@ Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언
 | `?` | 모든 단일 문자와 일치합니다. 문자 클래스 외부에서 사용합니다. 문자 클래스 내에서 이 문자는 문자 그대로 해석됩니다. | `*outdoors/??/*`<br/> geometrixx-outdoors 사이트의 모든 언어 페이지와 일치합니다. 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 요청은 glob 패턴과 일치하지 않습니다. <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
 | `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되어 있지 않으면 패턴이 일치 항목을 생성하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 이는 문자 범위를 나타냅니다. 문자 클래스에서 사용합니다. 문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[m-p]men.html*` 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[!o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[ !o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 뒤에 오는 문자 또는 문자 범위를 부정합니다. 문자 클래스 내의 문자 및 문자 범위만 부정하는 데 사용합니다. `!` 와일드카드 문자와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | 예제 패턴의 `!` 문자를 `^` 문자로 대체하여 `!` 와일드카드 문자에 대한 예제가 적용됩니다. |
 
 
