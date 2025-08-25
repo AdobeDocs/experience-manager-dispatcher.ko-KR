@@ -2,10 +2,10 @@
 title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '8937'
-ht-degree: 100%
+source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
+workflow-type: tm+mt
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -209,7 +209,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 | [/failover](#using-the-failover-mechanism) | 원본 요청이 실패하면 다른 렌더링으로 요청을 다시 보냅니다. |
 | [/auth_checker](permissions-cache.md) | 권한 구분 캐싱에 대해서는 [보안 콘텐츠 캐싱](permissions-cache.md)을 참조하십시오. |
 
-## 기본 페이지 지정(IIS만 해당) - `/homepage` {#specify-a-default-page-iis-only-homepage}
+## 기본 페이지 지정(IIS만 해당) - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
