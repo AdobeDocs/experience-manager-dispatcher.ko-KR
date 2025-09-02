@@ -3,9 +3,9 @@ title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8938'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -213,7 +213,7 @@ AEM 및 Dispatcher의 모든 요소는 IPv4 및 IPv6 네트워크 모두에 설�
 
 >[!CAUTION]
 >
->`/homepage`매개변수(IIS만 해당)는 더 이상 작동하지 않습니다. 대신 [IIS URL 재작성 모듈](https://learn.microsoft.com/ko-kr/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)을 사용해야 합니다.
+>`/homepage`매개변수(IIS만 해당)는 더 이상 작동하지 않습니다. 대신 [IIS URL 재작성 모듈](https://learn.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)을 사용해야 합니다.
 >
 >Apache를 사용하는 경우 `mod_rewrite` 모듈을 사용해야 합니다. `mod_rewrite`에 대한 정보는 Apache 웹 사이트 설명서를 참조하십시오(예: [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). `mod_rewrite`를 사용할 때 &#39;passthrough|PT&#39;(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 `uri` 구조의 `request_rec` 필드를 `filename` 필드의 값으로 설정하는 것이 좋습니다.
 
@@ -1304,7 +1304,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >[!NOTE]
 >
 >glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
->&#x200B;> `/0002 { /glob "p1" /type "allow" }`
+>> `/0002 { /glob "p1" /type "allow" }`
 
 다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 Dispatcher는 `nocache` 매개변수를 포함하는 요청 URL을 캐시하지 않습니다.
 
@@ -1644,7 +1644,7 @@ Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언
 | `?` | 모든 단일 문자와 일치합니다. 문자 클래스 외부에서 사용합니다. 문자 클래스 내에서 이 문자는 문자 그대로 해석됩니다. | `*outdoors/??/*`<br/> geometrixx-outdoors 사이트의 모든 언어 페이지와 일치합니다. 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 요청은 glob 패턴과 일치하지 않습니다. <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
 | `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되어 있지 않으면 패턴이 일치 항목을 생성하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 이는 문자 범위를 나타냅니다. 문자 클래스에서 사용합니다. 문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[m-p]men.html*` 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[ !o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[!o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 뒤에 오는 문자 또는 문자 범위를 부정합니다. 문자 클래스 내의 문자 및 문자 범위만 부정하는 데 사용합니다. `!` 와일드카드 문자와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | 예제 패턴의 `!` 문자를 `^` 문자로 대체하여 `!` 와일드카드 문자에 대한 예제가 적용됩니다. |
 
 
