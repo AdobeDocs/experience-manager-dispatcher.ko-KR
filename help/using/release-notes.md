@@ -5,10 +5,10 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: f4ed724deccf14c570ca873728a97d0ae5fe0e4f
 workflow-type: tm+mt
-source-wordcount: '1098'
-ht-degree: 94%
+source-wordcount: '1105'
+ht-degree: 93%
 
 ---
 
@@ -41,9 +41,8 @@ Adobe는 유용한 최신 기능, 최신 버그 수정 및 최상의 성능을 �
 
 **개선 사항**:
 
-* DISP-1040 - URL을 재작성하는 고객을 위한 수정
+* DISP-1040 - 명시적으로 필요하지 않은 경우 캐시 무효화를 수행하고 헤더(`/allowedClients`, `handle` 등)를 차단 또는 제거할 수 있는 IP를 제어하려면 Dispatcher 구성에서 `cq-handle`을(를) 구현하십시오
 * DISP-1046 - stale-while-error는 AEM에서 429개의 응답도 처리해야 합니다.
-* DISP-1041 - 무효화 URI를 구성할 수 있게 만들기(#179)
 * SKYOPS-107219 - vanityUrls 로딩의 현재 구현 최적화
 
 ### Release 4.3.7 (2024년 3월 27일) {#march}
