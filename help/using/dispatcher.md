@@ -281,7 +281,7 @@ MIME 유형, 확장, 요청 유형 등에 따라 콘텐츠 전송 네트워크�
 
 >[!NOTE]
 >
->[AEM (CQ) Dispatcher 보안 및 콘텐츠 전송 네트워크+브라우저 캐싱](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)과 [Dispatcher 캐싱](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#)에 대한 녹화된 프레젠테이션을 참조하십시오.
+>[AEM (CQ) Dispatcher 보안 및 콘텐츠 전송 네트워크+브라우저 캐싱](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023)과 [Dispatcher 캐싱](https://experienceleague.adobe.com/ko/docs/events/experience-manager-gems-recordings/overview#)에 대한 녹화된 프레젠테이션을 참조하십시오.
 
 ## 작성자 서버에 Dispatcher 사용 {#using-a-dispatcher-with-an-author-server}
 
