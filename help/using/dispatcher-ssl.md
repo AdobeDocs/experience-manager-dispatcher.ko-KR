@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1305'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '1390'
+ht-degree: 98%
 
 ---
 
@@ -139,7 +139,7 @@ SSL을 통해 AEM 또는 CQ와 연결하도록 Dispatcher를 구성하려면 [di
 
 #### CA 생성 {#creating-your-ca}
 
-직접 CA 역할을 하는 경우 [OpenSSL](https://www.openssl.org/)을 사용하여 서버 및 클라이언트 인증서에 서명하는 인증 기관을 생성합니다. (OpenSSL 라이브러리가 설치되어 있어야 합니다.) 서드파티 CA를 사용하는 경우 이 절차를 수행하지 마십시오.
+직접 CA 역할을 하는 경우 [OpenSSL](https://www.openssl.org/)을 사용하여 서버 및 클라이언트 인증서에 서명하는 인증 기관을 생성합니다. OpenSSL 라이브러리가 설치되어 있어야 합니다. 서드파티 CA를 사용하는 경우 이 절차를 수행하지 마십시오.
 
 1. 터미널을 열고 현재 디렉터리를 `CA.sh` 파일이 포함된 디렉터리로 변경합니다(예: `/usr/local/ssl/misc`).
 1. CA를 생성하려면 다음 명령을 입력한 다음 메시지가 표시될 때 값을 제공합니다

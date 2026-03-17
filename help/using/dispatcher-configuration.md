@@ -2,10 +2,10 @@
 title: AEM Dispatcher 구성
 description: Dispatcher를 구성하는 방법에 대해 알아봅니다. IPv4 및 IPv6 지원, 구성 파일, 환경 변수 및 인스턴스 이름 지정에 대해 알아봅니다. 팜 정의, 가상 호스트 식별 등에 대해 읽어 보십시오.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '9194'
+ht-degree: 99%
 
 ---
 
@@ -225,7 +225,7 @@ Comment Type: draft
 <p>Typically this situation occurs when a user specifies an URL for which neither IIS or AEM provides an automatic redirection target. For example, if the AEM render instance is shut down after the content is cached, the content redirect URL is unavailable.</p> 
 <p>The following example configuration displays the <span class="code">index.html</span> page in such circumstances:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -235,7 +235,7 @@ Comment Type: draft
   /homepage&nbsp;"/index.html" 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -243,7 +243,7 @@ Comment Type: draft
 
 <p>The <span class="code">/homepage</span> section is located inside the <span class="code">/farms</span> section, for example:<br /> </p>
 
- -->
+-->
 
 <!-- 
 
@@ -253,7 +253,7 @@ Comment Type: draft
   #name&nbsp;of&nbsp;dispatcher!!discoiqbr!!/name&nbsp;"day&nbsp;sites"!!discoiqbr!!!!discoiqbr!!#farms&nbsp;section&nbsp;defines&nbsp;a&nbsp;list&nbsp;of&nbsp;farms&nbsp;or&nbsp;sites!!discoiqbr!!/farms!!discoiqbr!!{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/daycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/homepage&nbsp;"/index.html"!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!&nbsp;&nbsp;&nbsp;/docdaycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!} 
 </codeblock>
 
- -->
+-->
 
 ## 전달할 HTTP 헤더 지정 {#specifying-the-http-headers-to-pass-through-clientheaders}
 
@@ -719,7 +719,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 <p>We should mention the config files that are shipped with the dispatcher distribution and only give a few examples here. This aims to avoid confusion and reduce content maintenance.<br /> </p>
 
- -->
+-->
 
 ```xml
   /filter
@@ -778,10 +778,11 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >Apache에서 사용하는 경우 Dispatcher 모듈의 DispatcherUseProcessedURL 속성에 따라 필터 URL 패턴을 디자인합니다. ([Apache 웹 서버 - Dispatcher용 Apache 웹 서버 구성](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher)을 참조하십시오.)
 
-<!----
+<!--
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. 
+-->
 
 액세스 확장을 선택하는 경우 다음 권장 사항을 고려하십시오.
 
@@ -912,7 +913,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">For https://jira.corp.adobe.com/browse/DOC-4812</p> 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
- -->
+-->
 
 AEM 페이지에 대해 구성된 Vanity URL에 액세스할 수 있도록 Dispatcher를 구성합니다.
 
@@ -1130,7 +1131,7 @@ Comment Type: draft
  <p> </p> 
 </note>
 
- -->
+-->
 
 <!-- 
 
@@ -1138,7 +1139,7 @@ Comment Type: draft
 
 <p>The following rule caches all documents in compressed form; Apache can return either the uncompressed or the compressed form to the client:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -1148,7 +1149,7 @@ Comment Type: draft
   /rules!!discoiqbr!!&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/rulelabel&nbsp;&nbsp;{&nbsp;&nbsp;/glob&nbsp;"*"&nbsp;/type&nbsp;"allow"&nbsp;&nbsp;/compress&nbsp;"gzip"&nbsp;}!!discoiqbr!!&nbsp;&nbsp;} 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -1158,7 +1159,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 <p>Hidden the <span class="code">mod_gzip</span> content as requested in CQDOC-11124.</p>
 
- -->
+-->
 
 ### 폴더 수준별 파일 무효화 {#invalidating-files-by-folder-level}
 
@@ -1208,7 +1209,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 이 구성으로 인해 `/content/wknd/us/en`이 활성화되면 다음 활동이 발생합니다.
 
-* 패턴이 en.인 모든 파일이* `/content/wknd/us` 폴더에서 제거됩니다.
+* 패턴이 en.* 인 모든 파일이 `/content/wknd/us` 폴더에서 제거됩니다.
 * `/content/wknd/us/en./_jcr_content` 폴더가 제거됩니다.
 * `/invalidate` 구성과 일치하는 다른 모든 파일은 즉시 삭제되지 않습니다. 이러한 파일은 다음 요청이 발생할 때 삭제됩니다. 이 예제에서 `/content/wknd.html`은 삭제되지 않고 `/content/wknd.html`이 요청되면 삭제됩니다.
 
@@ -1304,7 +1305,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 >[!NOTE]
 >
 >glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
->> `/0002 { /glob "p1" /type "allow" }`
+> `/0002 { /glob "p1" /type "allow" }`
 
 다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 Dispatcher는 `nocache` 매개변수를 포함하는 요청 URL을 캐시하지 않습니다.
 
@@ -1393,7 +1394,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 기본 `/invalidate` 속성을 사용하면 모든 활성화가 모든 `.html` 파일을 효과적으로 무효화합니다(해당 경로가 `/invalidate` 섹션과 일치하는 경우). 트래픽이 많은 웹 사이트에서 후속 활성화를 여러 번 수행하면 백엔드의 CPU 로드가 증가합니다. 이러한 시나리오에서는 `.stat` 파일 터치를 “조절”하여 웹 사이트의 응답성을 유지하는 것이 바람직합니다. 이 작업은 `/gracePeriod` 속성을 사용하여 수행할 수 있습니다.
 
-`/gracePeriod` 속성은 마지막 활성화 후 캐시에서 오래된 자동 무효화 리소스가 계속 제공될 수 있는 시간(초)을 정의합니다. 이 속성은 활성화 일괄 처리가 전체 캐시를 반복적으로 무효화하는 설정에서 사용할 수 있습니다. 권장 값은 2초입니다.
+`/gracePeriod` 속성은 마지막 활성화 후 캐시에서 오래된 자동 무효화 리소스가 계속 제공될 수 있는 시간(초)을 정의합니다. 이 속성은 배치 단위 활성화가 전체 캐시를 반복적으로 무효화하는 설정에서 사용할 수 있습니다. 권장 값은 2초입니다.
 
 자세한 내용은 미리 `/invalidate` 및 `/statfileslevel`을 참조하십시오.
 
@@ -1642,13 +1643,14 @@ Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언
 |--- |--- |--- |
 | `*` | 문자열의 0개 이상 연속 문자 인스턴스와 일치합니다. 다음 상황 중 하나에서 최종 일치 문자가 결정됩니다. <br/>문자열의 문자가 패턴의 다음 문자와 일치하며 패턴 문자는 다음과 같은 특성을 갖습니다.<br/><ul><li>`*`가 아님</li><li>`?`가 아님</li><li>리터럴 문자(공백 포함) 또는 문자 클래스.</li><li>패턴의 끝에 도달했습니다.</li></ul>문자 클래스 내에서 문자는 문자 그대로 해석됩니다. | `*/geo*` `/content/geometrixx` 노드 및 `/content/geometrixx-outdoors` 노드 아래의 모든 페이지와 일치합니다. 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>노드 아래의 모든 페이지와 일치합니다. `/content/geometrixx-outdoors` 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | 모든 단일 문자와 일치합니다. 문자 클래스 외부에서 사용합니다. 문자 클래스 내에서 이 문자는 문자 그대로 해석됩니다. | `*outdoors/??/*`<br/> geometrixx-outdoors 사이트의 모든 언어 페이지와 일치합니다. 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 요청은 glob 패턴과 일치하지 않습니다. <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
-| `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되어 있지 않으면 패턴이 일치 항목을 생성하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되지 않은 경우 패턴이 일치하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 이는 문자 범위를 나타냅니다. 문자 클래스에서 사용합니다. 문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[m-p]men.html*` 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[!o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`에 해당합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[!o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 뒤에 오는 문자 또는 문자 범위를 부정합니다. 문자 클래스 내의 문자 및 문자 범위만 부정하는 데 사용합니다. `!` 와일드카드 문자와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | 예제 패턴의 `!` 문자를 `^` 문자로 대체하여 `!` 와일드카드 문자에 대한 예제가 적용됩니다. |
 
 
-<!--- need to troubleshoot table
+<!--
+need to troubleshoot table
 
 The following table describes the wildcard characters.
 

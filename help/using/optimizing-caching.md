@@ -5,13 +5,13 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/kr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
-index: y
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+index: true
 internal: n
 snippet: y
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1128'
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '1140'
 ht-degree: 100%
 
 ---
