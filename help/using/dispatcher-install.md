@@ -6,10 +6,14 @@ converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3720'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/o-B8WewNSKJhcw8UXJsWg6scuVEgrUU30R1q6VkYMnQ
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 3754
+ht-degree: 97%
 
 ---
 
@@ -91,7 +95,7 @@ Comment Type: draft
 이 웹 서버를 설치하는 방법에 대한 정보는 다음 리소스를 참조하십시오.
 
 * Internet Information Server에 대한 Microsoft® 자체 설명서
-* [“공식 Microsoft® IIS 사이트”](https://www.iis.net/)
+* [&quot;공식 ® IIS 사이트&quot;](https://www.iis.net/)
 
 ### 필수 IIS 구성 요소 {#required-iis-components}
 
@@ -150,7 +154,7 @@ replaceauthorization=0|1
 | `logfile` | `dispatcher.log` 파일의 위치입니다. 위치가 설정되지 않은 경우, 로그 메시지는 Windows 이벤트 로그로 이동합니다. |
 | `loglevel` | 이벤트 로그에 메시지를 출력하는 데 사용되는 로그 수준을 정의합니다. 다음과 같은 로그 파일의 로그 수준에서 지정할 수 있습니다. <br/>0 - 오류 메시지만. <br/>1 - 오류 및 경고. <br/>2 - 오류, 경고 및 정보 메시지 <br/>3 - 오류, 경고, 정보 및 디버그 메시지. <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정하고 프로덕션 환경에서 실행할 때는 0으로 설정하십시오. |
 | `replaceauthorization` | HTTP 요청의 권한 부여 헤더가 처리되는 방식을 지정합니다. 다음 값이 유효합니다.<br/>0 - 인증 헤더가 수정되지 않습니다. <br/>1 - “Basic” 이외의 “Authorization”이라는 헤더를 `Basic <IIS:LOGON\_USER>`에 해당하는 헤더로 바꿉니다.<br/> |
-| `servervariables` | 서버 변수가 처리되는 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher나 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
+| `servervariables` | 서버 변수의 처리 방법을 정의합니다.<br/>0 - IIS 서버 변수가 Dispatcher 또는 AEM으로 전송되지 않습니다. <br/>1 - 모든 IIS 서버 변수(예: `LOGON\_USER, QUERY\_STRING, ...`)가 요청 헤더와 함께 Dispatcher로 전송됩니다(캐시되지 않은 경우 AEM 인스턴스로도 전송됨).  <br/>서버 변수에는 `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` 등이 포함됩니다. 자세한 내용과 함께 전체 변수 목록은 IIS 설명서를 참조하십시오. |
 | `enable_chunked_transfer` | 클라이언트 응답에 대한 청크 전송을 활성화(1) 또는 비활성화(0)할지 여부를 정의합니다. 기본값은 0입니다. |
 
 예제 구성:
@@ -409,9 +413,9 @@ DispatcherKeepAliveTimeout 60
 | DispatcherConfig | Dispatcher 구성 파일의 위치 및 이름입니다. <br/>이 속성이 주 서버 구성에 있는 경우 모든 가상 호스트는 속성 값을 상속합니다. 단, 가상 호스트는 DispatcherConfig 속성을 포함하여 기본 서버 구성을 재정의할 수 있습니다. |
 | DispatcherLog | 로그 파일의 위치 및 이름입니다. |
 | DispatcherLogLevel | 로그 파일의 로그 수준: <br/>0 - 오류 <br/>1 - 경고 <br/>2 - 정보 <br/>3 - 디버그 <br/>**참고**: 설치 및 테스트 중에는 로그 수준을 3으로 설정한 다음 프로덕션 환경에서 실행할 때는 0으로 설정합니다. |
-| DispatcherNoServerHeader | *이 매개변수는 권장되지 않으며 효과가 없습니다.*<br/><br/> 사용할 서버 헤더를 정의합니다. <br/><ul><li>정의되지 않음 또는 0 - HTTP 서버 헤더에 AEM 버전이 포함됩니다. </li><li>1 - Apache 서버 헤더가 사용됩니다.</li></ul> |
+| DispatcherNoServerHeader | *이 매개 변수는 더 이상 사용되지 않으며 사용할 수 없습니다.*<br/><br/> 사용할 서버 헤더를 정의합니다. <br/><ul><li>정의되지 않음 또는 0 - HTTP 서버 헤더에 AEM 버전이 포함됩니다. </li><li>1 - Apache 서버 헤더가 사용됩니다.</li></ul> |
 | DispatcherDeclineRoot | 루트 “/”에 대한 요청을 거부할지 정의합니다. <br/>**0** - / <br/>**1**&#x200B;에 대한 요청 수락 - Dispatcher가 /에 대한 요청을 처리하지 않습니다. 대신 올바른 매핑을 위해 mod_alias를 사용합니다. |
-| DispatcherUseProcessedURL | Dispatcher의 모든 추가 처리에 사전 처리된 URL을 사용할지 여부를 정의합니다. <br/>**0** - 웹 서버에 전달된 원래 URL을 사용합니다. <br/>**1** - Dispatcher가 웹 서버에 전달된 원래 URL 대신 Dispatcher 앞에 오는 핸들러에 의해 이미 처리된 URL(즉, `mod_rewrite`)을 사용합니다. 예를 들어 원본 또는 처리된 URL이 Dispatcher 필터와 일치합니다. URL은 캐시 파일 구조의 기초로도 사용됩니다. Apache 2.4와 같은 mod_rewrite에 대한 자세한 내용은 Apache 웹 사이트 설명서를 참조하십시오. mod_rewrite를 사용할 때 “passthrough”(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 request_rec 구조의 URI 필드를 파일 이름 필드의 값으로 설정하도록 강제합니다. |
+| DispatcherUseProcessedURL | Dispatcher의 모든 추가 처리에 사전 처리된 URL을 사용할지 여부를 정의합니다. <br/>**0** - 웹 서버에 전달된 원래 URL을 사용합니다. <br/>**1** - Dispatcher가 웹 서버에 전달된 원래 URL 대신 Dispatcher 앞에 오는 핸들러에 의해 이미 처리된 URL(즉, `mod_rewrite`)을 사용합니다. 예를 들어 원본 또는 처리된 URL이 Dispatcher 필터와 일치합니다. URL은 캐시 파일 구조의 기초로도 사용됩니다. mod_rewrite에 대한 정보는 Apache 웹 사이트 설명서를 참조하십시오. 예: Apache 2.4. mod_rewrite를 사용할 때 &#39;passthrough&#39;(다음 핸들러로 전달) 플래그를 사용하여 재작성 엔진이 내부 request_rec 구조의 URI 필드를 파일 이름 필드의 값으로 설정하도록 합니다. |
 | DispatcherPassError | ErrorDocument 처리를 위해 오류 코드를 지원하는 방법을 정의합니다. <br/>**0** - Dispatcher가 클라이언트에 대한 모든 오류 응답을 스풀 처리합니다. <br/>**1** - Dispatcher는 클라이언트에 대한 오류 응답을 스풀링하지 않습니다(상태 코드가 400보다 크거나 같은 경우). 대신 상태 코드를 Apache에 전달하여 ErrorDocument 지시문이 이러한 상태 코드를 처리할 수 있도록 합니다. <br/>**코드 범위** -응답이 Apache에 전달되는 오류 코드의 범위를 지정합니다. 다른 오류 코드는 클라이언트에 전달됩니다. 예를 들어 다음 구성은 오류 412에 대한 응답을 클라이언트에 전달하고 다른 모든 오류는 Apache에 전달합니다. DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | keep-alive 시간 제한을 초 단위로 지정합니다. Dispatcher 버전 4.2.0부터 기본 keep-alive 값은 60입니다. 값이 0이면 keep-alive가 비활성화됩니다. |
 | DispatcherNoCanonURL | 이 매개변수를 On으로 설정하면 정규화된 URL 대신 원시 URL이 백엔드에 전달되고 DispatcherUseProcessedURL 설정이 무시됩니다. 기본값은 해제(Off)입니다. <br/>**참고**: Dispatcher 구성의 필터 규칙은 항상 원시 URL이 아닌 정리된 URL에 대해 평가됩니다. |
@@ -613,7 +617,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
    `Init funcs="dispService, dispInit"`\
    및\
    `Init fn="dispInit"`\
-   로 시작하는 두 행을 `obj.conf.disp`에서 `magnus.conf`의 초기화 섹션으로 복사합니다.
+   로 시작하는 행을 `obj.conf.disp`에서 `magnus.conf`의 초기화 섹션으로 복사합니다.
 
 1. 변경 사항을 저장합니다.
 

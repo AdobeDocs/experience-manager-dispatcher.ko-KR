@@ -4,9 +4,13 @@ description: 크로스 사이트 요청 위조 공격을 방지하도록 Adobe E
 topic-tags: dispatcher
 content-type: reference
 exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+TQID: https://experienceleague.adobe.com/xbW-j06MGU1Ku5MwXscpLdpyw8KRLE18YIz-iUgAStI
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '235'
+source-wordcount: 236
 ht-degree: 100%
 
 ---
