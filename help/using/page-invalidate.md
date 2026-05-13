@@ -9,10 +9,18 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1407'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 1447
+ht-degree: 98%
 
 ---
 
@@ -169,7 +177,7 @@ page_path1
 page_pathn
 ```
 
-다시 캐시할 페이지 경로는 즉시 메시지 본문의 별도 행에 나열됩니다. `CQ-Handle` 값은 다시 캐시할 페이지를 무효화하는 페이지의 경로입니다. ([캐시](dispatcher-configuration.md#main-pars_146_44_0010) 구성 항목의 `/statfileslevel` 매개변수를 참조하십시오.) 다음 예제 HTTP 요청 메시지는 `/content/geometrixx-outdoors/en.html page`를 삭제하고 다시 캐시합니다.
+다시 캐시할 페이지 경로는 즉시 메시지 본문의 별도 행에 나열됩니다. `CQ-Handle` 값은 다시 캐시할 페이지를 무효화하는 페이지의 경로입니다. ([Cache](dispatcher-configuration.md#main-pars_146_44_0010) 구성 항목의 `/statfileslevel` 매개 변수를 참조하십시오.) 다음 예제 HTTP 요청 메시지는 `/content/geometrixx-outdoors/en.html page`을(를) 삭제하고 다시 캐시합니다.
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
