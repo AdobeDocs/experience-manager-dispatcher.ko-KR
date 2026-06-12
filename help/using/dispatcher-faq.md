@@ -13,8 +13,8 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: 1625
-ht-degree: 100%
+source-wordcount: 1530
+ht-degree: 97%
 
 ---
 
@@ -113,9 +113,9 @@ Content-Length: 0
 
 Dispatcher는 CQ-Handle 헤더 값과 이름이 일치하는 캐시된 파일 및 폴더를 삭제합니다. 예를 들어 `/content/geomtrixx-outdoors/en`의 CQ-Handle은 다음 항목과 일치합니다.
 
-geometrixx-outdoors 디렉터리에 있는 en 이라는 이름의 (모든 파일 확장자의) 모든 파일.
-en 디렉터리 아래에 `_jcr_content`라는 이름의 모든 디렉터리(존재하는 경우, 페이지의 하위 노드에 대한 캐시된 렌더링 포함).
-디렉터리 `en`는 `CQ-Action`가 `Delete` 또는 `Deactivate`인 경우에만 삭제됩니다.
+geometrixx-outdoors 디렉터리에서 이름이 en인 (모든 파일 확장명의) 모든 파일입니다.
+en 디렉터리 아래 `_jcr_content`(존재하는 경우 페이지의 하위 노드에 대한 캐시된 렌더링 포함)라는 모든 디렉터리.
+`en` 디렉터리는 `CQ-Action`이(가) `Delete` 또는 `Deactivate`인 경우에만 삭제됩니다.
 
 이 토픽에 대한 자세한 내용은 [수동으로 Dispatcher 캐시 무효화](page-invalidate.md)를 참조하십시오.
 
@@ -159,11 +159,11 @@ en 디렉터리 아래에 `_jcr_content`라는 이름의 모든 디렉터리(존
 
 ## 기타
 
-Dispatcher는 문서가 최신 상태인지 어떻게 확인합니까?
-문서가 최신 상태인지 확인하기 위해 Dispatcher는 다음 작업을 수행합니다.
+Dispatcher은 문서가 최신 상태인지 어떻게 확인합니까?
+문서가 최신 상태인지 확인하기 위해 Dispatcher에서는 다음 작업을 수행합니다.
 
 문서가 자동 무효화 대상인지 여부를 확인합니다. 그렇지 않으면 문서가 최신 문서로 간주됩니다.
-문서가 자동 무효화되도록 구성된 경우 Dispatcher는 사용 가능한 마지막 변경 내용보다 오래되었는지 여부를 확인합니다. 이전 버전인 경우 Dispatcher는 AEM 인스턴스에서 현재 버전을 요청하고 캐시에 있는 버전을 대체합니다.
+문서가 자동 무효화되도록 구성된 경우 Dispatcher은 사용 가능한 마지막 변경 내용보다 오래되었는지 여부를 확인합니다. 이전 버전인 경우 Dispatcher은 AEM 인스턴스에서 현재 버전을 요청하고 캐시에 있는 버전을 대체합니다.
 
 ### Dispatcher는 문서를 어떻게 반환합니까?
 

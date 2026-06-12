@@ -19,7 +19,7 @@ topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: baa06172b3954af08dbeeef4eb7dbd24ce46ad60
 workflow-type: tm+mt
-source-wordcount: 9194
+source-wordcount: 9174
 ht-degree: 97%
 
 ---
@@ -1319,7 +1319,7 @@ glob 속성에 대한 정보는 [glob 속성에 대한 패턴 디자인](#design
 
 >[!NOTE]
 >
->glob 속성을 구성할 때 쿼리 매개변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 “p1” 매개변수를 무시하려는 경우 glob 속성은 다음과 같아야 합니다.
+>glob 속성을 구성할 때는 쿼리 매개 변수 이름과 일치해야 합니다. 예를 들어 다음 URL `http://example.com/path/test.html?p1=test&p2=v2`에서 &quot;p1&quot; 매개 변수를 무시하려면 glob 속성은 다음과 같아야 합니다.
 > `/0002 { /glob "p1" /type "allow" }`
 
 다음 예제에서는 Dispatcher가 `nocache` 매개변수를 제외하고 다른 모든 매개변수를 무시하게 됩니다. 그에 따라 Dispatcher는 `nocache` 매개변수를 포함하는 요청 URL을 캐시하지 않습니다.
@@ -1660,7 +1660,7 @@ Dispatcher 구성 파일의 여러 섹션에서는 `glob` 속성을 클라이언
 | `?` | 모든 단일 문자와 일치합니다. 문자 클래스 외부에서 사용합니다. 문자 클래스 내에서 이 문자는 문자 그대로 해석됩니다. | `*outdoors/??/*`<br/> geometrixx-outdoors 사이트의 모든 언어 페이지와 일치합니다. 예를 들어 다음 HTTP 요청은 glob 패턴과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 요청은 glob 패턴과 일치하지 않습니다. <br/><ul><li>“GET /content/geometrixx-outdoors/en.html”</li></ul> |
 | `[ and ]` | 문자 클래스의 시작과 끝을 표시합니다. 문자 클래스에는 하나 이상의 문자 범위와 단일 문자가 포함될 수 있습니다.<br/>대상 문자가 문자 클래스의 문자 또는 정의된 범위 내의 문자와 일치하는 경우 일치가 발생합니다.<br/>닫는 대괄호가 포함되어 있지 않으면 패턴이 일치 항목을 생성하지 않습니다. | `*[o]men.html*`<br/> 다음 HTTP 요청과 일치합니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | 이는 문자 범위를 나타냅니다. 문자 클래스에서 사용합니다. 문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[m-p]men.html*` 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[ !o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | 뒤에 오는 문자 또는 문자 클래스를 부정합니다. 문자 클래스 내의 문자 및 문자 범위를 부정하는 경우에만 사용합니다. `^ wildcard`와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | `*[!o]men.html*`<br/> 다음 HTTP 요청과 일치합니다. <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/>다음 HTTP 요청과 일치하지 않습니다.<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` 또는 `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | 뒤에 오는 문자 또는 문자 범위를 부정합니다. 문자 클래스 내의 문자 및 문자 범위만 부정하는 데 사용합니다. `!` 와일드카드 문자와 동일합니다. <br/>문자 클래스 외부에서 이 문자는 문자 그대로 해석됩니다. | 예제 패턴의 `!` 문자를 `^` 문자로 대체하여 `!` 와일드카드 문자에 대한 예제가 적용됩니다. |
 
 
@@ -1895,8 +1895,8 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
   임시 파일 이름 템플릿이 시스템에서 가능한 최장 파일 이름을 초과합니다. Dispatcher는 캐시된 파일을 실제로 만들거나 덮어쓰기 전에 먼저 임시 파일을 만듭니다. 임시 파일 이름은 `_YYYYXXXXXX` 문자가 추가된 대상 파일 이름이며, 여기서 `Y`와 `X`는 고유 이름을 만들기 위해 대체됩니다.
 * **캐시 불가능: 요청 URL에 확장자가 없음**\
   요청 URL에 확장자가 없거나 파일 확장자 뒤에 경로가 있습니다(예: `/test.html/a/path`).
-* **캐시 불가능: 요청이 GET 또는 HEAD이어야 합니다.**
-HTTP 메서드는 GET 또는 HEAD이 아닙니다. Dispatcher는 출력에 캐시되어서는 안 되는 동적 데이터가 포함될 것이라고 가정합니다.
+* **캐시 불가능: 요청이 GET 또는 HEAD여야 합니다.**
+HTTP 메서드가 GET 또는 HEAD가 아닙니다. Dispatcher는 출력에 캐시되어서는 안 되는 동적 데이터가 포함될 것이라고 가정합니다.
 * **캐시 불가능: 요청에 쿼리 문자열이 포함되었습니다**\
   요청에 쿼리 문자열이 포함되었습니다. Dispatcher는 출력이 제공된 쿼리 문자열에 따라 달라지므로 캐시하지 않는다고 가정합니다.
 * **캐시 불가능: 세션 관리자가 인증해야 함**\
