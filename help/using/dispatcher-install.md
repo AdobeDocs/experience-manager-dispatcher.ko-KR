@@ -622,7 +622,7 @@ Dispatcher는 다음 중 하나로 제공됩니다.
    `Init funcs="dispService, dispInit"`\
    및\
    `Init fn="dispInit"`\
-   로 시작하는 행을 `obj.conf.disp`에서 `magnus.conf`의 초기화 섹션으로 복사합니다.
+   로 시작하는 두 행을 `obj.conf.disp`에서 `magnus.conf`의 초기화 섹션으로 복사합니다.
 
 1. 변경 사항을 저장합니다.
 
