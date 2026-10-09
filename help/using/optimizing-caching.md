@@ -5,17 +5,18 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/kr/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: true
-internal: n
-snippet: y
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+internal: 'n'
+snippet: 'y'
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+source-git-commit: e2e1f00ed10637e4cbc09d879ef91ec657cab914
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 100%
-
 ---
-
 
 # 캐시 성능을 위한 웹 사이트 최적화 {#optimizing-a-website-for-cache-performance}
 
@@ -55,9 +56,9 @@ HTTP 요청 헤더는 캐시되지 않으므로 헤더에 페이지 인코딩 �
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## URL 매개변수 방지 {#avoid-url-parameters}
+## URL 매개 변수 방지 {#avoid-url-parameters}
 
-가능하면 캐시하려는 페이지의 URL 매개변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(Dispatcher가 [적절하게 구성](dispatcher-configuration.md#main-pars_title_24)되지 않은 경우).
+가능하면 캐시하려는 페이지의 URL 매개 변수를 사용하지 마십시오. 예를 들어 사진 갤러리가 있는 경우 다음 URL은 캐시되지 않습니다(Dispatcher가 [적절하게 구성](dispatcher-configuration.md#main-pars_title_24)되지 않은 경우).
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -75,9 +76,9 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 
 ## URL로 사용자 정의 {#customize-by-url}
 
-사용자가 글꼴 크기(또는 기타 레이아웃 사용자 정의)를 변경할 수 있도록 허용하는 경우 다른 사용자 정의가 URL에 반영되었는지 확인합니다.
+사용자가 글꼴 크기(또는 기타 레이아웃 사용자 정의)를 변경할 수 있도록 허용하는 경우 다른 사용자 정의가 URL에 반영되는지 확인합니다.
 
-예를 들어 쿠키는 캐시되지 않으므로 글꼴 크기를 쿠키(또는 유사한 메커니즘)에 저장하면 캐시된 페이지에 대해 글꼴 크기가 유지되지 않습니다. 따라서 Dispatcher는 임의의 글꼴 크기 문서를 무작위로 반환합니다.
+예를 들어 쿠키는 캐시되지 않으므로 글꼴 크기를 쿠키(또는 유사한 메커니즘)에 저장하면 캐시된 페이지에 대해 글꼴 크기가 유지되지 않습니다. 따라서 Dispatcher는 어떤 글꼴 크기의 문서든 무작위로 반환합니다.
 
 URL에 글꼴 크기를 선택기로 포함하면 이 문제를 피할 수 있습니다.
 
@@ -112,7 +113,7 @@ www.myCompany.com/news/main.large.html
 
 ## 탐색에 사용된 이미지 파일 무효화 {#invalidating-image-files-used-for-navigation}
 
-탐색 항목에 사진을 사용하는 경우 메서드는 기본적으로 제목과 동일하지만 약간 더 복잡합니다. 대상 페이지와 함께 모든 탐색 이미지를 저장합니다. 일반 및 활성에 대해 두 개의 사진을 사용하는 경우 다음 스크립트를 사용할 수 있습니다.
+탐색 항목에 사진을 사용하는 경우 메서드는 기본적으로 제목과 동일하지만 약간 더 복잡합니다. 대상 페이지와 함께 모든 탐색 이미지를 저장합니다. 일반 상태와 활성 상태에 사용할 두 개의 사진을 사용하는 경우 다음 스크립트를 사용할 수 있습니다.
 
 * 페이지를 정상적으로 표시하는 스크립트.
 * `.normal` 요청을 처리하고 일반 사진을 반환하는 스크립트.
@@ -124,7 +125,7 @@ www.myCompany.com/news/main.large.html
 
 ## 개인화 {#personalization}
 
-Dispatcher는 개인화된 데이터를 캐시할 수 없으므로 필요한 경우 개인화를 제한하는 것이 좋습니다. 이유는 다음과 같습니다.
+Dispatcher는 개인화된 데이터를 캐시할 수 없으므로 필요한 곳으로 개인화를 제한하는 것이 좋습니다. 이유는 다음과 같습니다.
 
 * 자유롭게 사용자 정의할 수 있는 시작 페이지를 사용하는 경우 사용자가 요청할 때마다 해당 페이지를 구성해야 합니다.
 * 반대로 10개의 서로 다른 시작 페이지를 선택할 수 있는 경우 각 시작 페이지를 캐시할 수 있으므로 성능이 향상됩니다.
@@ -135,8 +136,8 @@ Dispatcher는 개인화된 데이터를 캐시할 수 없으므로 필요한 경
 >
 >그러나 필요한 경우 다음을 수행할 수 있습니다.
 >
->* iFrame을 사용하여 페이지를 모든 사용자에게 동일한 부분과 사용자의 모든 페이지에 동일한 부분으로 분할할 수 있습니다. 그런 다음 이 두 부분을 모두 캐시할 수 있습니다.
->* 클라이언트측 JavaScript를 사용하여 개인화된 정보를 표시할 수 있습니다. 하지만 사용자가 JavaScript를 끈 경우에도 페이지가 올바르게 표시되는지 확인해야 합니다.
+>* iFrame을 사용하여 페이지를 모든 사용자에게 동일한 부분과 사용자의 모든 페이지에 동일한 부분으로 분할합니다. 그런 다음 이 두 부분을 모두 캐시할 수 있습니다.
+>* 클라이언트측 JavaScript를 사용하여 개인화된 정보를 표시합니다. 하지만 사용자가 JavaScript를 끈 경우에도 페이지가 올바르게 표시되는지 확인해야 합니다.
 >
 
 ## 고정 연결 {#sticky-connections}

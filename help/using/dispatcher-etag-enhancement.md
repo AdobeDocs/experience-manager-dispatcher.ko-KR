@@ -2,13 +2,17 @@
 title: CDN 유효성 재검사를 위한 Dispatcher ETag 개선 사항
 description: AEM as a Cloud Service에서 INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT의 가용성, 지원 상태 및 동작.
 exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
-source-git-commit: cddffe2194beea628f71b6631faada5df4555267
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: e2e1f00ed10637e4cbc09d879ef91ec657cab914
 workflow-type: tm+mt
 source-wordcount: '308'
 ht-degree: 0%
-
 ---
-
 # CDN 유효성 재검사를 위한 Dispatcher ETag 개선 사항
 
 ## 개요
@@ -68,6 +72,6 @@ FileETag none
 
 Dispatcher의 헤더 캐싱 및 `ETag` 처리에 대한 고객 기준 지침을 보려면 다음을 참조하십시오.
 
-- [Dispatcher 구성 - HTTP 응답 헤더 캐싱](https://experienceleague.adobe.com/ko/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [Dispatcher 구성 - HTTP 응답 헤더 캐싱](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 &quot;이 기능은 Dispatcher `2.0.264`(AEM SDK `2026.2.24464`)에서 사용할 수 있습니다. 활성화되면 Dispatcher은 캐시된 `ETag` 값에 대해 `If-None-Match`의 유효성을 검사하고 캐시 적중 시 `304 Not Modified`을(를) 반환할 수 있습니다. AEM as a Cloud Service에서 이 기능이 지원되며 Cloud Manager 환경 구성을 통해 활성화할 수 있습니다.&quot;
